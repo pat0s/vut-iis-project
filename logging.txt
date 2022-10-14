@@ -1,0 +1,43 @@
+Starting Laravel development server: http://iis.wedevs.sk:8080
+[Fri Oct 14 20:38:55 2022] PHP 7.4.3 Development Server (http://iis.wedevs.sk:8080) started
+[Fri Oct 14 20:39:04 2022] 78.99.32.181:2999 Accepted
+[Fri Oct 14 20:39:05 2022] 78.99.32.181:2999 Closing
+[Fri Oct 14 20:39:05 2022] 46.34.228.88:2749 Accepted
+[Fri Oct 14 20:39:05 2022] 46.34.228.88:2748 Accepted
+[Fri Oct 14 20:39:05 2022] 46.34.228.88:2749 Closing
+[Fri Oct 14 20:39:05 2022] 78.99.32.181:2999 Accepted
+[Fri Oct 14 20:39:05 2022] 46.34.228.88:2748 [200]: GET /favicon.ico
+[Fri Oct 14 20:39:05 2022] 46.34.228.88:2748 Closing
+[Fri Oct 14 20:39:05 2022] 78.99.32.181:2999 [200]: GET /favicon.ico
+[Fri Oct 14 20:39:05 2022] 78.99.32.181:2999 Closing
+[Fri Oct 14 20:39:17 2022] 46.34.228.88:2752 Accepted
+[Fri Oct 14 20:39:17 2022] 46.34.228.88:2753 Accepted
+[Fri Oct 14 20:39:17 2022] 46.34.228.88:2753 Closing
+[Fri Oct 14 20:39:17 2022] 46.34.228.88:2752 [200]: GET /favicon.ico
+[Fri Oct 14 20:39:17 2022] 46.34.228.88:2752 Closing
+[Fri Oct 14 20:40:49 2022] 46.34.228.88:2779 Accepted
+[Fri Oct 14 20:40:49 2022] 46.34.228.88:2778 Accepted
+[Fri Oct 14 20:40:49 2022] 46.34.228.88:2779 Closing
+[Fri Oct 14 20:40:50 2022] 46.34.228.88:2778 [200]: GET /favicon.ico
+[Fri Oct 14 20:40:50 2022] 46.34.228.88:2778 Closing
+[Fri Oct 14 20:41:19 2022] 141.98.10.75:33466 Accepted
+[Fri Oct 14 20:41:19 2022] 141.98.10.75:33466 Closing
+[Fri Oct 14 20:43:54 2022] 46.34.228.88:2567 Accepted
+[Fri Oct 14 20:43:54 2022] 46.34.228.88:2568 Accepted
+[Fri Oct 14 20:43:54 2022] 46.34.228.88:2567 Closing
+[Fri Oct 14 20:43:54 2022] 46.34.228.88:2568 [200]: GET /favicon.ico
+[Fri Oct 14 20:43:54 2022] 46.34.228.88:2568 Closing
+[Fri Oct 14 20:44:35 2022] 78.99.32.181:52582 Accepted
+[Fri Oct 14 20:44:35 2022] 78.99.32.181:52582 Closing
+[Fri Oct 14 20:44:35 2022] 78.99.32.181:52606 Accepted
+[Fri Oct 14 20:44:35 2022] 78.99.32.181:52606 [200]: GET /favicon.ico
+[Fri Oct 14 20:44:35 2022] 78.99.32.181:52606 Closing
+[Fri Oct 14 20:44:46 2022] 35.196.132.85:50962 Accepted
+[Fri Oct 14 20:44:46 2022] 35.196.132.85:50962 Closing
+[Fri Oct 14 20:44:55 2022] 46.34.228.88:2605 Accepted
+[Fri Oct 14 20:44:55 2022] 46.34.228.88:2604 Accepted
+[Fri Oct 14 20:44:55 2022] 46.34.228.88:2605 Closing
+[Fri Oct 14 20:44:55 2022] 46.34.228.88:2604 [200]: GET /favicon.ico
+[Fri Oct 14 20:44:55 2022] 46.34.228.88:2604 Closing
+[Fri Oct 14 20:45:41 2022] 152.89.196.211:39920 Accepted
+[Fri Oct 14 20:45:46 2022] 152.89.196.211:39920 Closing

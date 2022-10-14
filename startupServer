@@ -1,0 +1,2 @@
+nohup php artisan serve --host=iis.wedevs.sk --port=8080 > logging.txt &
+
