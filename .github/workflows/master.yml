@@ -28,10 +28,11 @@ jobs:
         server: ${{ secrets.VPS_SERVER }}
         username: ${{ secrets.VPS_LOGIN }}
         password: ${{ secrets.VPS_PASSWD }}
-        server-dir: /wedevs.sk/public_html/iis/
+        server-dir: /wedevs.sk/public_html/vut-iis-project/
         exclude: |
           **/.git*
           **/.git*/**
+          **/docs/**
           README.md
           readme.md
           **/.gitignore*/**
