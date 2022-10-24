@@ -35,4 +35,5 @@ jobs:
           **/docs/**
           README.md
           readme.md
+          config/database.php
           **/.gitignore*/**
