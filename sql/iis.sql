@@ -94,6 +94,7 @@ CREATE TABLE TOURNAMENT_MATCH(
     match_id INTEGER NOT NULL AUTO_INCREMENT,
     result VARCHAR(30),
     index_of_match INTEGER NOT NULL,
+    round INTEGER NOT NULL,
     is_finished INTEGER(1) DEFAULT 0 CHECK (is_finished in (0,1)),
     winner_id INTEGER NULL,
     participant1_id INTEGER NULL,
