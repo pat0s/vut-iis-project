@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class SportFactory extends Factory
 {
@@ -14,9 +13,10 @@ class SportFactory extends Factory
      */
     public function definition()
     {
+        $sportNames = ['CSGO 1v1', 'CSGO 5v5', 'Bowling', 'Futsal', 'Darts', 'Double'];
+
         return [
-//            'name' => Str::random(30),
-            'name' => $this->faker->colorName(),
+            'name' => $this->faker->unique()->randomElement($sportNames),
             'number_of_players' => $this->faker->randomDigit(),
         ];
     }
