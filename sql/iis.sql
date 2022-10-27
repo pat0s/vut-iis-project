@@ -107,3 +107,30 @@ CREATE TABLE TOURNAMENT_MATCH(
     CONSTRAINT FK_PARTICIPANT2_ID FOREIGN KEY (participant2_id) REFERENCES PARTICIPANT(participant_id),
     CONSTRAINT FK_TOURNAMENT_ID FOREIGN KEY (tournament_id) REFERENCES TOURNAMENT(tournament_id) ON DELETE CASCADE
 );
+
+DELIMITER $$
+
+CREATE TRIGGER generate_tournament_matches
+    AFTER INSERT ON TOURNAMENT
+    FOR EACH ROW
+BEGIN
+    DECLARE indx INTEGER(10);
+    DECLARE r INTEGER(10);
+    SET indx = 1;
+    SET r = NEW.number_of_participants;
+
+    WHILE r > 1 DO
+
+        IF indx > r THEN
+            SET indx = 1;
+            SET r = r/2;
+        END IF;
+
+        INSERT INTO TOURNAMENT_MATCH (index_of_match, round, tournament_id)
+        VALUES (indx, r, NEW.tournament_id);
+
+        SET indx=indx+1;
+    END WHILE;
+END;$$
+
+DElIMITER ;
