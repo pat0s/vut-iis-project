@@ -22,6 +22,10 @@ class CreatePARTICIPANTTable extends Migration
             $table->integer('PERSON_ID')->nullable()->index('FK_PARTICIPANT_PERSON_ID');
             $table->integer('TOURNAMENT_ID')->index('FK_PARTICIPANT_TOURNAMENT_ID');
         });
+
+        // Add constraints
+        DB::statement('ALTER TABLE PARTICIPANT ADD CONSTRAINT is_approved CHECK (is_approved in (0,1));');
+        DB::statement('ALTER TABLE PARTICIPANT ADD CONSTRAINT participant_type CHECK(participant_type IN (\'team\', \'person\'));');
     }
 
     /**

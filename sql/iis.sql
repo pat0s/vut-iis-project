@@ -45,7 +45,7 @@ CREATE TABLE TOURNAMENT(
     start_date DATETIME NOT NULL,
     pricepool DECIMAL(20,2),
     is_approved INTEGER(1) DEFAULT 0 CHECK (is_approved IN (0,1)),
-    number_of_participants INTEGER,
+    number_of_participants INTEGER CHECK (number_of_participants IN (4, 8, 16, 32, 64)),
     manager_id INTEGER NOT NULL,
     sport_id INTEGER NOT NULL,
 

@@ -24,6 +24,10 @@ class CreateTOURNAMENTTable extends Migration
             $table->integer('MANAGER_ID')->index('FK_TOURNAMENT_MANAGER_ID');
             $table->integer('SPORT_ID')->index('FK_SPORT_ID');
         });
+
+        // Add constraints
+        DB::statement('ALTER TABLE TOURNAMENT ADD CONSTRAINT is_approved CHECK (is_approved in (0,1));');
+        DB::statement('ALTER TABLE TOURNAMENT ADD CONSTRAINT number_of_participants CHECK (number_of_participants IN (4, 8, 16, 32, 64));');
     }
 
     /**

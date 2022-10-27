@@ -23,6 +23,9 @@ class CreateTOURNAMENTMATCHTable extends Migration
             $table->integer('PARTICIPANT2_ID')->nullable()->index('FK_PARTICIPANT2_ID');
             $table->integer('TOURNAMENT_ID')->index('FK_TOURNAMENT_ID');
         });
+
+        // Add constraint
+        DB::statement('ALTER TABLE TOURNAMENT_MATCH ADD CONSTRAINT is_finished CHECK (is_finished in (0,1));');
     }
 
     /**

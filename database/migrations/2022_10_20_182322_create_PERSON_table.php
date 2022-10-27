@@ -24,6 +24,10 @@ class CreatePERSONTable extends Migration
             $table->string('IMAGE_URL')->nullable();
             $table->integer('ROLE_ID')->nullable()->index('FK_ROLE_ID');
         });
+
+        // Add constraint
+        DB::statement('ALTER TABLE PERSON ADD CONSTRAINT check_email CHECK (email LIKE \'%___@___%\');');
+
     }
 
     /**
