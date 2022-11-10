@@ -35,17 +35,17 @@ Route::post('/logout', function () {
 });
 
 // Create new user
-Route::post('/users', function () {
+Route::post('/user', function () {
     return view('welcome');
 });
 
 // Log user in
-Route::post('/users/authenticate', function () {
+Route::post('/user/authenticate', function () {
     return view('welcome');
 });
 
 // Single user
-Route::get('/users/{user_id}', function () {
+Route::get('/user/{user_id}', function () {
     return view('welcome');
 });
 
@@ -56,18 +56,27 @@ Route::get('/user/{user_id}/edit', function () {
 // -----------------------------------------------------
 
 // --------------------- Team ---------------------------
-
-Route::get('/teams/{team_id}', function () {
+Route::get('/team/create', function () {
     return view('welcome');
 });
 
-Route::get('/teams/create', function () {
+// Route::get("/team/{team_id}", function($team_id){
+//     dd($team_id);
+//     return response("Post " . $team_id);
+// })->where('team_id', '[0-9]+');
+
+Route::get('/team/{team_id}', function () {
     return view('welcome');
 });
+
+Route::get('/team/{team_id}/edit', function () {
+    return view('welcome');
+});
+
 
 // -----------------------------------------------------
 
-Route::get('/create-tournament', function () {
+Route::get('/tournament/create', function () {
     return view('welcome');
 });
 
@@ -76,15 +85,7 @@ Route::get('/tournament/{tournament_id}/edit', function () {
     return view('welcome');
 });
 
-Route::get('/team/{team_id}/edit', function () {
-    return view('welcome');
-});
-
 Route::get('/statistics', function () {
     return view('welcome');
 });
 
-Route::get("/team/{team_id}", function($team_id){
-    dd($team_id);
-    return response("Post " . $team_id);
-})->where('team_id', '[0-9]+');
