@@ -75,11 +75,13 @@ Route::get('/team/{team_id}/edit', function () {
 
 
 // -----------------------------------------------------
-
 Route::get('/tournament/create', function () {
     return view('welcome');
 });
 
+Route::get('/tournament/{tournament_id}', function () {
+    return view('welcome');
+});
 
 Route::get('/tournament/{tournament_id}/edit', function () {
     return view('welcome');
