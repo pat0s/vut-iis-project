@@ -1,0 +1,47 @@
+@import "../variables";
+
+main#team-page{
+    margin-bottom: 40vh;
+    margin-top: 5vh;
+    
+    >section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 15%;
+        padding-right: 15%;
+        column-gap: 150px;
+        row-gap: 80px;
+
+        h2{
+            width: 100%;
+    
+            text-align: center;
+            font-size: 3em;
+            color: $mainLightBrown;
+        }
+    
+        #profile-picture{
+            width: 250px;
+            aspect-ratio: 0.9;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            object-fit: cover;
+            background-color: $mainLightBrown;
+
+            img{
+                transform: scale(1.5);
+            }
+    
+        }
+    
+        
+    }
+
+
+}

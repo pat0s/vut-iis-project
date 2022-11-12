@@ -15,18 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 // Main page
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // --------------------- User ---------------------------
 // Show user registration form
 Route::get('/registration', function () {
-    return view('welcome');
+    return view('user.registration');
 });
 
-// Show user sign-in form
-Route::get('/sign-in', function () {
-    return view('welcome');
+// Show user login form
+Route::get('/login', function () {
+    return view('user.login');
 });
 
 // Log user out
@@ -46,7 +46,7 @@ Route::post('/user/authenticate', function () {
 
 // Single user
 Route::get('/user/{user_id}', function () {
-    return view('welcome');
+    return view('user.index');
 });
 
 
@@ -57,7 +57,7 @@ Route::get('/user/{user_id}/edit', function () {
 
 // --------------------- Team ---------------------------
 Route::get('/team/create', function () {
-    return view('welcome');
+    return view('team.create');
 });
 
 // Route::get("/team/{team_id}", function($team_id){
@@ -66,7 +66,7 @@ Route::get('/team/create', function () {
 // })->where('team_id', '[0-9]+');
 
 Route::get('/team/{team_id}', function () {
-    return view('welcome');
+    return view('team.index');
 });
 
 Route::get('/team/{team_id}/edit', function () {
@@ -75,11 +75,13 @@ Route::get('/team/{team_id}/edit', function () {
 
 
 // -----------------------------------------------------
-
 Route::get('/tournament/create', function () {
     return view('welcome');
 });
 
+Route::get('/tournament/{tournament_id}', function () {
+    return view('tournament.index');
+});
 
 Route::get('/tournament/{tournament_id}/edit', function () {
     return view('welcome');

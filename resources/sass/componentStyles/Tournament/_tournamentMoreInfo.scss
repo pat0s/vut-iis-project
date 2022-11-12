@@ -1,0 +1,51 @@
+@import "../variables";
+
+
+section#more-info{
+    width: 45%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-self: flex-start;
+
+    h3{
+        width: 95%;
+        text-align: right;
+        color: $mainLightBrown;
+        font-size: 2em;
+    }
+
+    div#more-info-box{
+        width: 100%;
+        padding: 30px 50px;
+        margin-top: 20px;
+
+        border-radius: 25px;
+        background-color: $mainLightBrown;
+        color: $mainBlue;
+
+        h4{
+            margin-bottom: 10px;
+            text-align: left;
+            width: 50%;
+            display: inline-block;
+
+            font-size: 1.5em;
+            // text-decoration: underline;
+            
+        }
+        
+        
+        p{
+            display: inline-block;
+            width: 50%;
+        }
+        
+
+    }
+
+}
+
+

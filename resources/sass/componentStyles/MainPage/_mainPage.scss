@@ -1,0 +1,46 @@
+@import "../variables";
+
+main#main-page{
+    margin-bottom: 40vh;
+
+    #quote{
+        width: 100%;
+        height: calc(100vh - 120px);
+        // padding-bottom: 120px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        row-gap: 100px;
+    
+        h1{
+            font-size: 4.5em;
+            color:$mainLightBrown;
+        }
+    
+        a{
+            width: 50px;
+            height: 50px;
+            padding-top: 4px;
+            padding-left: 9px;
+            
+            
+            font-size: 2.5em;
+            font-weight: 800;
+            writing-mode: vertical-rl;
+            text-decoration: none;
+            color: $mainBlue;
+            background-color: $mainLightBrown;
+            border-radius: 50px;
+    
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+    }
+
+}

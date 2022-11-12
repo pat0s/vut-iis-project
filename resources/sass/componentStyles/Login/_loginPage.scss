@@ -1,0 +1,125 @@
+@import "../variables";
+
+
+
+#login-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:first-child{
+            width: 35%;
+            height: 100%;
+            flex-direction: column;
+            row-gap: 60px;
+
+            color: $mainLightBrown;
+            background-color: $mainBlue;
+
+            h1{
+                font-size: 3em;
+            }
+
+            form{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                row-gap: 30px;
+                width: 100%;
+
+                input{
+                    width: 65%;
+                    padding: 3px 10px;
+                    border: 2px solid $mainLightBrown;
+                    border-radius: 30px;
+                    background-color: transparent;
+                    color: $mainLightBrown;
+                    
+                    &::placeholder { 
+                        color: $mainLightBrown;
+                    }
+                    
+                    &:focus {
+                        outline: none !important;
+                        box-shadow: 0 0 5px $mainLightBrown;
+                    }
+                }
+
+                input[type=submit]{
+                    width: 30%;
+                    margin-top: 10px;
+
+                    color: $mainBlue;
+                    font-size: 1.2em;
+                    font-weight: 800;
+                    background-color: $mainLightBrown;
+
+                    cursor: pointer;
+                }
+            }
+
+            a#registration-link{
+                text-decoration: underline;
+                color: $mainLightBrown;
+            }
+
+            a#mainPage-link{
+                position: absolute;
+                // top: 40px;
+                bottom: 30px;
+                left: 40px;
+
+                text-decoration: none;
+                color: $mainLightBrown;
+                
+                svg{
+                    transform: scale(0.7);
+                    
+                    &:hover{
+                        transform: scale(0.8);
+                        
+                    }
+                }
+            }
+
+        }
+
+        &:nth-child(2){
+            width: 65%;
+            height: 100%;
+            column-gap: 40px;
+
+            color: $mainBlue;
+            background-color: $mainLightBrown;
+            
+            h1{
+                font-size: 3em;
+            }
+
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                column-gap: 40px;
+
+                text-decoration: none;
+
+                color: $mainBlue;
+
+            }
+ 
+        }
+
+    }
+
+}

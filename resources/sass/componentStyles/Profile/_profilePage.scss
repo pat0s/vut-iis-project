@@ -1,0 +1,117 @@
+@import "../variables";
+
+main#profile-page{
+    margin-bottom: 40vh;
+    margin-top: 5vh;
+    
+    >section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 15%;
+        padding-right: 15%;
+        column-gap: 150px;
+        row-gap: 85px;
+
+        h2{
+            width: 100%;
+    
+            text-align: center;
+            font-size: 3em;
+            color: $mainLightBrown;
+        }
+    
+        #profile-picture{
+            width: 250px;
+            aspect-ratio: 0.9;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            object-fit: cover;
+            background-color: $mainLightBrown;
+
+            img{
+                transform: scale(1.5);
+            }
+    
+        }
+    
+        #profile-info{
+            width: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            
+            color: $mainLightBrown;
+
+            form{
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .hidden-element{
+                    display: none;
+                }
+
+                table{
+                    width: 100%;
+                    
+                    border-collapse: collapse;
+                    
+                    td{
+                        width: 50%;
+                        height: 50px;
+                        padding-left: 40px;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        
+                        text-align: left;
+                        border-bottom: 1px solid $mainLightBrown;
+                        
+                        
+                        input{
+                            width: 90%;
+                            padding-left: 6px;
+                            padding-right: 6px;
+                            // background-color: transparent;
+                            border-radius: 10px;
+                        }
+                    }
+                }
+
+                button{
+                    width: 30%;
+                }
+
+                #edit-button{
+                    width: 45%;
+                }
+
+                #submit-button{
+                    background-color: $mainLightBrown;
+                    color: $mainBlue;
+                    
+                }
+            }
+
+            button{
+                width: 40%;
+                margin-top: 30px;
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 4px 0px;
+            }
+        }
+    }
+
+
+}
