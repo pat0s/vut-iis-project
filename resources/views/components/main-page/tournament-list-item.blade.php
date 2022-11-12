@@ -1,5 +1,5 @@
 @props([
-    'tournamentID' => 'Tournament ID',
+    'tournamentID' => '1',
     'tournamentName' => 'Tournament Name',
     'sport' => 'Sport',
     'numberOfParticipants',
@@ -7,7 +7,7 @@
 ])
 
 <li>
-    <a href="tournament/1">
+    <a href="tournament/{{$tournamentID}}">
         <div>
             <p>ID: &nbsp;&nbsp;{{$tournamentID}}</p>
             <p>{{$tournamentName}}</p>

@@ -1,6 +1,6 @@
 @props([
     'dateOfStart',
-    'pricePool',
+    'pricePool' => '0EUR',
     'capacity',
 ])
 

@@ -1,10 +1,11 @@
 @props([
-    'tournamentID',
+    'tournamentID' => '1',
     'tournamentCapacity',
 ])
 
 <form method="POST" action="tournaments/edit" id="tournament-form">
-
+    @csrf
+    
     <input type="submit" placeholder="Submit button" id="submit-button" class="button-styled hidden-element" onclick="window.buttonPressedTournament()">
     <button id="cancel-button" class="button-styled hidden-element" type="button" onclick="window.buttonPressedTournament()">Cancel</button>
     <button id="edit-button" class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>

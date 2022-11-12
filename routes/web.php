@@ -21,12 +21,12 @@ Route::get('/', function () {
 // --------------------- User ---------------------------
 // Show user registration form
 Route::get('/registration', function () {
-    return view('users.registration');
+    return view('user.registration');
 });
 
 // Show user login form
 Route::get('/login', function () {
-    return view('users.login');
+    return view('user.login');
 });
 
 // Log user out
@@ -46,7 +46,7 @@ Route::post('/user/authenticate', function () {
 
 // Single user
 Route::get('/user/{user_id}', function () {
-    return view('users.index');
+    return view('user.index');
 });
 
 
@@ -57,7 +57,7 @@ Route::get('/user/{user_id}/edit', function () {
 
 // --------------------- Team ---------------------------
 Route::get('/team/create', function () {
-    return view('welcome');
+    return view('team.index');
 });
 
 // Route::get("/team/{team_id}", function($team_id){
@@ -80,7 +80,7 @@ Route::get('/tournament/create', function () {
 });
 
 Route::get('/tournament/{tournament_id}', function () {
-    return view('tournaments.index');
+    return view('tournament.index');
 });
 
 Route::get('/tournament/{tournament_id}/edit', function () {
