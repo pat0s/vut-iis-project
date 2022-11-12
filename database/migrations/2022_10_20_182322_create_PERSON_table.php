@@ -19,7 +19,7 @@ class CreatePERSONTable extends Migration
             $table->string('SURNAME', 30)->nullable();
             $table->string('EMAIL', 50)->nullable();
             $table->string('ADDRESS', 50)->nullable();
-            $table->string('LOGIN', 30)->nullable();
+            $table->string('LOGIN', 30)->nullable()->unique();
             $table->string('PASSWORD')->nullable();
             $table->string('IMAGE_URL')->nullable();
             $table->integer('ROLE_ID')->nullable()->index('FK_ROLE_ID');
