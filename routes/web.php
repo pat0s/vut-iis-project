@@ -57,7 +57,7 @@ Route::get('/user/{user_id}/edit', function () {
 
 // --------------------- Team ---------------------------
 Route::get('/team/create', function () {
-    return view('team.index');
+    return view('team.create');
 });
 
 // Route::get("/team/{team_id}", function($team_id){
@@ -66,7 +66,7 @@ Route::get('/team/create', function () {
 // })->where('team_id', '[0-9]+');
 
 Route::get('/team/{team_id}', function () {
-    return view('welcome');
+    return view('team.index');
 });
 
 Route::get('/team/{team_id}/edit', function () {

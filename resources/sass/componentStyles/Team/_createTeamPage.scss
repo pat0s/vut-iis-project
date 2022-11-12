@@ -34,7 +34,7 @@ main#create-team-page{
             align-items: center;
             flex-direction: row;
             flex-wrap: wrap;
-            row-gap: 60px;
+            row-gap: 100px;
 
 
 
@@ -124,15 +124,15 @@ main#create-team-page{
             }
 
             #submit-button{
-                width: 30%;
-                margin-left: 35%;
-                margin-right: 35%;
+                width: 20%;
+                margin-left: 40%;
+                margin-right: 40%;
                 
                 padding: 5px 10px;
                 cursor: pointer;
 
                 color: $mainLightBrown;
-                font-size: 2em;
+                font-size: 1.5em;
                 text-align: center;
                 background-color: transparent;
                 border: 2px solid $mainLightBrown;

@@ -824,7 +824,7 @@ main#create-team-page > section form {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  row-gap: 60px;
+  row-gap: 100px;
 }
 main#create-team-page > section form #left-box {
   width: 250px;
@@ -889,13 +889,13 @@ main#create-team-page > section form #right-box section#team-members {
   width: 100% !important;
 }
 main#create-team-page > section form #submit-button {
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
   padding: 5px 10px;
   cursor: pointer;
   color: #FFDFD0;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
   background-color: transparent;
   border: 2px solid #FFDFD0;
