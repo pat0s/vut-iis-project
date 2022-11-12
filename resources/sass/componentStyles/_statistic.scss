@@ -1,0 +1,61 @@
+@import "./variables";
+
+
+section#statistic{
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-self: flex-start;
+
+    h3{
+        width: 95%;
+        text-align: right;
+        color: $mainLightBrown;
+        font-size: 2em;
+    }
+
+    div#statistic-table{
+        width: 100%;
+        padding: 20px;
+        margin-top: 20px;
+
+        border-radius: 25px;
+        background-color: $mainLightBrown;
+        color: $mainBlue;
+
+        h4{
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            
+        }
+        
+       
+        ul{
+            list-style: none;
+            margin-bottom: 10px;
+
+            li{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                column-gap: 80px;
+                padding-left: 80px;
+                
+
+                p{
+                    width: 40%;
+                    text-align: left;
+                }
+            }
+        }
+
+    }
+
+}
+
+

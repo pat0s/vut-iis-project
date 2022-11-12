@@ -1,6 +1,19 @@
 composer install
 cp .env.example .env
 php artisan key:generate
+npm install
 
 # After this run:
-# php artisan server
+# php artisan serve
+
+
+# How to run Javascript:
+# After '$npm install' command when you want to compile JS from resource/js/app.js,
+# you have to run command '$npm run dev' in command line
+
+# npm run dev
+
+# How to compile SASS styles:
+# run command '$npm run dev' in command line
+
+# npm run dev

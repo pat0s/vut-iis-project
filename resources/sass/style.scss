@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&display=swap');
+@import "./componentStyles/header";
+@import "./componentStyles/variables";
+@import "./componentStyles/statistic";
+@import "./componentStyles/footer";
+@import "./componentStyles/buttonStyled";
+
+@import "./componentStyles/MainPage/mainPage";
+@import "./componentStyles/MainPage/mainTournamentList";
+
+@import "./componentStyles/Login/loginPage";
+@import "./componentStyles/Registration/registrationPage";
+
+@import "./componentStyles/Profile/profilePage";
+@import "./componentStyles/Profile/profileTeamsSection";
+
+@import "./componentStyles/Team/teamPage";
+@import "./componentStyles/Team/teamMembers";
+@import "./componentStyles/Team/teamTournamentsInTeam";
+@import "./componentStyles/Team/createTeamPage";
+
+@import "./componentStyles/Tournament/tournamentSchedule";
+@import "./componentStyles/Tournament/tournamentPage";
+@import "./componentStyles/Tournament/tournamentParticipants";
+@import "./componentStyles/Tournament/tournamentMoreInfo";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+
+body{
+    background-color: $mainBlue;
+
+    &::-webkit-scrollbar {
+        // display: none;
+        width: 8px; 
+        height: 10px; 
+        margin-right: 5px;
+        opacity: 0;
+    }
+    
+    &::-webkit-scrollbar-thumb { 
+        background: $scrollbarBlack;
+        // background: transparent;
+        border-radius: 20px;
+        opacity: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        // background: $mainBlue;
+        border-radius: 20px;
+        opacity: 0;
+    }
+}
+
+

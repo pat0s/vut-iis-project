@@ -1,0 +1,283 @@
+@import "../variables";
+
+#tournament-form{
+    width: 100%;
+    margin-top: 150px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 50px;
+
+    
+    button{
+        margin-right: 10%;
+        
+    }
+    
+    .button-styled{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    #submit-button{
+        background-color: $mainLightBrown;
+        color: $mainBlue;
+    }
+
+    .hidden-element{
+        display: none;
+    }
+
+    
+
+    #tournament-schedule{
+        width: 90%;
+        margin-left: 10%;
+        padding-right: 10%;
+        margin-top: 50px;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        
+        &::-webkit-scrollbar {
+            // display: none;
+            width: 4px; 
+            height: 10px; 
+            margin-right: 5px;
+            opacity: 0;
+        }
+
+        &::-webkit-scrollbar-thumb { 
+            background: $scrollbarBlack;
+            // background: transparent;
+            border-radius: 20px;
+            opacity: 0;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            // background: $mainBlue;
+            border-radius: 20px;
+            opacity: 0;
+        }
+
+        div{
+            min-width: 250px;
+            position: relative;
+
+
+
+            fieldset{
+                // overflow: auto;
+                border: initial;
+
+                
+
+                >p, >input{
+                    position: absolute;
+                    transform: translateY(5px);
+                    z-index: 3;
+                }
+                
+                >p{
+                    left: 45%;
+                    color:$mainLightBrown;
+                    
+                }
+
+                >input{
+                    left: 30%;
+                    color: #000;
+                    width: 40%;
+                }
+
+                span{
+    
+                    width: 100%;
+                    height: 80px;
+                    overflow-x: auto;
+                    overflow-y: visible;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    position: relative;
+    
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    flex-wrap: nowrap;
+                    column-gap: 5px;
+    
+                    color:$mainLightBrown;
+                    border-bottom: 2px solid $mainLightBrown;
+    
+                    &::-webkit-scrollbar {
+                        display: none;
+                        width: 4px; 
+                        height: 10px; 
+                        margin-right: 5px;
+                        opacity: 0;
+                    }
+    
+                    &::-webkit-scrollbar-thumb { 
+                        background: $scrollbarBlack;
+                        border-radius: 20px;
+                        opacity: 0;
+                    }
+    
+                    &::-webkit-scrollbar-track {
+                        background: transparent;
+                        border-radius: 20px;
+                        opacity: 0;
+                    }
+    
+    
+                    a{
+                        width: 90%;
+                        text-align: center;
+                        text-decoration: none;
+                        color: $mainLightBrown;
+                    }
+    
+                    input{
+                        width: 10%;
+                        align-self: flex-end;
+                        margin-bottom: 5px;
+                    }
+    
+                }
+
+            }
+
+            span:nth-of-type(even){
+
+                border-right: 2px solid $mainLightBrown;
+            }
+
+
+            &:nth-child(2){
+                fieldset{
+                    >p, >input{
+                        transform: translateY(-30px);
+                    }
+
+                    span{
+                        position: relative;
+                        top: -40px;
+                        height: 160px;
+                    }
+                }
+
+
+            }
+        
+
+            &:nth-child(3){
+                fieldset{
+                    
+                    >p, >input{
+                        transform: translateY(-110px);
+                    }
+                
+                    span{
+                        position: relative;
+                        top: -120px;
+                        height: 320px;
+                    }
+                }
+            
+            
+            }
+
+            &:nth-child(4){
+
+                fieldset{
+                    
+                    >p, >input{
+                        transform: translateY(-270px);
+                    }
+                
+
+                    span{
+                        position: relative;
+                        top: -280px;
+                        height: 640px;
+                    }
+                }
+
+
+            }
+
+            &:nth-child(5){
+
+                fieldset{
+                    
+                    >p, >input{
+                        transform: translateY(-590px);
+                    }
+                
+                    span{
+                        position: relative;
+                        top: -600px;
+                        height: 1280px;
+                    }
+                }
+
+            
+            }
+
+            &:nth-child(6){
+
+                fieldset{
+                    
+                    >p, >input{
+                        transform: translateY(-1390px);
+                    }
+                
+                    span{
+                        position: relative;
+                        top: -1400px;
+                        height: 2560px;
+                    }
+                }
+
+
+            }
+
+            &#ul-final{
+                span{
+
+                    width: 100%;
+                    height: 80px;
+                    overflow-x: auto;
+                    overflow-y: visible;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    position: relative;
+    
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    flex-wrap: nowrap;
+                    column-gap: 5px;
+    
+                    color:$mainLightBrown;
+                    border-bottom: 2px solid $mainLightBrown;
+
+                    a{
+                        text-decoration: none;
+                        color: $mainLightBrown;
+                    }
+                }
+    
+            }
+        }
+    
+    }
+}

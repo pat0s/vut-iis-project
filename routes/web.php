@@ -15,18 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 // Main page
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // --------------------- User ---------------------------
 // Show user registration form
 Route::get('/registration', function () {
-    return view('welcome');
+    return view('users.registration');
 });
 
-// Show user sign-in form
-Route::get('/sign-in', function () {
-    return view('welcome');
+// Show user login form
+Route::get('/login', function () {
+    return view('users.login');
 });
 
 // Log user out
@@ -46,7 +46,7 @@ Route::post('/user/authenticate', function () {
 
 // Single user
 Route::get('/user/{user_id}', function () {
-    return view('welcome');
+    return view('users.index');
 });
 
 
@@ -80,7 +80,7 @@ Route::get('/tournament/create', function () {
 });
 
 Route::get('/tournament/{tournament_id}', function () {
-    return view('welcome');
+    return view('tournaments.index');
 });
 
 Route::get('/tournament/{tournament_id}/edit', function () {
