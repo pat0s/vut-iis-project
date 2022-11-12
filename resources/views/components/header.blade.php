@@ -5,7 +5,7 @@
             <h2>Duck Tournaments</h2>
         </a>
     </div>
-    
+
     @guest
         <nav>
             <ul>
@@ -23,6 +23,11 @@
                 </h3>
                 <img src="./img/UserAvatar.svg">
             </a>
+
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
         </nav>
     @endauth
 
