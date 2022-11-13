@@ -16,6 +16,10 @@ header{
     
     background-color: $mainBlue;
 
+    .hidden-element{
+        display: none;
+    }
+
     div, ul, a{
         display: flex;
         justify-content: center;
@@ -38,7 +42,7 @@ header{
         }
     }
     
-    ul{
+    nav>ul{
         li{
             list-style: none;
             border-radius: 50px;
@@ -80,6 +84,49 @@ header{
 
         img{
             transform: scale(0.8);
+        }
+
+        #logged-user-div{
+            cursor: pointer;
+        }
+
+        #user-nav-div{
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            top: 100px;
+            z-index: 3;
+
+
+            background-color: white;
+            border-radius: 30px;
+
+            ul{
+                width: 100%;
+                height: 100%;
+
+                flex-direction: column;
+                row-gap: 20px;
+
+                li{
+                    list-style: none;
+                    
+                    
+                    a{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        column-gap: 10px;
+
+                        font-size: 1.2em;
+
+                        color: $mainBlue;
+
+                    }
+                }
+
+            }
+
         }
     }
 

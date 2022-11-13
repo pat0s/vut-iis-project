@@ -6,24 +6,30 @@
         </a>
     </div>
     
-    @guest
+    {{-- @guest
         <nav>
             <ul>
                 <li><a href="/login" id="login-button">Log in</a></li>
                 <li><a href="/registration" id="registration-button">Register</a></li>
             </ul>
         </nav>
-    @endguest
+    @endguest --}}
 
-    @auth
+    {{-- @auth --}}
         <nav id="logged-user">
-            <a href="./profile.html">
+            <div id="logged-user-div" onclick="window.clickOnUserNavDiv()">
                 <h3>
                     Mista MrDalo
                 </h3>
-                <img src="./img/UserAvatar.svg">
-            </a>
+                <img src="{{asset('/img/UserAvatar.svg')}}">
+            </div>
+            <div id="user-nav-div" class="hidden-element">
+                <ul>
+                    <li><a href="/user/1"><img src="{{asset('/img/profileBlue.svg')}}">Profile</a></li>
+                    <li><a href="/logout"><img src="{{asset('/img/log-out.svg')}}">Log out</a></li>
+                </ul>
+            </div>
         </nav>
-    @endauth
+    {{-- @endauth --}}
 
 </header>

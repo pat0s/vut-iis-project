@@ -31,7 +31,7 @@ Route::get('/login', function () {
 
 // Log user out
 Route::post('/logout', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // Create new user
