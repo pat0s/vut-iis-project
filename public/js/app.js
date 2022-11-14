@@ -2071,11 +2071,16 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var loggedUserDiv = document.getElementById('logged-user-div');
 var userNavDiv = document.getElementById('user-nav-div');
+var addNewMemberFieldset = document.getElementById('add-new-member-to-team-fieldset');
 window.changePage = function (URL) {
   window.location.href = URL;
 };
 window.clickOnUserNavDiv = function () {
   userNavDiv.classList.toggle('hidden-element');
+};
+window.addMemberToTeambuttonHandler = function (useFlag) {
+  addNewMemberFieldset.classList.toggle('hidden-element');
+  console.log(useFlag);
 };
 
 /***/ }),

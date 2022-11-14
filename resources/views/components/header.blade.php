@@ -6,16 +6,16 @@
         </a>
     </div>
     
-    {{-- @guest
+    @guest
         <nav>
             <ul>
                 <li><a href="/login" id="login-button">Log in</a></li>
                 <li><a href="/registration" id="registration-button">Register</a></li>
             </ul>
         </nav>
-    @endguest --}}
+    @endguest
 
-    {{-- @auth --}}
+    @auth
         <nav id="logged-user">
             <div id="logged-user-div" onclick="window.clickOnUserNavDiv()">
                 <h3>
@@ -30,6 +30,6 @@
                 </ul>
             </div>
         </nav>
-    {{-- @endauth --}}
+    @endauth
 
 </header>

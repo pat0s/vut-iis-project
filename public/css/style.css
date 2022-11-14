@@ -705,10 +705,11 @@ main#team-page > section #profile-picture img {
 section#team-members {
   width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  min-height: 60vh;
 }
 section#team-members h3 {
   width: 90%;
@@ -772,6 +773,28 @@ section#team-members button p {
   top: -4px;
   font-size: 2.2em;
   font-weight: 200;
+}
+section#team-members #add-new-member-to-team-fieldset {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  border: initial;
+}
+section#team-members #add-new-member-to-team-fieldset input:first-child {
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+section#team-members #add-new-member-to-team-fieldset input[type=button] {
+  width: 80px;
+  height: 35px;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid #FFDFD0;
+  color: #FFDFD0;
 }
 
 section#tournaments-in-team {
@@ -1278,4 +1301,8 @@ body::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 20px;
   opacity: 0;
+}
+
+.hidden-element {
+  display: none !important;
 }

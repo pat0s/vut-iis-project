@@ -7,7 +7,9 @@
                 <img src="{{asset('/img/DuckBlue.svg')}}" alt="">
             </div>
            
-            <x-team-page.team-members />
+            <x-team-page.team-members 
+                :useFlag="1"
+            />
             
             <x-team-page.tournament-list />
 

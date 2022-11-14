@@ -23,7 +23,9 @@
                         <input type="text" name="team-name">
                     </section>
 
-                    <x-team-page.team-members />
+                    <x-team-page.team-members 
+                        :useFlag="2"
+                    />
 
                 </div>
 
