@@ -21,16 +21,18 @@
         {{-- @auth --}}
         <div id="logged-user">
 
-            <div id="logged-user-div" onclick="clickOnUserNavDiv()">
+            <div id="logged-user-div" onclick="window.clickOnUserNavDiv()">
                 <h3>
                     Mista MrDalo
                 </h3>
-                <img src="./img/UserAvatar.svg">
+                <img src="{{asset('/img/UserAvatar.svg')}}">
             </div>
             <div id="user-nav-div" class="hidden-element">
                 <ul>
-                    <li><a href="./profile.html"><img src="./img/profileBlue.svg">Profile</a></li>
-                    <li><a href="/"><img src="./img/log-out.svg">Log out</a></li>
+                    <li><a href="/user/1"><img src="{{asset('/img/profileBlue.svg')}}">Profile</a></li>
+                    <li><a href="/team/create"><img src="{{asset('/img/create-team.svg')}}">Create team</a></li>
+                    <li><a href="/tournament/create"><img src="{{asset('/img/tournament.svg')}}">Create tournament</a></li>
+                    <li><a href="/logout"><img src="{{asset('/img/log-out.svg')}}">Log out</a></li>
                 </ul>
             </div>
         </div>

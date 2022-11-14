@@ -91,9 +91,10 @@ header #logged-user #logged-user-div {
 }
 header #logged-user #user-nav-div {
   position: absolute;
-  width: 200px;
-  height: 150px;
+  height: 250px;
   top: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
   z-index: 3;
   background-color: white;
   border-radius: 30px;
@@ -102,6 +103,7 @@ header #logged-user #user-nav-div ul {
   width: 100%;
   height: 100%;
   flex-direction: column;
+  align-items: flex-start;
   row-gap: 20px;
 }
 header #logged-user #user-nav-div ul li {
@@ -111,8 +113,8 @@ header #logged-user #user-nav-div ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
   font-size: 1.2em;
   color: #23273E;
 }

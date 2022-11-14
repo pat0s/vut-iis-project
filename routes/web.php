@@ -85,7 +85,7 @@ Route::get('/teams', function () {
 
 // -----------------------------------------------------
 Route::get('/tournament/create', function () {
-    return view('welcome');
+    return view('tournament.create');
 });
 
 Route::get('/tournament/{tournament_id}', function () {
