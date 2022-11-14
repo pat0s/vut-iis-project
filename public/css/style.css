@@ -33,11 +33,25 @@ header a h2 {
   font-weight: 600;
   color: #FFDFD0;
 }
-header nav > ul li {
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+header nav > a {
+  text-decoration: underline;
+  color: #FFDFD0;
+  font-size: 1.2em;
+}
+header #not-logged-in li {
   list-style: none;
   border-radius: 50px;
 }
-header nav > ul li a {
+header #not-logged-in li a {
   text-decoration: none;
   border-radius: 50px;
   padding: 4px 40px;
@@ -45,11 +59,11 @@ header nav > ul li a {
   cursor: pointer;
   font-size: 1.2em;
 }
-header nav > ul li #login-button {
+header #not-logged-in li #login-button {
   background-color: #FFDFD0;
   color: #23273E;
 }
-header nav > ul li #registration-button {
+header #not-logged-in li #registration-button {
   border: 2px solid #FFDFD0;
   color: #FFDFD0;
 }
@@ -61,9 +75,10 @@ header #logged-user {
   flex-wrap: nowrap;
   -moz-column-gap: 30px;
        column-gap: 30px;
+  margin-left: 50px;
 }
 header #logged-user h3 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: #FFDFD0;
 }
 header #logged-user img {
@@ -71,6 +86,8 @@ header #logged-user img {
 }
 header #logged-user #logged-user-div {
   cursor: pointer;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }
 header #logged-user #user-nav-div {
   position: absolute;

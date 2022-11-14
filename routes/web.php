@@ -49,6 +49,11 @@ Route::get('/user/{user_id}', function () {
     return view('user.index');
 });
 
+// List of all users
+Route::get('/users', function () {
+    return view('user.users');
+});
+
 
 Route::get('/user/{user_id}/edit', function () {
     return view('welcome');
@@ -73,6 +78,10 @@ Route::get('/team/{team_id}/edit', function () {
     return view('welcome');
 });
 
+Route::get('/teams', function () {
+    return view('team.teams');
+});
+
 
 // -----------------------------------------------------
 Route::get('/tournament/create', function () {
@@ -85,6 +94,10 @@ Route::get('/tournament/{tournament_id}', function () {
 
 Route::get('/tournament/{tournament_id}/edit', function () {
     return view('welcome');
+});
+
+Route::get('/tournaments', function () {
+    return view('tournament.tournaments');
 });
 
 Route::get('/statistics', function () {

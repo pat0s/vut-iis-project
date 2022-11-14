@@ -41,8 +41,23 @@ header{
             color: $mainLightBrown;
         }
     }
+
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        column-gap: 30px;
+    }
+
+    nav>a{
+        text-decoration: underline;
+        color: $mainLightBrown;
+        font-size: 1.2em;
+    }
     
-    nav>ul{
+    #not-logged-in{
         li{
             list-style: none;
             border-radius: 50px;
@@ -68,6 +83,8 @@ header{
         }
     }
 
+    
+
     #logged-user{
         display: flex;
         justify-content: center;
@@ -75,9 +92,10 @@ header{
         flex-direction: row;
         flex-wrap: nowrap;
         column-gap: 30px;
+        margin-left: 50px;
 
         h3{
-            font-size: 1.2em;
+            font-size: 1.5em;
             color: $mainLightBrown;
 
         }
@@ -88,6 +106,7 @@ header{
 
         #logged-user-div{
             cursor: pointer;
+            column-gap: 20px;
         }
 
         #user-nav-div{
