@@ -2072,6 +2072,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var loggedUserDiv = document.getElementById('logged-user-div');
 var userNavDiv = document.getElementById('user-nav-div');
 var addNewMemberFieldset = document.getElementById('add-new-member-to-team-fieldset');
+var switchRoundButton = document.getElementById('switch-round-button');
+var labelForSwitch = document.getElementById('label-for-switch');
+var switchButton = document.getElementById('tournament-for-teams');
 window.changePage = function (URL) {
   window.location.href = URL;
 };
@@ -2081,6 +2084,18 @@ window.clickOnUserNavDiv = function () {
 window.addMemberToTeambuttonHandler = function (useFlag) {
   addNewMemberFieldset.classList.toggle('hidden-element');
   console.log(useFlag);
+};
+var isChecked = false;
+window.switchButtonHandler = function () {
+  isChecked = !isChecked;
+  if (isChecked) {
+    console.log("Checkbox is checked..");
+    labelForSwitch.innerText = "Teams";
+  } else {
+    console.log("Checkbox is not checked..");
+    labelForSwitch.innerText = "Individual participants";
+  }
+  switchRoundButton.classList.toggle('triggered');
 };
 
 /***/ }),

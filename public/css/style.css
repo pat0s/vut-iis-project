@@ -215,6 +215,70 @@ footer ul li a {
   cursor: pointer;
 }
 
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: solid 2px #FFDFD0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #FFDFD0;
+  transition: 0.4s;
+}
+
+.slider.triggered:before {
+  background-color: #23273E;
+}
+
+input:checked + .slider {
+  background-color: #FFDFD0;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 .button-styled {
   padding: 4px 10px;
   color: #FFDFD0;
@@ -279,6 +343,7 @@ main#main-page #quote a {
   padding: 4px 40px;
   font-size: 1.2em;
   cursor: pointer;
+  text-decoration: none;
 }
 #tournament-list div {
   width: 100%;
@@ -1291,6 +1356,81 @@ section#more-info div#more-info-box h4 {
 section#more-info div#more-info-box p {
   display: inline-block;
   width: 50%;
+}
+
+main#create-tournament-page {
+  margin-bottom: 40vh;
+  margin-top: 10vh;
+}
+main#create-tournament-page > section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-left: 15%;
+  padding-right: 15%;
+  row-gap: 100px;
+}
+main#create-tournament-page > section h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  color: #FFDFD0;
+}
+main#create-tournament-page > section form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 60px;
+  justify-items: center;
+  align-items: center;
+}
+main#create-tournament-page > section form .item:nth-child(odd) {
+  justify-self: left;
+  font-weight: 800;
+  color: #FFDFD0;
+  font-size: 1.5em;
+}
+main#create-tournament-page > section form input {
+  width: 80%;
+  background-color: transparent;
+  border: initial;
+  border-bottom: solid 2px #FFDFD0;
+  text-align: center;
+  color: #FFDFD0;
+}
+main#create-tournament-page > section form input:focus {
+  outline: initial;
+  border-bottom: 4px solid #FFDFD0;
+}
+main#create-tournament-page > section form ::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+main#create-tournament-page > section form textarea {
+  padding: 5px;
+  background-color: transparent;
+  border: initial;
+  border: solid 2px #FFDFD0;
+  color: #FFDFD0;
+}
+main#create-tournament-page > section form textarea:focus {
+  outline: 1px solid #FFDFD0;
+}
+main#create-tournament-page > section form input[type=submit] {
+  width: 30%;
+  height: 40px;
+  grid-column: 1/span 2;
+  margin-top: 40px;
+  font-size: 1.2em;
+  background-color: transparent;
+  border: solid 2px #FFDFD0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+main#create-tournament-page > section form select {
+  width: 20%;
+  text-align: center;
 }
 
 * {

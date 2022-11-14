@@ -1,5 +1,45 @@
 <x-layout>
-    <h1>Create tournamnet</h1>
 
+    <main id="create-tournament-page">
+        <section>
+
+            <h2>Create tournament</h2>
+
+            <form method="POST" action="">
+                <label class="item" for="tournament-name">Tournament name</label>
+                <input class="item" type="text" name="tournament-name">
+                
+                <label class="item" for="tournament-description">Description</label>
+                <textarea class="item" name="tournament-description" id="tournament-description" cols="50" rows="5"></textarea>
+                
+                <label class="item" for="tournament-date">Date</label>
+                <input class="item" type="datetime-local" name="tournament-date" id="tournament-date">
+                
+                <label class="item" for="tournament-pricepool">Pricepool</label>
+                <input class="item" type="text" name="tournament-pricepool" id="tournament-pricepool">
+                
+                <label class="item" for="tournament-number-of-participants">Number of participants</label>
+                <select class="item" id="tournament-number-of-participants" name="tournament-number-of-participants">
+                    <option value="64">64</option>
+                    <option value="32">32</option>
+                    <option value="16">16</option>
+                    <option value="8">8</option>
+                    <option value="4">4</option>
+                    <option value="2">2</option>
+                  </select>
+
+                <span class="item" id="label-for-switch"> Individual participants</span>
+                <label class="switch item" for="tournament-for-teams">
+
+                        <input type="checkbox" name="tournament-for-teams" id="tournament-for-teams" onclick="window.switchButtonHandler()">
+                        <span class="slider round" id="switch-round-button"></span>
+                </label>
+
+                <input type="submit" id="submit-button" value="Create tournament">
+            </form>
+
+        </section>
+        
+    </main>
 
 </x-layout>
