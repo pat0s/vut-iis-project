@@ -38,15 +38,14 @@ Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
 // Single user
 Route::get('/user/{user_id}', [PersonController::class, 'index'])->where('user_id', '[0-9]+');
 
+// Edit profile info
+Route::post('/user/{user_id}/edit', [PersonController::class, 'edit'])->where('user_id', '[0-9]+');
+
 // List of all users
 Route::get('/users', function () {
     return view('user.users');
 });
 
-
-Route::get('/user/{user_id}/edit', function () {
-    return view('welcome');
-});
 // -----------------------------------------------------
 
 // --------------------- Team ---------------------------

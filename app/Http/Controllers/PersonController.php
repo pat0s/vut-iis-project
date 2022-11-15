@@ -52,7 +52,6 @@ class PersonController extends Controller
 
         // create user
         $user = Person::create($formFields);
-        dd(auth(), auth()->user());
 
         // login user
         auth()->login($user);
@@ -102,6 +101,36 @@ class PersonController extends Controller
         }
 
         return back()->withErrors(['username' => 'Invalid Credentials'])->onlyInput('username');
+    }
+
+    /**
+     * Edit profile
+     */
+    public function edit(Request $request)
+    {
+        $userId = $request->user_id;
+
+        $formFields = $request->validate([
+            'first_name' => ['required', 'min:3', 'max:50'],
+            'surname' => ['required', 'min:3', 'max:50'],
+            'username' => ['required', 'min:3', 'max:50', Rule::unique('PERSON', 'username')->ignore($userId, 'person_id')],
+            'email' => 'required|email',
+        ]);
+
+        $user = Person::find($userId);
+        $user->first_name = $formFields['first_name'];
+        $user->surname = $formFields['surname'];
+        $user->username = $formFields['username'];
+        $user->email = $formFields['email'];
+        $user->image_url = $request['image_url'];
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return back()->withErrors(['update-error' => 'Failed to update your profile.']);
+        }
+
+        return redirect()->back()->with('message', 'Your profile has been updated.');
     }
 
 
