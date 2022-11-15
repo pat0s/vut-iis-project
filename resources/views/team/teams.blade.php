@@ -1,6 +1,5 @@
 <x-layout>
 
-
     <main id="teams-page">
         <section>
             <h2>Teams</h2>
@@ -17,6 +16,5 @@
         </section>
 
     </main>
-
 
 </x-layout>

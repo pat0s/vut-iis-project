@@ -5,7 +5,7 @@
         <p>Name of the user</p>
     </div>
     
-    <div id="users-list">
+    <ul id="users-list">
         
         @for ($i = 0; $i < 20; $i++)
             <x-user-page.users-list-item
@@ -15,7 +15,7 @@
             
         @endfor
 
-    </div>
+    </ul>
 
 
 </div>

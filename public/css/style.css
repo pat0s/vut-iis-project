@@ -322,7 +322,7 @@ main#main-page #quote a {
   align-items: center;
 }
 
-#tournament-list {
+.main-tournament-list {
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
@@ -332,49 +332,49 @@ main#main-page #quote a {
   flex-wrap: wrap;
   row-gap: 30px;
 }
-#tournament-list h2 {
+.main-tournament-list h2 {
   width: 50%;
   font-size: 3em;
   font-weight: 400;
   color: #FFDFD0;
 }
-#tournament-list a {
+.main-tournament-list a {
   padding: 4px 40px;
   font-size: 1.2em;
   cursor: pointer;
   text-decoration: none;
 }
-#tournament-list div {
+.main-tournament-list div {
   width: 100%;
   height: 70vh;
   overflow-y: auto;
 }
-#tournament-list div::-webkit-scrollbar {
+.main-tournament-list div::-webkit-scrollbar {
   width: 6px;
   height: 10px;
 }
-#tournament-list div::-webkit-scrollbar-thumb {
+.main-tournament-list div::-webkit-scrollbar-thumb {
   background: #FFDFD0;
   border-radius: 20px;
 }
-#tournament-list div::-webkit-scrollbar-track {
+.main-tournament-list div::-webkit-scrollbar-track {
   background: #23273E;
   border-radius: 20px;
 }
-#tournament-list div ul li {
+.main-tournament-list div ul li {
   width: 95%;
   height: 100px;
   border: solid 2px #FFDFD0;
   border-radius: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-weight: 600;
 }
-#tournament-list div ul li a {
+.main-tournament-list div ul li a {
   width: 100%;
   text-decoration: none;
   padding: 0;
 }
-#tournament-list div ul li a div {
+.main-tournament-list div ul li a div {
   width: 100%;
   padding-left: 40px;
   padding-right: 40px;
@@ -382,7 +382,7 @@ main#main-page #quote a {
   align-items: center;
   flex-direction: row;
 }
-#tournament-list div ul li a div:first-child {
+.main-tournament-list div ul li a div:first-child {
   height: 60%;
   justify-content: flex-start;
   background-color: #FFDFD0;
@@ -392,16 +392,16 @@ main#main-page #quote a {
        column-gap: 30%;
   outline: 2px solid #FFDFD0;
 }
-#tournament-list div ul li a div:first-child p:nth-child(2) {
+.main-tournament-list div ul li a div:first-child p:nth-child(2) {
   font-weight: 800;
   font-size: 1.2em;
 }
-#tournament-list div ul li a div:nth-child(2) {
+.main-tournament-list div ul li a div:nth-child(2) {
   height: 40%;
   justify-content: space-between;
   color: #FFDFD0;
 }
-#tournament-list div ul li:last-child {
+.main-tournament-list div ul li:last-child {
   margin-bottom: 0;
 }
 
@@ -832,7 +832,7 @@ div#users-list-parent #users-list {
   justify-content: flex-start;
   flex-direction: column;
   flex-wrap: nowrap;
-  row-gap: 20px;
+  row-gap: 15px;
   overflow-y: auto;
 }
 div#users-list-parent #users-list::-webkit-scrollbar {
@@ -850,6 +850,10 @@ div#users-list-parent #users-list::-webkit-scrollbar-track {
 
 .user-list-item {
   width: 100%;
+  list-style-type: none;
+}
+.user-list-item a {
+  width: 100%;
   padding: 5px 20%;
   display: flex;
   align-items: center;
@@ -857,6 +861,7 @@ div#users-list-parent #users-list::-webkit-scrollbar-track {
   background-color: #FFDFD0;
   color: #23273E;
   border-radius: 30px;
+  text-decoration: none;
 }
 
 main#team-page {
@@ -1238,7 +1243,7 @@ div#teams-list-parent #teams-list {
   justify-content: flex-start;
   flex-direction: column;
   flex-wrap: nowrap;
-  row-gap: 20px;
+  row-gap: 15px;
   overflow-y: auto;
 }
 div#teams-list-parent #teams-list::-webkit-scrollbar {
@@ -1256,6 +1261,10 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
 
 .team-list-item {
   width: 100%;
+  list-style-type: none;
+}
+.team-list-item a {
+  width: 100%;
   padding: 5px 10%;
   display: flex;
   align-items: center;
@@ -1263,6 +1272,7 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
   background-color: #FFDFD0;
   color: #23273E;
   border-radius: 30px;
+  text-decoration: none;
 }
 
 #tournament-form {

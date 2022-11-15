@@ -3,7 +3,11 @@
     'userName' => 'User name',
 ])
 
-<div class="user-list-item">
-    <p>ID: &nbsp;&nbsp;{{$userID}}</p>
-    <p>{{$userName}}</pclass=>
-</div>
+<li class="user-list-item">
+
+    <a href="/user/{{$userID}}">
+        <p>ID: &nbsp;&nbsp;{{$userID}}</p>
+        <p>{{$userName}}</p>
+    </a>
+
+</li>

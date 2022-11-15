@@ -5,7 +5,7 @@
         <p>Number of participants</p>
     </div>
     
-    <div id="teams-list">
+    <ul id="teams-list">
         
         @for ($i = 0; $i < 20; $i++)
             <x-team-page.teams-list-item
@@ -13,10 +13,9 @@
                 :teamName="'Team name'"
                 :numberOfMembers="1"
             />
-            
         @endfor
 
-    </div>
+    </ul>
 
 
 </div>
