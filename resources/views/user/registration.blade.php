@@ -12,16 +12,39 @@
         <section>
             <h1>Sign up</h1>
 
-            <form method="POST" action="registration">
+            <form method="POST" action="/user">
                 @csrf
-                 
-                <input type="text" placeholder="First name*" name="firstName">   
-                <input type="text" placeholder="Surname*" name="surname">   
-                <input type="text" placeholder="Username*" name="userName">   
-                <input type="email" placeholder="E-mail*" name="eMail">   
-                <input type="password" placeholder="Password*" name="password">   
-                <input type="password" placeholder="Repeat password*" name="repeatPassword">   
-                
+
+                <input type="text" placeholder="First name*" name="first_name" value="{{old('first_name')}}">
+                @error('firstName')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+
+                <input type="text" placeholder="Surname*" name="surname" value="{{old('surname')}}">
+                @error('surname')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+
+                <input type="text" placeholder="Username*" name="username" value="{{old('username')}}">
+                @error('username')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+
+                <input type="email" placeholder="E-mail*" name="email" value="{{old('email')}}">
+                @error('email')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+
+                <input type="password" placeholder="Password*" name="password" value="{{old('password')}}">
+                @error('password')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+
+                <input type="password" placeholder="Repeat password*" name="password_confirmation" value="{{old('password_confirmation')}}">
+                @error('password_confirmation')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+
                 <input type="submit" value="Register" name="register">
             </form>
 
@@ -31,7 +54,7 @@
                     <path d="M0.939343 10.9392C0.353557 11.525 0.353557 12.4748 0.939343 13.0605L10.4853 22.6065C11.0711 23.1923 12.0208 23.1923 12.6066 22.6065C13.1924 22.0207 13.1924 21.0709 12.6066 20.4852L4.12132 11.9999L12.6066 3.5146C13.1924 2.92881 13.1924 1.97906 12.6066 1.39328C12.0208 0.80749 11.0711 0.80749 10.4853 1.39328L0.939343 10.9392ZM59 10.4999L2 10.4999V13.4999L59 13.4999V10.4999Z" fill="#FFDFD0"/>
                 </svg>
             </a>
-        
+
         </section>
         <section>
             <a href="/">
@@ -40,6 +63,6 @@
             </a>
         </section>
     </main>
-    
+
 </body>
 </html>

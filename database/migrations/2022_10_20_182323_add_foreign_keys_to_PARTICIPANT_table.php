@@ -14,9 +14,9 @@ class AddForeignKeysToPARTICIPANTTable extends Migration
     public function up()
     {
         Schema::table('PARTICIPANT', function (Blueprint $table) {
-            $table->foreign(['TOURNAMENT_ID'], 'FK_PARTICIPANT_TOURNAMENT_ID')->references(['TOURNAMENT_ID'])->on('TOURNAMENT')->onDelete('CASCADE');
-            $table->foreign(['TEAM_ID'], 'FK_PARTICIPANT_TEAM_ID')->references(['TEAM_ID'])->on('TEAM');
-            $table->foreign(['PERSON_ID'], 'FK_PARTICIPANT_PERSON_ID')->references(['PERSON_ID'])->on('PERSON');
+            $table->foreign(['tournament_id'], 'fk_participant_tournament_id')->references(['tournament_id'])->on('TOURNAMENT')->onDelete('CASCADE');
+            $table->foreign(['team_id'], 'fk_participant_team_id')->references(['team_id'])->on('TEAM');
+            $table->foreign(['person_id'], 'fk_participant_person_id')->references(['person_id'])->on('PERSON');
         });
     }
 
@@ -28,9 +28,9 @@ class AddForeignKeysToPARTICIPANTTable extends Migration
     public function down()
     {
         Schema::table('PARTICIPANT', function (Blueprint $table) {
-            $table->dropForeign('FK_PARTICIPANT_TOURNAMENT_ID');
-            $table->dropForeign('FK_PARTICIPANT_TEAM_ID');
-            $table->dropForeign('FK_PARTICIPANT_PERSON_ID');
+            $table->dropForeign('fk_participant_tournament_id');
+            $table->dropForeign('fk_participant_team_id');
+            $table->dropForeign('fk_participant_person_id');
         });
     }
 }

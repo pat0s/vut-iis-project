@@ -18,7 +18,7 @@ class PersonFactory extends Factory
             'surname' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'address' => $this->faker->streetAddress(),
-            'login' => $this->faker->userName(),
+            'username' => $this->faker->unique()->userName(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'image_url' => $this->faker->imageUrl(),
             'role_id' => rand(1,3),

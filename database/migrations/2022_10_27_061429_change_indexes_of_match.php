@@ -14,7 +14,7 @@ class ChangeIndexesOfMatch extends Migration
     public function up()
     {
         Schema::table('TOURNAMENT_MATCH', function (Blueprint $table) {
-            $table->integer('ROUND');
+            $table->integer('round');
         });
     }
 

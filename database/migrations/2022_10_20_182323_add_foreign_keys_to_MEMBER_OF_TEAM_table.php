@@ -14,8 +14,8 @@ class AddForeignKeysToMEMBEROFTEAMTable extends Migration
     public function up()
     {
         Schema::table('MEMBER_OF_TEAM', function (Blueprint $table) {
-            $table->foreign(['TEAM_ID'], 'FK_MEMBER_TEAM_ID')->references(['TEAM_ID'])->on('TEAM');
-            $table->foreign(['PERSON_ID'], 'FK_MEMBER_PERSON_ID')->references(['PERSON_ID'])->on('PERSON');
+            $table->foreign(['team_id'], 'fk_member_team_id')->references(['team_id'])->on('TEAM');
+            $table->foreign(['person_id'], 'fk_member_person_id')->references(['person_id'])->on('PERSON');
         });
     }
 
@@ -27,8 +27,8 @@ class AddForeignKeysToMEMBEROFTEAMTable extends Migration
     public function down()
     {
         Schema::table('MEMBER_OF_TEAM', function (Blueprint $table) {
-            $table->dropForeign('FK_MEMBER_TEAM_ID');
-            $table->dropForeign('FK_MEMBER_PERSON_ID');
+            $table->dropForeign('fk_member_team_id');
+            $table->dropForeign('fk_member_person_id');
         });
     }
 }

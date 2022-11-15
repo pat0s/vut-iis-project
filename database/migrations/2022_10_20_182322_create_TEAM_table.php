@@ -14,11 +14,11 @@ class CreateTEAMTable extends Migration
     public function up()
     {
         Schema::create('TEAM', function (Blueprint $table) {
-            $table->integer('TEAM_ID', true);
-            $table->string('TEAM_NAME', 30);
-            $table->string('LOGO_URL')->nullable();
-            $table->integer('NUMBER_OF_PLAYERS')->nullable()->default(0);
-            $table->integer('MANAGER_ID')->index('FK_TEAM_MANAGER_ID');
+            $table->integer('team_id', true);
+            $table->string('team_name', 50);
+            $table->string('logo_url')->nullable();
+            $table->integer('number_of_players')->nullable()->default(0);
+            $table->integer('manager_id')->index('fk_team_manager_id');
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,29 +21,19 @@ Route::get('/', function () {
 
 // --------------------- User ---------------------------
 // Show user registration form
-Route::get('/registration', function () {
-    return view('user.registration');
-});
-
-// Show user login form
-Route::get('/login', function () {
-    return view('user.login');
-});
-
-// Log user out
-Route::post('/logout', function () {
-    return view('index');
-});
+Route::get('/registration', [PersonController::class, 'create']);
 
 // Create new user
-Route::post('/user', function () {
-    return view('welcome');
-});
+Route::post('/user', [PersonController::class, 'store']);
+
+// Show user login form
+Route::get('/login', [PersonController::class, 'login']);
+
+// Log user out
+Route::post('/logout', [PersonController::class, 'logout']);
 
 // Log user in
-Route::post('/user/authenticate', function () {
-    return view('welcome');
-});
+Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
 
 // Single user
 Route::get('/user/{user_id}', function () {

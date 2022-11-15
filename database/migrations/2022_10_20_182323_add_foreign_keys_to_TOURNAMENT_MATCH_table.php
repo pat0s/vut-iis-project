@@ -14,10 +14,10 @@ class AddForeignKeysToTOURNAMENTMATCHTable extends Migration
     public function up()
     {
         Schema::table('TOURNAMENT_MATCH', function (Blueprint $table) {
-            $table->foreign(['PARTICIPANT1_ID'], 'FK_PARTICIPANT1_ID')->references(['PARTICIPANT_ID'])->on('PARTICIPANT');
-            $table->foreign(['TOURNAMENT_ID'], 'FK_TOURNAMENT_ID')->references(['TOURNAMENT_ID'])->on('TOURNAMENT')->onDelete('CASCADE');
-            $table->foreign(['PARTICIPANT2_ID'], 'FK_PARTICIPANT2_ID')->references(['PARTICIPANT_ID'])->on('PARTICIPANT');
-            $table->foreign(['WINNER_ID'], 'FK_WINNER_ID')->references(['PARTICIPANT_ID'])->on('PARTICIPANT');
+            $table->foreign(['participant1_id'], 'fk_participant1_id')->references(['participant_id'])->on('PARTICIPANT');
+            $table->foreign(['tournament_id'], 'fk_tournament_id')->references(['tournament_id'])->on('TOURNAMENT')->onDelete('CASCADE');
+            $table->foreign(['participant2_id'], 'fk_participant2_id')->references(['participant_id'])->on('PARTICIPANT');
+            $table->foreign(['winner_id'], 'fk_winner_id')->references(['participant_id'])->on('PARTICIPANT');
         });
     }
 
@@ -29,10 +29,10 @@ class AddForeignKeysToTOURNAMENTMATCHTable extends Migration
     public function down()
     {
         Schema::table('TOURNAMENT_MATCH', function (Blueprint $table) {
-            $table->dropForeign('FK_PARTICIPANT1_ID');
-            $table->dropForeign('FK_TOURNAMENT_ID');
-            $table->dropForeign('FK_PARTICIPANT2_ID');
-            $table->dropForeign('FK_WINNER_ID');
+            $table->dropForeign('fk_participant1_id');
+            $table->dropForeign('fk_tournament_id');
+            $table->dropForeign('fk_participant2_id');
+            $table->dropForeign('fk_winner_id');
         });
     }
 }

@@ -14,8 +14,8 @@ class AddForeignKeysToTOURNAMENTTable extends Migration
     public function up()
     {
         Schema::table('TOURNAMENT', function (Blueprint $table) {
-            $table->foreign(['SPORT_ID'], 'FK_SPORT_ID')->references(['SPORT_ID'])->on('SPORT');
-            $table->foreign(['MANAGER_ID'], 'FK_TOURNAMENT_MANAGER_ID')->references(['PERSON_ID'])->on('PERSON');
+            $table->foreign(['sport_id'], 'fk_sport_id')->references(['sport_id'])->on('SPORT');
+            $table->foreign(['manager_id'], 'fk_tournament_manager_id')->references(['person_id'])->on('PERSON');
         });
     }
 
@@ -27,8 +27,8 @@ class AddForeignKeysToTOURNAMENTTable extends Migration
     public function down()
     {
         Schema::table('TOURNAMENT', function (Blueprint $table) {
-            $table->dropForeign('FK_SPORT_ID');
-            $table->dropForeign('FK_TOURNAMENT_MANAGER_ID');
+            $table->dropForeign('fk_sport_id');
+            $table->dropForeign('fk_tournament_manager_id');
         });
     }
 }

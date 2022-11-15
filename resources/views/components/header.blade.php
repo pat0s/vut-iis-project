@@ -5,7 +5,16 @@
             <h2>Duck Tournaments</h2>
         </a>
     </div>
-    
+
+    @guest
+        <nav>
+            <ul>
+                <li><a href="/login" id="login-button">Log in</a></li>
+                <li><a href="/registration" id="registration-button">Register</a></li>
+            </ul>
+        </nav>
+    @endguest
+
     <nav>
         <a href="/users">Users</a>
         <a href="/teams">Teams</a>
@@ -23,7 +32,7 @@
 
             <div id="logged-user-div" onclick="window.clickOnUserNavDiv()">
                 <h3>
-                    Mista MrDalo
+                    {{auth()->user()->username}}
                 </h3>
                 <img src="{{asset('/img/UserAvatar.svg')}}">
             </div>

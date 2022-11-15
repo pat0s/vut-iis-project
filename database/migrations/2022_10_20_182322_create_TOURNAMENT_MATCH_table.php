@@ -14,14 +14,14 @@ class CreateTOURNAMENTMATCHTable extends Migration
     public function up()
     {
         Schema::create('TOURNAMENT_MATCH', function (Blueprint $table) {
-            $table->integer('MATCH_ID', true);
-            $table->string('RESULT', 30)->nullable();
-            $table->integer('INDEX_OF_MATCH');
-            $table->integer('IS_FINISHED')->nullable()->default(0);
-            $table->integer('WINNER_ID')->nullable()->index('FK_WINNER_ID');
-            $table->integer('PARTICIPANT1_ID')->nullable()->index('FK_PARTICIPANT1_ID');
-            $table->integer('PARTICIPANT2_ID')->nullable()->index('FK_PARTICIPANT2_ID');
-            $table->integer('TOURNAMENT_ID')->index('FK_TOURNAMENT_ID');
+            $table->integer('match_id', true);
+            $table->string('result', 30)->nullable();
+            $table->integer('index_of_match');
+            $table->integer('is_finished')->nullable()->default(0);
+            $table->integer('winner_id')->nullable()->index('fk_winner_id');
+            $table->integer('participant1_id')->nullable()->index('fk_participant1_id');
+            $table->integer('participant2_id')->nullable()->index('fk_participant2_id');
+            $table->integer('tournament_id')->index('fk_tournament_id');
         });
 
         // Add constraint

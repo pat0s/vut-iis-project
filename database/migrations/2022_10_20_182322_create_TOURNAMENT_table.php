@@ -14,15 +14,15 @@ class CreateTOURNAMENTTable extends Migration
     public function up()
     {
         Schema::create('TOURNAMENT', function (Blueprint $table) {
-            $table->integer('TOURNAMENT_ID', true);
-            $table->string('TOURNAMENT_NAME', 30);
-            $table->string('DESCRIPTION', 1000)->nullable();
-            $table->dateTime('START_DATE');
-            $table->decimal('PRICEPOOL', 20)->nullable();
-            $table->integer('IS_APPROVED')->nullable()->default(0);
-            $table->integer('NUMBER_OF_PARTICIPANTS')->nullable();
-            $table->integer('MANAGER_ID')->index('FK_TOURNAMENT_MANAGER_ID');
-            $table->integer('SPORT_ID')->index('FK_SPORT_ID');
+            $table->integer('tournament_id', true);
+            $table->string('tournament_name', 50);
+            $table->string('description', 1000)->nullable();
+            $table->dateTime('start_date');
+            $table->decimal('pricepool', 20)->nullable();
+            $table->integer('is_approved')->nullable()->default(0);
+            $table->integer('number_of_participants')->nullable();
+            $table->integer('manager_id')->index('fk_tournament_manager_id');
+            $table->integer('sport_id')->index('fk_sport_id');
         });
 
         // Add constraints
