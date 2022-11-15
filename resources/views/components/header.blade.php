@@ -19,7 +19,7 @@
         <nav id="logged-user">
             <a href="./profile.html">
                 <h3>
-                    Mista MrDalo
+                    {{auth()->user()->username}}
                 </h3>
                 <img src="./img/UserAvatar.svg">
             </a>
