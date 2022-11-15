@@ -30,7 +30,7 @@ Route::post('/user', [PersonController::class, 'store']);
 Route::get('/login', [PersonController::class, 'login']);
 
 // Log user out
-Route::post('/logout', [PersonController::class, 'logout']);
+Route::get('/logout', [PersonController::class, 'logout']);
 
 // Log user in
 Route::post('/user/authenticate', [PersonController::class, 'authenticate']);

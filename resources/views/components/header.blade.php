@@ -6,28 +6,19 @@
         </a>
     </div>
 
-    @guest
-        <nav>
-            <ul>
-                <li><a href="/login" id="login-button">Log in</a></li>
-                <li><a href="/registration" id="registration-button">Register</a></li>
-            </ul>
-        </nav>
-    @endguest
-
     <nav>
         <a href="/users">Users</a>
         <a href="/teams">Teams</a>
         <a href="/tournaments">Tournaments</a>
 
-        {{-- @guest
+        @guest
         <ul id="not-logged-in">
-            <li><a href="./logging.html" id="login-button">Log in</a></li>
-            <li><a href="./registration.html" id="registration-button">Register</a></li>
+            <li><a href="/login" id="login-button">Log in</a></li>
+            <li><a href="/registration" id="registration-button">Register</a></li>
         </ul>
-        @endguest --}}
+        @endguest
 
-        {{-- @auth --}}
+         @auth
         <div id="logged-user">
 
             <div id="logged-user-div" onclick="window.clickOnUserNavDiv()">
@@ -45,7 +36,7 @@
                 </ul>
             </div>
         </div>
-        {{-- @endauth --}}
+         @endauth
 
     </nav>
 
