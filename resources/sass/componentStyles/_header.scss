@@ -4,7 +4,7 @@
 header{
     width: 100%;
     height: 120px;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,8 +13,12 @@ header{
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 10px;
-    
+
     background-color: $mainBlue;
+
+    .hidden-element{
+        display: none;
+    }
 
     div, ul, a{
         display: flex;
@@ -26,7 +30,7 @@ header{
 
     a{
         text-decoration: none;
-        
+
         img{
             transform: scale(0.8);
         }
@@ -37,8 +41,23 @@ header{
             color: $mainLightBrown;
         }
     }
-    
-    ul{
+
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        column-gap: 30px;
+    }
+
+    nav>a{
+        text-decoration: underline;
+        color: $mainLightBrown;
+        font-size: 1.2em;
+    }
+
+    #not-logged-in{
         li{
             list-style: none;
             border-radius: 50px;
@@ -51,7 +70,7 @@ header{
                 cursor: pointer;
                 font-size: 1.2em;
             }
-            
+
             #login-button{
                 background-color: $mainLightBrown;
                 color: $mainBlue;
@@ -64,6 +83,8 @@ header{
         }
     }
 
+
+
     #logged-user{
         display: flex;
         justify-content: center;
@@ -71,15 +92,62 @@ header{
         flex-direction: row;
         flex-wrap: nowrap;
         column-gap: 30px;
+        margin-left: 50px;
 
         h3{
-            font-size: 1.2em;
+            font-size: 1.5em;
             color: $mainLightBrown;
 
         }
 
         img{
             transform: scale(0.8);
+        }
+
+        #logged-user-div{
+            cursor: pointer;
+            column-gap: 20px;
+        }
+
+        #user-nav-div{
+            position: absolute;
+            height: 250px;
+            top: 100px;
+            padding-left: 40px;
+            padding-right: 40px;
+            z-index: 3;
+
+
+            background-color: white;
+            border-radius: 30px;
+
+            ul{
+                width: 100%;
+                height: 100%;
+
+                flex-direction: column;
+                align-items: flex-start;
+                row-gap: 20px;
+
+                li{
+                    list-style: none;
+
+
+                    a{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        column-gap: 30px;
+
+                        font-size: 1.2em;
+
+                        color: $mainBlue;
+
+                    }
+                }
+
+            }
+
         }
     }
 

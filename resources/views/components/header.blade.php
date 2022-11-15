@@ -6,29 +6,38 @@
         </a>
     </div>
 
-    @guest
-        <nav>
-            <ul>
-                <li><a href="/login" id="login-button">Log in</a></li>
-                <li><a href="/registration" id="registration-button">Register</a></li>
-            </ul>
-        </nav>
-    @endguest
+    <nav>
+        <a href="/users">Users</a>
+        <a href="/teams">Teams</a>
+        <a href="/tournaments">Tournaments</a>
 
-    @auth
-        <nav id="logged-user">
-            <a href="./profile.html">
+        @guest
+        <ul id="not-logged-in">
+            <li><a href="/login" id="login-button">Log in</a></li>
+            <li><a href="/registration" id="registration-button">Register</a></li>
+        </ul>
+        @endguest
+
+         @auth
+        <div id="logged-user">
+
+            <div id="logged-user-div" onclick="window.clickOnUserNavDiv()">
                 <h3>
                     {{auth()->user()->username}}
                 </h3>
-                <img src="./img/UserAvatar.svg">
-            </a>
+                <img src="{{asset('/img/UserAvatar.svg')}}">
+            </div>
+            <div id="user-nav-div" class="hidden-element">
+                <ul>
+                    <li><a href="/user/1"><img src="{{asset('/img/profileBlue.svg')}}">Profile</a></li>
+                    <li><a href="/team/create"><img src="{{asset('/img/create-team.svg')}}">Create team</a></li>
+                    <li><a href="/tournament/create"><img src="{{asset('/img/tournament.svg')}}">Create tournament</a></li>
+                    <li><a href="/logout"><img src="{{asset('/img/log-out.svg')}}">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+         @endauth
 
-            <form method="POST" action="/logout">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-        </nav>
-    @endauth
+    </nav>
 
 </header>

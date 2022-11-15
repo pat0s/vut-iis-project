@@ -3,6 +3,7 @@
 @import "./componentStyles/variables";
 @import "./componentStyles/statistic";
 @import "./componentStyles/footer";
+@import "./componentStyles/switchButton";
 @import "./componentStyles/buttonStyled";
 
 @import "./componentStyles/MainPage/mainPage";
@@ -23,6 +24,7 @@
 @import "./componentStyles/Tournament/tournamentPage";
 @import "./componentStyles/Tournament/tournamentParticipants";
 @import "./componentStyles/Tournament/tournamentMoreInfo";
+@import "./componentStyles/Tournament/createTournamentPage";
 
 *{
     margin: 0;
@@ -59,5 +61,10 @@ body{
         opacity: 0;
     }
 }
+
+.hidden-element{
+    display: none !important;
+}
+
 
 

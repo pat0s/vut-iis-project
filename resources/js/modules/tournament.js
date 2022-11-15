@@ -1,6 +1,6 @@
 const submitButton = document.getElementById('submit-button');
 const cancelButton = document.getElementById('cancel-button');
-export const editButton = document.getElementById('edit-button');
+const editButton = document.getElementById('edit-button');
 const spanInputTags = Array.from(document.getElementsByClassName('participant-name-input'));
 const matchResult = Array.from(document.getElementsByClassName('match-result'));
 const matchResultInput = Array.from(document.getElementsByClassName('match-result-input'));

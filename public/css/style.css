@@ -11,6 +11,9 @@ header {
   padding-top: 10px;
   background-color: #23273E;
 }
+header .hidden-element {
+  display: none;
+}
 header div, header ul, header a {
   display: flex;
   justify-content: center;
@@ -30,11 +33,25 @@ header a h2 {
   font-weight: 600;
   color: #FFDFD0;
 }
-header ul li {
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+header nav > a {
+  text-decoration: underline;
+  color: #FFDFD0;
+  font-size: 1.2em;
+}
+header #not-logged-in li {
   list-style: none;
   border-radius: 50px;
 }
-header ul li a {
+header #not-logged-in li a {
   text-decoration: none;
   border-radius: 50px;
   padding: 4px 40px;
@@ -42,11 +59,11 @@ header ul li a {
   cursor: pointer;
   font-size: 1.2em;
 }
-header ul li #login-button {
+header #not-logged-in li #login-button {
   background-color: #FFDFD0;
   color: #23273E;
 }
-header ul li #registration-button {
+header #not-logged-in li #registration-button {
   border: 2px solid #FFDFD0;
   color: #FFDFD0;
 }
@@ -58,13 +75,48 @@ header #logged-user {
   flex-wrap: nowrap;
   -moz-column-gap: 30px;
        column-gap: 30px;
+  margin-left: 50px;
 }
 header #logged-user h3 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: #FFDFD0;
 }
 header #logged-user img {
   transform: scale(0.8);
+}
+header #logged-user #logged-user-div {
+  cursor: pointer;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+header #logged-user #user-nav-div {
+  position: absolute;
+  height: 250px;
+  top: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
+  z-index: 3;
+  background-color: white;
+  border-radius: 30px;
+}
+header #logged-user #user-nav-div ul {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 20px;
+}
+header #logged-user #user-nav-div ul li {
+  list-style: none;
+}
+header #logged-user #user-nav-div ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  font-size: 1.2em;
+  color: #23273E;
 }
 
 section#statistic {
@@ -163,6 +215,70 @@ footer ul li a {
   cursor: pointer;
 }
 
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: solid 2px #FFDFD0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #FFDFD0;
+  transition: 0.4s;
+}
+
+.slider.triggered:before {
+  background-color: #23273E;
+}
+
+input:checked + .slider {
+  background-color: #FFDFD0;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 .button-styled {
   padding: 4px 10px;
   color: #FFDFD0;
@@ -227,6 +343,7 @@ main#main-page #quote a {
   padding: 4px 40px;
   font-size: 1.2em;
   cursor: pointer;
+  text-decoration: none;
 }
 #tournament-list div {
   width: 100%;
@@ -672,10 +789,11 @@ main#team-page > section #profile-picture img {
 section#team-members {
   width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  min-height: 60vh;
 }
 section#team-members h3 {
   width: 90%;
@@ -739,6 +857,28 @@ section#team-members button p {
   top: -4px;
   font-size: 2.2em;
   font-weight: 200;
+}
+section#team-members #add-new-member-to-team-fieldset {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  border: initial;
+}
+section#team-members #add-new-member-to-team-fieldset input:first-child {
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+section#team-members #add-new-member-to-team-fieldset input[type=button] {
+  width: 80px;
+  height: 35px;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid #FFDFD0;
+  color: #FFDFD0;
 }
 
 section#tournaments-in-team {
@@ -1218,6 +1358,81 @@ section#more-info div#more-info-box p {
   width: 50%;
 }
 
+main#create-tournament-page {
+  margin-bottom: 40vh;
+  margin-top: 10vh;
+}
+main#create-tournament-page > section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-left: 15%;
+  padding-right: 15%;
+  row-gap: 100px;
+}
+main#create-tournament-page > section h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  color: #FFDFD0;
+}
+main#create-tournament-page > section form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 60px;
+  justify-items: center;
+  align-items: center;
+}
+main#create-tournament-page > section form .item:nth-child(odd) {
+  justify-self: left;
+  font-weight: 800;
+  color: #FFDFD0;
+  font-size: 1.5em;
+}
+main#create-tournament-page > section form input {
+  width: 80%;
+  background-color: transparent;
+  border: initial;
+  border-bottom: solid 2px #FFDFD0;
+  text-align: center;
+  color: #FFDFD0;
+}
+main#create-tournament-page > section form input:focus {
+  outline: initial;
+  border-bottom: 4px solid #FFDFD0;
+}
+main#create-tournament-page > section form ::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+main#create-tournament-page > section form textarea {
+  padding: 5px;
+  background-color: transparent;
+  border: initial;
+  border: solid 2px #FFDFD0;
+  color: #FFDFD0;
+}
+main#create-tournament-page > section form textarea:focus {
+  outline: 1px solid #FFDFD0;
+}
+main#create-tournament-page > section form input[type=submit] {
+  width: 30%;
+  height: 40px;
+  grid-column: 1/span 2;
+  margin-top: 40px;
+  font-size: 1.2em;
+  background-color: transparent;
+  border: solid 2px #FFDFD0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+main#create-tournament-page > section form select {
+  width: 20%;
+  text-align: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1245,4 +1460,8 @@ body::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 20px;
   opacity: 0;
+}
+
+.hidden-element {
+  display: none !important;
 }

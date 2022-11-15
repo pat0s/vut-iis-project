@@ -26,7 +26,7 @@ class CreatePERSONTable extends Migration
         });
 
         // Add constraint
-        DB::statement('ALTER TABLE PERSON ADD CONSTRAINT check_email CHECK (email LIKE \'%___@___%\');');
+        DB::statement('ALTER TABLE PERSON ADD CONSTRAINT check_email CHECK (email LIKE \'%_@_%\');');
 
     }
 

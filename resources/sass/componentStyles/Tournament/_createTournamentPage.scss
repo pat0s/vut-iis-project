@@ -1,0 +1,105 @@
+@import "../variables";
+
+
+
+main#create-tournament-page{
+    margin-bottom: 40vh;
+    margin-top: 10vh;
+    
+    >section{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding-left: 15%;
+        padding-right: 15%;
+        row-gap: 100px;
+
+        h2{
+            width: 100%;
+    
+            text-align: center;
+            font-size: 3em;
+            color: $mainLightBrown;
+        }
+
+        form{
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 60px;
+            justify-items: center;
+            align-items: center;
+
+            .item:nth-child(odd){
+                justify-self: left;
+
+                font-weight: 800;
+                color: $mainLightBrown;
+                font-size: 1.5em;
+
+            }
+
+            input{
+                width: 80%;
+
+                background-color: transparent;
+                border: initial;
+                border-bottom: solid 2px $mainLightBrown;
+
+                text-align: center;
+                color: $mainLightBrown;
+            }
+
+            input:focus{
+                outline: initial;
+                border-bottom: 4px solid $mainLightBrown;
+                // box-shadow: 0 3px 0px $mainLightBrown;
+            }
+
+            ::-webkit-calendar-picker-indicator {
+                filter: invert(0.7);
+                // background-color: $mainLightBrown;
+            }
+
+            textarea{
+                padding: 5px;
+
+                background-color: transparent;
+                border: initial;
+                border: solid 2px $mainLightBrown;
+                color: $mainLightBrown;
+            }
+
+
+            textarea:focus{
+                outline: 1px solid $mainLightBrown;
+            }
+
+            input[type=submit]{
+                width: 30%;
+                height: 40px;
+                grid-column: 1 / span 2;
+                margin-top: 40px;
+
+                font-size: 1.2em;
+                background-color: transparent;
+                border: solid 2px $mainLightBrown;
+                border-radius: 30px;
+
+                cursor: pointer;
+            }
+
+            select{
+                width: 20%;
+                text-align: center;
+            }
+        }
+
+    }
+
+}
+
+

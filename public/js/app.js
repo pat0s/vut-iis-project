@@ -2063,13 +2063,39 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_tournament__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/tournament */ "./resources/js/modules/tournament.js");
+/* harmony import */ var _modules_tournament__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_tournament__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _modules_profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/profile */ "./resources/js/modules/profile.js");
 /* harmony import */ var _modules_profile__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_profile__WEBPACK_IMPORTED_MODULE_1__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
+var loggedUserDiv = document.getElementById('logged-user-div');
+var userNavDiv = document.getElementById('user-nav-div');
+var addNewMemberFieldset = document.getElementById('add-new-member-to-team-fieldset');
+var switchRoundButton = document.getElementById('switch-round-button');
+var labelForSwitch = document.getElementById('label-for-switch');
+var switchButton = document.getElementById('tournament-for-teams');
 window.changePage = function (URL) {
   window.location.href = URL;
+};
+window.clickOnUserNavDiv = function () {
+  userNavDiv.classList.toggle('hidden-element');
+};
+window.addMemberToTeambuttonHandler = function (useFlag) {
+  addNewMemberFieldset.classList.toggle('hidden-element');
+  console.log(useFlag);
+};
+var isChecked = false;
+window.switchButtonHandler = function () {
+  isChecked = !isChecked;
+  if (isChecked) {
+    console.log("Checkbox is checked..");
+    labelForSwitch.innerText = "Teams";
+  } else {
+    console.log("Checkbox is not checked..");
+    labelForSwitch.innerText = "Individual participants";
+  }
+  switchRoundButton.classList.toggle('triggered');
 };
 
 /***/ }),
@@ -2140,13 +2166,8 @@ window.buttonPressedProfile = function () {
 /*!********************************************!*\
   !*** ./resources/js/modules/tournament.js ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "editButton": () => (/* binding */ editButton)
-/* harmony export */ });
 var submitButton = document.getElementById('submit-button');
 var cancelButton = document.getElementById('cancel-button');
 var editButton = document.getElementById('edit-button');

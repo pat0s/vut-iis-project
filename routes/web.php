@@ -30,7 +30,7 @@ Route::post('/user', [PersonController::class, 'store']);
 Route::get('/login', [PersonController::class, 'login']);
 
 // Log user out
-Route::post('/logout', [PersonController::class, 'logout']);
+Route::get('/logout', [PersonController::class, 'logout']);
 
 // Log user in
 Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
@@ -38,6 +38,11 @@ Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
 // Single user
 Route::get('/user/{user_id}', function () {
     return view('user.index');
+});
+
+// List of all users
+Route::get('/users', function () {
+    return view('user.users');
 });
 
 
@@ -64,10 +69,14 @@ Route::get('/team/{team_id}/edit', function () {
     return view('welcome');
 });
 
+Route::get('/teams', function () {
+    return view('team.teams');
+});
+
 
 // -----------------------------------------------------
 Route::get('/tournament/create', function () {
-    return view('welcome');
+    return view('tournament.create');
 });
 
 Route::get('/tournament/{tournament_id}', function () {
@@ -76,6 +85,10 @@ Route::get('/tournament/{tournament_id}', function () {
 
 Route::get('/tournament/{tournament_id}/edit', function () {
     return view('welcome');
+});
+
+Route::get('/tournaments', function () {
+    return view('tournament.tournaments');
 });
 
 Route::get('/statistics', function () {
