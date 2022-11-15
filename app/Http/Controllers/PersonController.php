@@ -8,14 +8,35 @@ use Illuminate\Validation\Rule;
 
 class PersonController extends Controller
 {
-    // Show Register Form
+    /**
+     * User profile
+     */
+    public function index(Request $request)
+    {
+        $userId = $request->user_id;
+        $user = Person::findOrFail($userId);  // fail -> show page "Error 404"
+
+        $viewData = array(
+            'user' => $user,
+            'profileOwner' => $this->_isProfileOwner($user),
+        );
+
+        return view('user.index')->with($viewData);
+    }
+
+
+    /**
+     * Show register form
+     */
     public function create()
     {
         return view('user.registration');
     }
 
 
-    // Register/Create New User
+    /**
+     * Register/create new user
+     */
     public function store(Request $request)
     {
         $formFields = $request->validate([
@@ -31,6 +52,7 @@ class PersonController extends Controller
 
         // create user
         $user = Person::create($formFields);
+        dd(auth(), auth()->user());
 
         // login user
         auth()->login($user);
@@ -39,7 +61,9 @@ class PersonController extends Controller
     }
 
 
-    // Logout User
+    /**
+     * Logout user
+     */
     public function logout(Request $request)
     {
         auth()->logout();
@@ -51,14 +75,18 @@ class PersonController extends Controller
     }
 
 
-    // Show Login Form
+    /**
+     * Show login form
+     */
     public function login()
     {
         return view('user.login');
     }
 
 
-    // Login User
+    /**
+     * Login user
+     */
     public function authenticate(Request $request)
     {
         $formFields = $request->validate([
@@ -74,5 +102,22 @@ class PersonController extends Controller
         }
 
         return back()->withErrors(['username' => 'Invalid Credentials'])->onlyInput('username');
+    }
+
+
+    /**
+     * Check if user is profile owner.
+     *
+     * @param Person $user
+     * @return bool
+     */
+    private function _isProfileOwner(Person $user): bool
+    {
+        $profileOwner = false;
+        if (auth()->user() and auth()->user()->person_id == $user->person_id) {
+            $profileOwner = true;
+        }
+
+        return $profileOwner;
     }
 }

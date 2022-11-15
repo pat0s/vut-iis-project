@@ -36,9 +36,7 @@ Route::get('/logout', [PersonController::class, 'logout']);
 Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
 
 // Single user
-Route::get('/user/{user_id}', function () {
-    return view('user.index');
-});
+Route::get('/user/{user_id}', [PersonController::class, 'index'])->where('user_id', '[0-9]+');
 
 // List of all users
 Route::get('/users', function () {

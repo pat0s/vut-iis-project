@@ -5,19 +5,19 @@
             <div id="profile-picture">
                 <img src="{{asset('img/DuckBlue.svg')}}" alt="">
             </div>
-            
-            <x-profile-page.profile-info />
-            
-            <x-profile-page.teams />
+
+            <x-profile-page.profile-info :user="$user" :profileOwner="$profileOwner"/>
+
+            <x-profile-page.teams :profileOwner="$profileOwner"/>
 
             <x-statistics
                 :ID="1"
             />
-        
+
         </section>
-        
-    
-    
+
+
+
     </main>
 
 
