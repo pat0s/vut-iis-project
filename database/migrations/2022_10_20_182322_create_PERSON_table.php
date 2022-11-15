@@ -14,15 +14,15 @@ class CreatePERSONTable extends Migration
     public function up()
     {
         Schema::create('PERSON', function (Blueprint $table) {
-            $table->integer('PERSON_ID', true);
-            $table->string('FIRST_NAME', 30)->nullable();
-            $table->string('SURNAME', 30)->nullable();
-            $table->string('EMAIL', 50)->nullable();
-            $table->string('ADDRESS', 50)->nullable();
-            $table->string('USERNAME', 30)->nullable()->unique();
-            $table->string('PASSWORD')->nullable();
-            $table->string('IMAGE_URL')->nullable();
-            $table->integer('ROLE_ID')->nullable()->index('FK_ROLE_ID');
+            $table->integer('person_id', true);
+            $table->string('first_name', 50);
+            $table->string('surname', 50);
+            $table->string('email', 255);
+            $table->string('address', 255)->nullable();
+            $table->string('username', 30)->nullable()->unique();
+            $table->string('password');
+            $table->string('image_url')->nullable();
+            $table->integer('role_id')->nullable()->index('fk_role_id');
         });
 
         // Add constraint

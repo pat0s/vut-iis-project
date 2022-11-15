@@ -14,7 +14,7 @@ class AddForeignKeysToPERSONTable extends Migration
     public function up()
     {
         Schema::table('PERSON', function (Blueprint $table) {
-            $table->foreign(['ROLE_ID'], 'FK_ROLE_ID')->references(['ROLE_ID'])->on('ROLE');
+            $table->foreign(['role_id'], 'fk_role_id')->references(['role_id'])->on('ROLE');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeysToPERSONTable extends Migration
     public function down()
     {
         Schema::table('PERSON', function (Blueprint $table) {
-            $table->dropForeign('FK_ROLE_ID');
+            $table->dropForeign('fk_role_id');
         });
     }
 }

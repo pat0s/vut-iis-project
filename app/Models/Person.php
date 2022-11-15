@@ -35,9 +35,4 @@ class Person extends Authenticatable
     protected $hidden = [
         'password',
     ];
-
-    public function getAuthIdentifierName()
-    {
-        return $this->username;
-    }
 }

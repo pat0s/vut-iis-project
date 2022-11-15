@@ -14,10 +14,10 @@ class CreateMEMBEROFTEAMTable extends Migration
     public function up()
     {
         Schema::create('MEMBER_OF_TEAM', function (Blueprint $table) {
-            $table->integer('TEAM_ID');
-            $table->integer('PERSON_ID')->index('FK_MEMBER_PERSON_ID');
+            $table->integer('team_id');
+            $table->integer('person_id')->index('fk_member_person_id');
 
-            $table->primary(['TEAM_ID', 'PERSON_ID']);
+            $table->primary(['team_id', 'person_id']);
         });
     }
 
