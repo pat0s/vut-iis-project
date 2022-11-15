@@ -20,7 +20,7 @@ CREATE TABLE PERSON(
     surname VARCHAR(30),
     email VARCHAR(50) CHECK(email LIKE '%___@___%'),
     address VARCHAR(50),
-    login VARCHAR(30),
+    username VARCHAR(30) UNIQUE,
     password VARCHAR(255),
     image_url VARCHAR(255),
 

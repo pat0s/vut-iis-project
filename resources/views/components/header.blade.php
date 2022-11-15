@@ -5,7 +5,7 @@
             <h2>Duck Tournaments</h2>
         </a>
     </div>
-    
+
     @guest
         <nav>
             <ul>
@@ -19,10 +19,15 @@
         <nav id="logged-user">
             <a href="./profile.html">
                 <h3>
-                    Mista MrDalo
+                    {{auth()->user()->username}}
                 </h3>
                 <img src="./img/UserAvatar.svg">
             </a>
+
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
         </nav>
     @endauth
 

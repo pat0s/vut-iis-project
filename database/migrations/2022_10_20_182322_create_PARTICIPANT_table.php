@@ -14,13 +14,13 @@ class CreatePARTICIPANTTable extends Migration
     public function up()
     {
         Schema::create('PARTICIPANT', function (Blueprint $table) {
-            $table->integer('PARTICIPANT_ID', true);
-            $table->string('PARTICIPANT_NAME', 30)->nullable();
-            $table->integer('IS_APPROVED')->nullable()->default(0);
-            $table->string('PARTICIPANT_TYPE', 6);
-            $table->integer('TEAM_ID')->nullable()->index('FK_PARTICIPANT_TEAM_ID');
-            $table->integer('PERSON_ID')->nullable()->index('FK_PARTICIPANT_PERSON_ID');
-            $table->integer('TOURNAMENT_ID')->index('FK_PARTICIPANT_TOURNAMENT_ID');
+            $table->integer('participant_id', true);
+            $table->string('participant_name', 30)->nullable();
+            $table->integer('is_approved')->nullable()->default(0);
+            $table->string('participant_type', 6);
+            $table->integer('team_id')->nullable()->index('fk_participant_team_id');
+            $table->integer('person_id')->nullable()->index('fk_participant_person_id');
+            $table->integer('tournament_id')->index('fk_participant_tournament_id');
         });
 
         // Add constraints

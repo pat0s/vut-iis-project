@@ -14,9 +14,9 @@ class CreateSPORTTable extends Migration
     public function up()
     {
         Schema::create('SPORT', function (Blueprint $table) {
-            $table->integer('SPORT_ID', true);
-            $table->string('NAME', 30);
-            $table->integer('NUMBER_OF_PLAYERS');
+            $table->integer('sport_id', true);
+            $table->string('name', 30);
+            $table->integer('number_of_players');
         });
     }
 
