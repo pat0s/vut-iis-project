@@ -19,9 +19,9 @@ class PersonController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'first_name' => ['required', 'min:3'],
-            'surname' => ['required', 'min:3'],
-            'username' => ['required', Rule::unique('PERSON', 'username')],
+            'first_name' => ['required', 'min:3', 'max:50'],
+            'surname' => ['required', 'min:3', 'max:50'],
+            'username' => ['required', 'min:3', 'max:50', Rule::unique('PERSON', 'username')],
             'email' => ['required', 'email'],
             'password' => 'required|confirmed|min:6'
         ]);
