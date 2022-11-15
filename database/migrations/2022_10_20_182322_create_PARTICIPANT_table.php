@@ -15,7 +15,7 @@ class CreatePARTICIPANTTable extends Migration
     {
         Schema::create('PARTICIPANT', function (Blueprint $table) {
             $table->integer('participant_id', true);
-            $table->string('participant_name', 30)->nullable();
+            $table->string('participant_name', 50);
             $table->integer('is_approved')->nullable()->default(0);
             $table->string('participant_type', 6);
             $table->integer('team_id')->nullable()->index('fk_participant_team_id');
