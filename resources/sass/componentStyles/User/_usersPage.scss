@@ -1,6 +1,6 @@
 @import "../variables";
 
-main#teams-page{
+main#users-page{
     margin-bottom: 40vh;
     margin-top: 10vh;
 
@@ -9,7 +9,7 @@ main#teams-page{
         width: 100%;
 
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
         flex-direction: row;
         flex-wrap: wrap;
@@ -27,7 +27,7 @@ main#teams-page{
         }
 
         form{
-            width: 60%;
+            width: 50%;
 
             display: flex;
             justify-content: center;
@@ -69,12 +69,6 @@ main#teams-page{
 
         }
 
-
-        a.button-styled{
-            padding: 4px 20px;
-            text-decoration: none;
-        }
-        
 
     }
 }

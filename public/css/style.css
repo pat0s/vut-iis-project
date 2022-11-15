@@ -749,6 +749,116 @@ section#teams ul li img {
   transform: scale(0.7);
 }
 
+main#users-page {
+  margin-bottom: 40vh;
+  margin-top: 10vh;
+}
+main#users-page > section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 15%;
+  padding-right: 15%;
+  -moz-column-gap: 150px;
+       column-gap: 150px;
+  row-gap: 80px;
+}
+main#users-page > section h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  color: #FFDFD0;
+}
+main#users-page > section form {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+main#users-page > section form input[type=text] {
+  width: 100%;
+  padding: 4px 20px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+main#users-page > section form button[type=submit] {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  left: -34px;
+  top: 2px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 20px;
+  border: initial;
+}
+main#users-page > section form button[type=submit]:hover {
+  background-color: #eee;
+}
+main#users-page > section form button[type=submit] img {
+  transform: scale(0.8);
+}
+
+div#users-list-parent {
+  width: 80%;
+}
+div#users-list-parent #list-legend {
+  width: 60%;
+  margin-left: 18%;
+  margin-right: 22%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+div#users-list-parent #list-legend p {
+  color: #FFDFD0;
+}
+div#users-list-parent #users-list {
+  width: 100%;
+  height: 100vh;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 20px;
+  overflow-y: auto;
+}
+div#users-list-parent #users-list::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+div#users-list-parent #users-list::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
+  border-radius: 20px;
+}
+div#users-list-parent #users-list::-webkit-scrollbar-track {
+  background: #23273E;
+  border-radius: 20px;
+}
+
+.user-list-item {
+  width: 100%;
+  padding: 5px 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFDFD0;
+  color: #23273E;
+  border-radius: 30px;
+}
+
 main#team-page {
   margin-bottom: 40vh;
   margin-top: 5vh;
@@ -1078,11 +1188,11 @@ main#teams-page > section form input[type=text] {
   background-color: #fff;
 }
 main#teams-page > section form button[type=submit] {
-  width: 33px;
-  height: 33px;
+  width: 32px;
+  height: 32px;
   position: relative;
   left: -34px;
-  top: 1px;
+  top: 2px;
   z-index: 4;
   display: flex;
   justify-content: center;

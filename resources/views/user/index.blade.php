@@ -6,9 +6,9 @@
                 <img src="{{asset('img/DuckBlue.svg')}}" alt="">
             </div>
             
-            <x-profile-page.profile-info />
+            <x-user-page.profile-info />
             
-            <x-profile-page.teams />
+            <x-user-page.teams />
 
             <x-statistics
                 :ID="1"

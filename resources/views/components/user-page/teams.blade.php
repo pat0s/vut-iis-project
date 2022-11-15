@@ -7,31 +7,31 @@
     </button>
     
     <ul>
-        <x-profile-page.teams-item 
+        <x-user-page.teams-item 
             :teamID="1"
         />
         
-        <x-profile-page.teams-item 
+        <x-user-page.teams-item 
             :teamName="'Team 1'"
             :teamID="1"
         />
         
-        <x-profile-page.teams-item 
+        <x-user-page.teams-item 
             :teamName="'Team 1'"
             :teamID="1"
         />
         
-        <x-profile-page.teams-item 
+        <x-user-page.teams-item 
             :teamName="'Team 1'"
             :teamID="1"
         />
         
-        <x-profile-page.teams-item 
+        <x-user-page.teams-item 
             :teamName="'Team 1'"
             :teamID="1"
         />
         
-        <x-profile-page.teams-item 
+        <x-user-page.teams-item 
             :teamName="'Team 1'"
             :teamID="1"
         />
