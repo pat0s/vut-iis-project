@@ -286,6 +286,7 @@ input:checked + .slider:before {
   background-color: transparent;
   border-radius: 30px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 main#main-page {
@@ -340,7 +341,6 @@ main#main-page #quote a {
 }
 .main-tournament-list a {
   padding: 4px 40px;
-  font-size: 1.2em;
   cursor: pointer;
   text-decoration: none;
 }
@@ -1472,7 +1472,7 @@ main#tournament-page > section {
   padding-right: 15%;
   -moz-column-gap: 150px;
        column-gap: 150px;
-  row-gap: 120px;
+  row-gap: 30px;
 }
 main#tournament-page > section h2 {
   width: 100%;
@@ -1480,9 +1480,16 @@ main#tournament-page > section h2 {
   font-size: 3em;
   color: #FFDFD0;
 }
+main#tournament-page > section a#approved-button {
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  text-align: center;
+}
 main#tournament-page > section #tournament-description {
   width: 100%;
   color: #FFDFD0;
+  margin-top: 40px;
 }
 main#tournament-page > section #tournament-description h3 {
   width: 100%;
@@ -1492,6 +1499,7 @@ main#tournament-page > section #tournament-description h3 {
 }
 main#tournament-page > section #tournament-description p {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 main#tournaments-page {
