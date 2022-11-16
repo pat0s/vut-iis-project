@@ -15,12 +15,5 @@
             />
 
         </section>
-
-
-
     </main>
-
-
-
-
 </x-layout>

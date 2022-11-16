@@ -16,7 +16,7 @@ class Team extends Model
     /**
      * The people that belong to the team.
      */
-    public function users()
+    public function persons()
     {
         return $this->belongsToMany(Person::class, 'MEMBER_OF_TEAM', 'team_id', 'person_id');
     }

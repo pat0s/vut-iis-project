@@ -32,6 +32,12 @@ Route::get('/login', [PersonController::class, 'login']);
 // Log user out
 Route::get('/logout', [PersonController::class, 'logout']);
 
+// Show change password form
+Route::get('/password', [PersonController::class, 'password']);
+
+// Change user password
+Route::post('/password/update', [PersonController::class, 'updatePassword']);
+
 // Log user in
 Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
 

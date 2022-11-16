@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
-use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class PersonController extends Controller
 {
@@ -133,6 +133,44 @@ class PersonController extends Controller
         }
 
         return redirect()->back()->with('message', 'Your profile has been updated.');
+    }
+
+
+    /**
+     * Show change password form
+     */
+    public function password()
+    {
+        return view('user.password');
+    }
+
+
+    /**
+     * Update user password
+     */
+    public function updatePassword(Request $request)
+    {
+        $formFields = $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed|min:6',
+        ]);
+
+        // check old password
+        if (!Hash::check($formFields['old_password'], auth()->user()->password)) {
+            return back()->withErrors(['old_password' => 'Current password is invalid.']);
+        }
+
+        // update password
+        $user = Person::find(auth()->user()->person_id);
+        $user->password = bcrypt($formFields['new_password']);
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return back()->withErrors(['update-error' => 'Failed to change your password.']);
+        }
+
+        return redirect('/')->with('message', 'Your password has been changed.');
     }
 
 

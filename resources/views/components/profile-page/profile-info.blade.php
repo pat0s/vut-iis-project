@@ -65,8 +65,11 @@
     </form>
 
     @if($profileOwner)
-        <button class="button-styled">
+        <a class="button-styled" href="/password">
             Change password
-        </button>
+        </a>
     @endif
+
+
 </div>
+
