@@ -8,7 +8,7 @@
 
             <x-profile-page.profile-info :user="$user" :profileOwner="$profileOwner"/>
 
-            <x-profile-page.teams :profileOwner="$profileOwner"/>
+            <x-profile-page.teams :profileOwner="$profileOwner" :teams="$teams"/>
 
             <x-statistics
                 :ID="1"

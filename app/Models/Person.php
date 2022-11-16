@@ -35,4 +35,12 @@ class Person extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    /**
+     * The teams that belong to the user.
+     */
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'MEMBER_OF_TEAM', 'person_id', 'team_id');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -19,6 +20,7 @@ class PersonController extends Controller
         $viewData = array(
             'user' => $user,
             'profileOwner' => $this->_isProfileOwner($user),
+            'teams' => $user->teams,
         );
 
         return view('user.index')->with($viewData);

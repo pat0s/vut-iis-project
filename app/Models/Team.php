@@ -11,4 +11,13 @@ class Team extends Model
 
     public $timestamps = false;
     protected $table = 'TEAM';
+    protected $primaryKey = 'team_id';
+
+    /**
+     * The people that belong to the team.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(Person::class, 'MEMBER_OF_TEAM', 'team_id', 'person_id');
+    }
 }
