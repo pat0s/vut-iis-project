@@ -90,6 +90,11 @@ Route::get('/tournament/{tournament_id}/edit', function () {
     return view('welcome');
 });
 
+Route::get('/tournament/{tournament_id}/edit/redit', function () {
+    return view('welcome');
+});
+
+
 Route::get('/tournaments', function () {
     return view('tournament.tournaments');
 });
