@@ -16,10 +16,10 @@
     </ul>
 
     {{-- Only if tournaments is for teamns --}}
+
     <form method="POST" action="">
         <select name="team-selection" id="team-selection">
             
-            {{-- user's teams --}}
             <option value="Mistas">Mistas</option>
             <option value="Yteckari">Yteckari</option>
         
