@@ -15,7 +15,8 @@ class CreateTOURNAMENTMATCHTable extends Migration
     {
         Schema::create('TOURNAMENT_MATCH', function (Blueprint $table) {
             $table->integer('match_id', true);
-            $table->string('result', 30)->nullable();
+            $table->integer('participant1_result')->nullable();
+            $table->integer('participant2_result')->nullable();
             $table->integer('index_of_match');
             $table->integer('is_finished')->nullable()->default(0);
             $table->integer('winner_id')->nullable()->index('fk_winner_id');
