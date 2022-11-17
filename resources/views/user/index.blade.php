@@ -6,9 +6,9 @@
                 <img src="{{asset('img/DuckBlue.svg')}}" alt="">
             </div>
 
-            <x-profile-page.profile-info :user="$user" :profileOwner="$profileOwner"/>
+            <x-user-page.profile-info :user="$user" :profileOwner="$profileOwner"/>
 
-            <x-profile-page.teams :profileOwner="$profileOwner" :teams="$teams"/>
+            <x-user-page.teams :profileOwner="$profileOwner" :teams="$teams"/>
 
             <x-statistics
                 :ID="1"
