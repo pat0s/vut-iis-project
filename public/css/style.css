@@ -279,11 +279,21 @@ input:checked + .slider:before {
 }
 
 .button-styled {
-  padding: 4px 10px;
+  padding: 4px 20px;
   color: #FFDFD0;
   font-weight: 800;
   border: 2px solid #FFDFD0;
   background-color: transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button-styled-full {
+  padding: 4px 20px;
+  color: #23273E;
+  font-weight: 800;
+  background-color: #FFDFD0;
   border-radius: 30px;
   cursor: pointer;
   text-decoration: none;
@@ -942,6 +952,22 @@ div#users-list-parent #users-list::-webkit-scrollbar-track {
   color: #23273E;
   border-radius: 30px;
   text-decoration: none;
+}
+
+section#admin-section {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 40px;
+}
+section#admin-section h3 {
+  width: 100%;
+  text-align: left;
+  font-size: 2em;
+  color: #FFDFD0;
 }
 
 main#team-page {
