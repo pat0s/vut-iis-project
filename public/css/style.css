@@ -293,6 +293,7 @@ input:checked + .slider:before {
   padding: 4px 20px;
   color: #23273E;
   font-weight: 800;
+  border: 2px solid #FFDFD0;
   background-color: #FFDFD0;
   border-radius: 30px;
   cursor: pointer;
@@ -1676,6 +1677,7 @@ section#participants {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: row;
+  row-gap: 20px;
 }
 section#participants h3 {
   width: 100%;
@@ -1687,7 +1689,6 @@ section#participants h3 {
 section#participants ul {
   width: 100%;
   height: 30vh;
-  margin-top: 20px;
   overflow-y: auto;
 }
 section#participants ul::-webkit-scrollbar {
@@ -1726,9 +1727,24 @@ section#participants ul li a:nth-child(2) {
 section#participants ul li img {
   transform: scale(0.7);
 }
-section#participants button {
-  margin-top: 20px;
-  padding: 5px 20px;
+section#participants form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+section#participants form select {
+  width: 50%;
+  padding: 2px 5px;
+  color: #23273E;
+  font-weight: 800;
+  background-color: #FFDFD0;
+  border: 2px solid #FFDFD0;
+  outline: initial;
 }
 
 section#more-info {

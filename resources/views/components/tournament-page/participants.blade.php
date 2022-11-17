@@ -14,7 +14,24 @@
         @endfor
 
     </ul>
-    <button class="button-styled" onclick="window.joinTournament()">Join tournament</button>
+
+    {{-- Only if tournaments is for teamns --}}
+    <form method="POST" action="">
+        <select name="team-selection" id="team-selection">
+            
+            {{-- user's teams --}}
+            <option value="Mistas">Mistas</option>
+            <option value="Yteckari">Yteckari</option>
+        
+        </select>
+        <button type='submit' class="button-styled">Join tournament</button>
+    </form>
+
+    {{-- Only if tournament is for induvidual particiapants --}}
+    {{-- <a href="" class="button-styled">Join tournament</a> --}}
+
+    
+    {{-- <a href="" class="button-styled">Opt out of the tournament</a> --}}
 </section>
 
 

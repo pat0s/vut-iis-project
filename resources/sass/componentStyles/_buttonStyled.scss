@@ -9,7 +9,7 @@
     border-radius: 30px;
     cursor: pointer;
     text-decoration: none;
-
+    
 }
 
 .button-styled-full{
@@ -17,6 +17,7 @@
     
     color: $mainBlue;
     font-weight: 800;
+    border: 2px solid $mainLightBrown;
     background-color: $mainLightBrown;
     border-radius: 30px;
     cursor: pointer;
