@@ -20,49 +20,59 @@
 
     <ul>
 
-        <x-tournament-page.tournaments-list-item 
-            :tournamentID="'132456'"
-            :tournamentName="'Nazov Turnaja'"
-            :sport="'Futsal'"
-            :numberOfParticipants="'8'"
-            :dateOfStart="'16/12/2022'"
-        />
-        <x-tournament-page.tournaments-list-item 
-            :tournamentID="'132456'"
-            :tournamentName="'Nazov Turnaja'"
-            :sport="'DOTA 2'"
-            :numberOfParticipants="'16'"
-            :dateOfStart="'16/12/2022'"
-        />
-        <x-tournament-page.tournaments-list-item 
-            :tournamentID="'132456'"
-            :tournamentName="'Nazov Turnaja'"
-            :sport="'CSGO: 1v1'"
-            :numberOfParticipants="'4'"
-            :dateOfStart="'16/12/2022'"
-        />
-        <x-tournament-page.tournaments-list-item 
-            :tournamentID="'132456'"
-            :tournamentName="'Nazov Turnaja'"
-            :sport="'Tenis'"
-            :numberOfParticipants="'16'"
-            :dateOfStart="'16/12/2022'"
-        />
-        <x-tournament-page.tournaments-list-item 
-            :tournamentID="'132456'"
-            :tournamentName="'Nazov Turnaja'"
-            :sport="'CSGO: 1v1'"
-            :numberOfParticipants="'32'"
-            :dateOfStart="'16/12/2022'"
-        />
-        <x-tournament-page.tournaments-list-item 
-            :tournamentID="'132456'"
-            :tournamentName="'Nazov Turnaja'"
-            :sport="'Tenis'"
-            :numberOfParticipants="'16'"
-            :dateOfStart="'16/12/2022'"
-        />
-            
+        @foreach($tournaments as $tournament)
+            <x-tournament-page.tournaments-list-item
+                :tournamentID="$tournament->tournament_id"
+                :tournamentName="$tournament->tournament_name"
+                :sport="'Futsal'"
+                :numberOfParticipants="$tournament->number_of_participants"
+                :dateOfStart="'16/12/2022'"
+            />
+        @endforeach
+
+{{--        <x-tournament-page.tournaments-list-item --}}
+{{--            :tournamentID="'132456'"--}}
+{{--            :tournamentName="'Nazov Turnaja'"--}}
+{{--            :sport="'Futsal'"--}}
+{{--            :numberOfParticipants="'8'"--}}
+{{--            :dateOfStart="'16/12/2022'"--}}
+{{--        />--}}
+{{--        <x-tournament-page.tournaments-list-item --}}
+{{--            :tournamentID="'132456'"--}}
+{{--            :tournamentName="'Nazov Turnaja'"--}}
+{{--            :sport="'DOTA 2'"--}}
+{{--            :numberOfParticipants="'16'"--}}
+{{--            :dateOfStart="'16/12/2022'"--}}
+{{--        />--}}
+{{--        <x-tournament-page.tournaments-list-item --}}
+{{--            :tournamentID="'132456'"--}}
+{{--            :tournamentName="'Nazov Turnaja'"--}}
+{{--            :sport="'CSGO: 1v1'"--}}
+{{--            :numberOfParticipants="'4'"--}}
+{{--            :dateOfStart="'16/12/2022'"--}}
+{{--        />--}}
+{{--        <x-tournament-page.tournaments-list-item --}}
+{{--            :tournamentID="'132456'"--}}
+{{--            :tournamentName="'Nazov Turnaja'"--}}
+{{--            :sport="'Tenis'"--}}
+{{--            :numberOfParticipants="'16'"--}}
+{{--            :dateOfStart="'16/12/2022'"--}}
+{{--        />--}}
+{{--        <x-tournament-page.tournaments-list-item --}}
+{{--            :tournamentID="'132456'"--}}
+{{--            :tournamentName="'Nazov Turnaja'"--}}
+{{--            :sport="'CSGO: 1v1'"--}}
+{{--            :numberOfParticipants="'32'"--}}
+{{--            :dateOfStart="'16/12/2022'"--}}
+{{--        />--}}
+{{--        <x-tournament-page.tournaments-list-item --}}
+{{--            :tournamentID="'132456'"--}}
+{{--            :tournamentName="'Nazov Turnaja'"--}}
+{{--            :sport="'Tenis'"--}}
+{{--            :numberOfParticipants="'16'"--}}
+{{--            :dateOfStart="'16/12/2022'"--}}
+{{--        />--}}
+
     </ul>
 
 </section>

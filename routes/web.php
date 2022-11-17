@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,26 +79,29 @@ Route::get('/teams', function () {
 
 
 // -----------------------------------------------------
+
+
 Route::get('/tournament/create', function () {
     return view('tournament.create');
 });
 
-Route::get('/tournament/{tournament_id}', function () {
-    return view('tournament.index');
-});
 
-Route::get('/tournament/{tournament_id}/edit', function () {
-    return view('welcome');
-});
-
-Route::get('/tournament/{tournament_id}/edit/redit', function () {
-    return view('welcome');
-});
+Route::get('/tournaments', [TournamentController::class, 'index']);
 
 
-Route::get('/tournaments', function () {
-    return view('tournament.tournaments');
-});
+Route::get('/tournament/{tournament}', [TournamentController::class, 'show'])
+    ->where('tournament_id', '[0-9]+');
+
+
+
+//Route::get('/tournament/{tournament_id}', [TournamentController::class, 'show'])->where('tournament_id', '[0-9]+');
+//
+//Route::get('/tournament/{tournament_id}/edit', function () {
+//    return view('welcome');
+//});
+//
+//
+//Route::get('/tournaments', [TournamentController::class, 'index']);
 
 Route::get('/statistics', function () {
     return view('welcome');

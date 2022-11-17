@@ -11,4 +11,12 @@ class Tournament extends Model
 
     public $timestamps = false;
     protected $table = 'TOURNAMENT';
+    protected $primaryKey = 'tournament_id';
+
+//    protected $fillable = [
+//        'tournament_name',
+//        'description',
+//        'start_date',
+//        'pricepool',
+//    ];
 }

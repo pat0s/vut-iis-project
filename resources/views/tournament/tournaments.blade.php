@@ -11,7 +11,7 @@
 
             <a href="/tournament/create" class="button-styled">Create tournament</a>
 
-            <x-tournament-page.tournaments-list />
+            <x-tournament-page.tournaments-list :tournaments="$tournaments" />
 
         </section>
 
