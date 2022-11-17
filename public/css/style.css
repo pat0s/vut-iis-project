@@ -712,7 +712,8 @@ main#profile-page > section #profile-info {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
   color: #FFDFD0;
 }
 main#profile-page > section #profile-info .button-styled {
