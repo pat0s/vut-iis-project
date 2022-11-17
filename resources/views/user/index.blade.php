@@ -1,7 +1,7 @@
 <x-layout>
     <main id="profile-page">
         <section>
-            <h2>Mista MrDalo</h2>
+            <h2>{{$user->username}}</h2>
             <div id="profile-picture">
                 <img src="{{asset('img/DuckBlue.svg')}}" alt="">
             </div>
