@@ -636,11 +636,15 @@ main#change-password-page section form {
 main#change-password-page section form input {
   width: 60%;
   height: 30px;
-  padding: 7px 15px;
+  padding: 16px 15px;
   background-color: transparent;
   color: #FFDFD0;
   border: 2px solid #FFDFD0;
   border-radius: 20px;
+}
+main#change-password-page section form input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #FFDFD0;
 }
 main#change-password-page section form ::-moz-placeholder {
   color: #FFDFD0;
