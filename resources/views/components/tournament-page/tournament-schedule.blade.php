@@ -19,9 +19,9 @@
                 @for ($i = 0; $i < intdiv($tournamentCapacity, 2); $i++)
                     <fieldset>
                         <span><a href="/user/1">Mista MrDalo</a> <input type="radio" name="{{$tournamentCapacity}}i{{$i}}" value="participant-name" class="participant-name-input hidden-element"></span>
-                            <p class="match-result">16</p><input type="number" min="0" max="20" class="match-result-input hidden-element" name="r{{$tournamentCapacity}}i{{$i}}p1">
+                            <p class="match-result">16</p><input type="number" min="0" max="30" step="1" class="match-result-input hidden-element" name="r{{$tournamentCapacity}}i{{$i}}p1">
                         <span><a href="/user/1">Mista Pat0s</a> <input type="radio" name="{{$tournamentCapacity}}i{{$i}}" value="participant-name" class="participant-name-input hidden-element"></span>
-                            <p class="match-result">5</p><input type="number" min="0" max="20" class="match-result-input hidden-element" name="r{{$tournamentCapacity}}i{{$i}}p2">
+                            <p class="match-result">5</p><input type="number" min="0" max="30" step="1" class="match-result-input hidden-element" name="r{{$tournamentCapacity}}i{{$i}}p2">
                     </fieldset>
                 @endfor
 

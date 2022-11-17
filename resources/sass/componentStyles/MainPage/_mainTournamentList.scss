@@ -1,7 +1,7 @@
 @import "../variables";
 
 
-#tournament-list{
+.main-tournament-list{
 
     width: 60%;
     margin-left: 20%;
@@ -25,7 +25,6 @@
 
     a{
         padding: 4px 40px;
-        font-size: 1.2em;
         cursor: pointer;
         text-decoration: none;
         
@@ -38,7 +37,7 @@
         overflow-y: auto;
         
         &::-webkit-scrollbar {
-            width: 10px; 
+            width: 6px; 
             height: 10px; 
         }
 
@@ -56,12 +55,12 @@
         
         ul{
             li{
-                width: 90%;
+                width: 95%;
                 height: 100px;
                 
                 border: solid 2px $mainLightBrown;
                 border-radius: 20px;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 font-weight: 600;
 
                 a{

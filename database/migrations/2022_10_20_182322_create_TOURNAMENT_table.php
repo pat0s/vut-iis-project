@@ -18,7 +18,7 @@ class CreateTOURNAMENTTable extends Migration
             $table->string('tournament_name', 50);
             $table->string('description', 1000)->nullable();
             $table->dateTime('start_date');
-            $table->decimal('pricepool', 20)->nullable();
+            $table->decimal('pricepool', 19,4)->nullable();
             $table->integer('is_approved')->nullable()->default(0);
             $table->integer('number_of_participants')->nullable();
             $table->integer('manager_id')->index('fk_tournament_manager_id');

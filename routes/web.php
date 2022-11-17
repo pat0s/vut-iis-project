@@ -32,23 +32,26 @@ Route::get('/login', [PersonController::class, 'login']);
 // Log user out
 Route::get('/logout', [PersonController::class, 'logout']);
 
+// Show change password form
+Route::get('/password', [PersonController::class, 'password']);
+
+// Change user password
+Route::post('/password/update', [PersonController::class, 'updatePassword']);
+
 // Log user in
 Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
 
 // Single user
-Route::get('/user/{user_id}', function () {
-    return view('user.index');
-});
+Route::get('/user/{user_id}', [PersonController::class, 'index'])->where('user_id', '[0-9]+');
+
+// Edit profile info
+Route::post('/user/{user_id}/edit', [PersonController::class, 'edit'])->where('user_id', '[0-9]+');
 
 // List of all users
 Route::get('/users', function () {
     return view('user.users');
 });
 
-
-Route::get('/user/{user_id}/edit', function () {
-    return view('welcome');
-});
 // -----------------------------------------------------
 
 // --------------------- Team ---------------------------

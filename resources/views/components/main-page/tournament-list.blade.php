@@ -1,4 +1,4 @@
-<section id="tournament-list">
+<section class="main-tournament-list" id="tournaments">
     <h2>
         Tournaments
     </h2>

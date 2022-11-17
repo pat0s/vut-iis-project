@@ -1,0 +1,118 @@
+@import "../variables";
+
+
+#tournament-tournaments-list{
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 30px;
+
+    form{
+        width: 70%;
+        height: 30px;
+        margin-left: 15%;
+        margin-right: 15%;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+        color: $mainLightBrown;
+
+        label{
+            font-size: 1.2em;
+        }
+    }
+
+
+
+    ul{
+        width: 100%;
+        height: 110vh;
+        overflow-y: auto;
+        
+        &::-webkit-scrollbar {
+            width: 6px; 
+            height: 10px; 
+        }
+
+        &::-webkit-scrollbar-thumb { 
+            background: $mainLightBrown;
+            border-radius: 20px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $mainBlue;
+            border-radius: 20px;
+        }
+
+        li{
+            width: 95%;
+            height: 100px;
+            
+            border: solid 2px $mainLightBrown;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+
+            a{
+                width: 100%;
+                text-decoration: none;
+                padding: 0;
+
+                div{
+                    width: 100%;
+                    padding-left: 40px;
+                    padding-right: 40px;
+
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                }
+                
+                div:first-child{
+                    height: 60%;    
+
+                    justify-content: flex-start;
+
+                    background-color: $mainLightBrown;
+                    border-radius: 15px;
+                    color: $mainBlue;
+                    column-gap: 33%;
+                    outline: 2px solid $mainLightBrown;
+
+                    p:nth-child(2){
+                        font-weight: 800;
+                        font-size: 1.2em;
+                    }
+                }
+                
+                div:nth-child(2){
+                    height: 40%;    
+
+                    justify-content: space-between;
+
+                    color: $mainLightBrown;
+
+                }
+
+
+            }
+
+
+            
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+
+            
+    
+    }
+}
