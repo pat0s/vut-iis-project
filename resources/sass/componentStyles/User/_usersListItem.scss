@@ -1,0 +1,21 @@
+@import "../variables";
+
+.user-list-item{
+    width: 100%;
+    list-style-type: none;
+
+    a{
+        width: 100%;
+        padding: 5px 20%;
+    
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        background-color: $mainLightBrown;
+        color: $mainBlue;
+        border-radius: 30px;
+        text-decoration: none;
+    }
+
+}
