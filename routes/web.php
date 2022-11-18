@@ -59,7 +59,11 @@ Route::get('/users', function () {
 
 // --------------------- TeamController ---------------------------
 // Create new team
-Route::post('/team/create', [TeamController::class, 'store']);
+Route::post('/team', [TeamController::class, 'store']);
+
+// Show create team form
+Route::get('/team/create', [TeamController::class, 'create']);
+
 
 // Single team
 Route::get('/team/{team_id}', [TeamController::class, 'show'])->where('team_id', '[0-9]+');

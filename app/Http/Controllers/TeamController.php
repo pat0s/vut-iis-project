@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
+    /**
+     * Team Detail
+     */
     public function show(Request $request)
     {
         $teamId = $request->team_id;
@@ -40,12 +43,27 @@ class TeamController extends Controller
     }
 
 
+    /**
+     * Show create form
+     */
     public function create()
     {
-        return view('team.create');
+        $users = Person::where('person_id', '!=', auth()->user()->person_id)->get();
+
+        $viewData = array(
+            'users' => $users
+        );
+
+        return view('team.create')->with($viewData);
     }
 
 
+    /**
+     * Add member(s) to team
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addMember(Request $request)
     {
         $input = $request->all();
@@ -58,12 +76,31 @@ class TeamController extends Controller
     }
 
 
+    /**
+     * Create new team
+     */
     public function store(Request $request)
     {
+        $formFields = $request->validate([
+            'team_name' => ['required', 'min:3', 'max:50'],
+        ]);
 
-        // TODO: redirect
+        $userIds = $request->get('members');
+
+        $params = $formFields;
+        $params['manager_id'] = auth()->user()->person_id;
+        $params['number_of_players'] = count($userIds);
+
+        // create team
+        $team = Team::create($params);
+
+        // many to many relationship
+        $team->members()->attach($userIds);
+        $team->save();
+
         return redirect('/')->with('message', 'Team was successfully created.');
     }
+
 
     /**
      * Check if user is team manager.

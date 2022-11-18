@@ -1232,7 +1232,7 @@ main#create-team-page > section form {
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  row-gap: 60px;
+  row-gap: 120px;
 }
 main#create-team-page > section form #left-box {
   width: 250px;
@@ -1313,7 +1313,6 @@ main#create-team-page > section form #submit-button {
 
 section#create-page-team-members {
   width: 100%;
-  min-height: 60vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1322,47 +1321,9 @@ section#create-page-team-members {
 }
 section#create-page-team-members h3 {
   width: 90%;
-  text-align: right;
+  text-align: center;
   color: #FFDFD0;
   font-size: 2em;
-}
-section#create-page-team-members ul#list-of-members {
-  width: 100%;
-  height: 30vh;
-  margin-top: 20px;
-  overflow-y: auto;
-}
-section#create-page-team-members ul#list-of-members::-webkit-scrollbar {
-  width: 7px;
-  height: 10px;
-}
-section#create-page-team-members ul#list-of-members::-webkit-scrollbar-thumb {
-  background: #FFDFD0;
-  border-radius: 20px;
-}
-section#create-page-team-members ul#list-of-members::-webkit-scrollbar-track {
-  background: #23273E;
-  border-radius: 20px;
-}
-section#create-page-team-members ul#list-of-members li {
-  width: 98%;
-  margin-bottom: 12px;
-  padding: 3px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-  color: #23273E;
-  font-weight: 800;
-  background-color: #FFDFD0;
-  border-radius: 30px;
-}
-section#create-page-team-members ul#list-of-members li a {
-  text-decoration: none;
-  color: #23273E;
-}
-section#create-page-team-members ul#list-of-members li img {
-  transform: scale(0.8);
 }
 section#create-page-team-members button {
   width: 40px;
@@ -1432,6 +1393,11 @@ section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-use
 section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users li label {
   width: 90%;
   text-align: center;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users #team-manager {
+  background-color: #202227;
+  color: #FFDFD0;
+  border: #FFDFD0 solid 2px;
 }
 section#create-page-team-members #add-new-member-to-team-fieldset input[type=submit] {
   width: 80px;

@@ -1,6 +1,6 @@
 <section id="team-members">
     <h3>Members</h3>
-    <ul>
+    <ul id="list-of-members">
         @foreach($members as $member)
             <x-team-page.team-members-item
                 :member="$member"

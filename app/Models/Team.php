@@ -14,6 +14,18 @@ class Team extends Model
     protected $primaryKey = 'team_id';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'team_name',
+        'logo_url',
+        'number_of_players',
+        'manager_id',
+    ];
+
+    /**
      * The people that belong to the team.
      */
     public function members()
