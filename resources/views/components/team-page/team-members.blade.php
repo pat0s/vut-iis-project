@@ -1,10 +1,6 @@
-@props([
-    'useFlag' => '1',
-])
-
 <section id="team-members">
     <h3>Members</h3>
-    <ul>
+    <ul id="list-of-members">
         <x-team-page.team-members-item 
             :userID="1"
         />
@@ -28,23 +24,29 @@
         
     </ul>
 
-    <button type="button" onclick="window.addMemberToTeambuttonHandler({{$useFlag}})"><p>+</p></button>
+    <button type="button" onclick="window.addMemberToTeambuttonHandler()"><p>+</p></button>
 
-    <fieldset id="add-new-member-to-team-fieldset" class="hidden-element">
-        <input list="members" name="member-name">
-        <datalist id="members">
+    <div class="hidden-element" id="add-new-member-to-team-fieldset">
 
-            {{-- @foreach ($users as $user)
-                <option value="{{$user->name}}">
-            @endforeach --}}
+        <form method="GET" action="/team/add-member">
+            @csrf
 
-            <option value="Mista MrDalo">
-            <option value="Mista Pat0s">
-            <option value="Mista Sek1no">
-            <option value="Mista Anton van der Tonislav">
-            <option value="Mista LOva">
-        </datalist>
-        <input type="button" value="Add">
-    </fieldset>
+            <ul id="list-of-users">
+                @for ($i = 0; $i < 10; $i++)
+                    <li>
+                        <input type="checkbox" name="members[]" value="{{$i}}-" id="{{$i}}">
+                        <label for="{{$i}}">User {{$i}}</label>
+                    </li>
+                @endfor
+
+                {{-- @foreach($users as $user)
+                    <input type="checkbox" value="{{$user->person_id}}" name="{{$user->person_id}}">
+                    <label for="{{$user->person_id}}">{{$user->username}}</label>
+                @endforeach --}}
+            </ul>
+    
+            <input type="submit" value="Add">
+        </form>
+    </div>
 
 </section>

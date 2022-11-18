@@ -279,11 +279,22 @@ input:checked + .slider:before {
 }
 
 .button-styled {
-  padding: 4px 10px;
+  padding: 4px 20px;
   color: #FFDFD0;
   font-weight: 800;
   border: 2px solid #FFDFD0;
   background-color: transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button-styled-full {
+  padding: 4px 20px;
+  color: #23273E;
+  font-weight: 800;
+  border: 2px solid #FFDFD0;
+  background-color: #FFDFD0;
   border-radius: 30px;
   cursor: pointer;
   text-decoration: none;
@@ -944,18 +955,34 @@ div#users-list-parent #users-list::-webkit-scrollbar-track {
   text-decoration: none;
 }
 
+section#admin-section {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 40px;
+}
+section#admin-section h3 {
+  width: 100%;
+  text-align: left;
+  font-size: 2em;
+  color: #FFDFD0;
+}
+
 main#team-page {
   margin-bottom: 40vh;
   margin-top: 5vh;
 }
 main#team-page > section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
   padding-left: 15%;
   padding-right: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
   -moz-column-gap: 150px;
        column-gap: 150px;
   row-gap: 80px;
@@ -968,6 +995,7 @@ main#team-page > section h2 {
 }
 main#team-page > section #profile-picture {
   width: 250px;
+  margin-top: 100px;
   aspect-ratio: 0.9;
   display: flex;
   justify-content: center;
@@ -995,25 +1023,25 @@ section#team-members h3 {
   color: #FFDFD0;
   font-size: 2em;
 }
-section#team-members ul {
+section#team-members ul#list-of-members {
   width: 100%;
   height: 30vh;
   margin-top: 20px;
   overflow-y: auto;
 }
-section#team-members ul::-webkit-scrollbar {
+section#team-members ul#list-of-members::-webkit-scrollbar {
   width: 7px;
   height: 10px;
 }
-section#team-members ul::-webkit-scrollbar-thumb {
+section#team-members ul#list-of-members::-webkit-scrollbar-thumb {
   background: #FFDFD0;
   border-radius: 20px;
 }
-section#team-members ul::-webkit-scrollbar-track {
+section#team-members ul#list-of-members::-webkit-scrollbar-track {
   background: #23273E;
   border-radius: 20px;
 }
-section#team-members ul li {
+section#team-members ul#list-of-members li {
   width: 98%;
   margin-bottom: 12px;
   padding: 3px 15px;
@@ -1026,11 +1054,11 @@ section#team-members ul li {
   background-color: #FFDFD0;
   border-radius: 30px;
 }
-section#team-members ul li a {
+section#team-members ul#list-of-members li a {
   text-decoration: none;
   color: #23273E;
 }
-section#team-members ul li img {
+section#team-members ul#list-of-members li img {
   transform: scale(0.8);
 }
 section#team-members button {
@@ -1058,21 +1086,67 @@ section#team-members #add-new-member-to-team-fieldset {
   display: flex;
   justify-content: center;
   align-items: center;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 30px;
   border: initial;
 }
-section#team-members #add-new-member-to-team-fieldset input:first-child {
-  padding: 3px 10px;
+section#team-members #add-new-member-to-team-fieldset form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 30px;
+}
+section#team-members #add-new-member-to-team-fieldset form ul#list-of-users {
+  width: 80%;
+  height: 30vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 12px;
+}
+section#team-members #add-new-member-to-team-fieldset form ul#list-of-users::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+section#team-members #add-new-member-to-team-fieldset form ul#list-of-users::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
   border-radius: 20px;
 }
-section#team-members #add-new-member-to-team-fieldset input[type=button] {
+section#team-members #add-new-member-to-team-fieldset form ul#list-of-users::-webkit-scrollbar-track {
+  background: #23273E;
+  border-radius: 20px;
+}
+section#team-members #add-new-member-to-team-fieldset form ul#list-of-users li {
+  width: 90%;
+  padding: 3px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  color: #23273E;
+  font-weight: 800;
+  background-color: #FFDFD0;
+  border-radius: 30px;
+}
+section#team-members #add-new-member-to-team-fieldset form ul#list-of-users li label {
+  width: 90%;
+  text-align: center;
+}
+section#team-members #add-new-member-to-team-fieldset form input[type=submit] {
   width: 80px;
   height: 35px;
   background-color: transparent;
   border-radius: 20px;
   border: 2px solid #FFDFD0;
   color: #FFDFD0;
+  cursor: pointer;
 }
 
 section#tournaments-in-team {
@@ -1134,47 +1208,48 @@ main#create-team-page {
 }
 main#create-team-page > section {
   width: 100%;
+  padding-left: 15%;
+  padding-right: 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 15%;
-  padding-right: 15%;
   -moz-column-gap: 150px;
        column-gap: 150px;
   row-gap: 80px;
 }
 main#create-team-page > section h2 {
   width: 100%;
+  color: #FFDFD0;
   text-align: center;
   font-size: 3em;
-  color: #FFDFD0;
 }
 main#create-team-page > section form {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
   row-gap: 60px;
 }
 main#create-team-page > section form #left-box {
   width: 250px;
-  color: #FFDFD0;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   flex-wrap: nowrap;
+  color: #FFDFD0;
 }
 main#create-team-page > section form #left-box #profile-picture {
   width: 100%;
   aspect-ratio: 0.9;
-  align-self: flex-start;
   display: flex;
   justify-content: center;
+  align-self: flex-start;
   align-items: center;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1227,13 +1302,145 @@ main#create-team-page > section form #submit-button {
   margin-left: 40%;
   margin-right: 40%;
   padding: 5px 10px;
-  cursor: pointer;
   color: #FFDFD0;
   font-size: 1.5em;
   text-align: center;
+  cursor: pointer;
   background-color: transparent;
   border: 2px solid #FFDFD0;
   border-radius: 60px;
+}
+
+section#create-page-team-members {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+section#create-page-team-members h3 {
+  width: 90%;
+  text-align: right;
+  color: #FFDFD0;
+  font-size: 2em;
+}
+section#create-page-team-members ul#list-of-members {
+  width: 100%;
+  height: 30vh;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+section#create-page-team-members ul#list-of-members::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+section#create-page-team-members ul#list-of-members::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
+  border-radius: 20px;
+}
+section#create-page-team-members ul#list-of-members::-webkit-scrollbar-track {
+  background: #23273E;
+  border-radius: 20px;
+}
+section#create-page-team-members ul#list-of-members li {
+  width: 98%;
+  margin-bottom: 12px;
+  padding: 3px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  color: #23273E;
+  font-weight: 800;
+  background-color: #FFDFD0;
+  border-radius: 30px;
+}
+section#create-page-team-members ul#list-of-members li a {
+  text-decoration: none;
+  color: #23273E;
+}
+section#create-page-team-members ul#list-of-members li img {
+  transform: scale(0.8);
+}
+section#create-page-team-members button {
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 2px #FFDFD0;
+  border-radius: 50px;
+  color: #FFDFD0;
+  cursor: pointer;
+}
+section#create-page-team-members button p {
+  position: relative;
+  top: -4px;
+  font-size: 2.2em;
+  font-weight: 200;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 30px;
+  border: initial;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users {
+  width: 80%;
+  height: 30vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 12px;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
+  border-radius: 20px;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users::-webkit-scrollbar-track {
+  background: #23273E;
+  border-radius: 20px;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users li {
+  width: 90%;
+  padding: 3px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  color: #23273E;
+  font-weight: 800;
+  background-color: #FFDFD0;
+  border-radius: 30px;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset ul#list-of-users li label {
+  width: 90%;
+  text-align: center;
+}
+section#create-page-team-members #add-new-member-to-team-fieldset input[type=submit] {
+  width: 80px;
+  height: 35px;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid #FFDFD0;
+  color: #FFDFD0;
+  cursor: pointer;
 }
 
 main#teams-page {
@@ -1650,6 +1857,7 @@ section#participants {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: row;
+  row-gap: 20px;
 }
 section#participants h3 {
   width: 100%;
@@ -1661,7 +1869,6 @@ section#participants h3 {
 section#participants ul {
   width: 100%;
   height: 30vh;
-  margin-top: 20px;
   overflow-y: auto;
 }
 section#participants ul::-webkit-scrollbar {
@@ -1700,9 +1907,25 @@ section#participants ul li a:nth-child(2) {
 section#participants ul li img {
   transform: scale(0.7);
 }
-section#participants button {
-  margin-top: 20px;
-  padding: 5px 20px;
+section#participants form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+section#participants form select {
+  width: 50%;
+  padding: 2px 10px;
+  color: #23273E;
+  font-weight: 800;
+  background-color: #FFDFD0;
+  border: 2px solid #FFDFD0;
+  border-radius: 20px;
+  outline: initial;
 }
 
 section#more-info {
@@ -1897,6 +2120,67 @@ main#create-tournament-page > section form input[type=submit] {
 main#create-tournament-page > section form select {
   width: 20%;
   text-align: center;
+}
+
+main#sport-page {
+  margin-bottom: 40vh;
+  margin-top: 10vh;
+}
+main#sport-page > section {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 15%;
+  padding-right: 15%;
+  -moz-column-gap: 150px;
+       column-gap: 150px;
+  row-gap: 80px;
+}
+main#sport-page > section h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  color: #FFDFD0;
+}
+main#sport-page > section form#search-from {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+main#sport-page > section form#search-from input[type=text] {
+  width: 100%;
+  padding: 4px 20px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+main#sport-page > section form#search-from button[type=submit] {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  left: -34px;
+  top: 2px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 20px;
+  border: initial;
+}
+main#sport-page > section form#search-from button[type=submit]:hover {
+  background-color: #eee;
+}
+main#sport-page > section form#search-from button[type=submit] img {
+  transform: scale(0.8);
+}
+main#sport-page > section form#create-form {
+  width: 80%;
+  display: flex;
 }
 
 * {
