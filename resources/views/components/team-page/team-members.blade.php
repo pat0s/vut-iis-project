@@ -13,7 +13,7 @@
 
         <div class="hidden-element" id="add-new-member-to-team-fieldset">
 
-            <form method="POST" action="/team/{{$team->team_id}}/add-member">
+            <form method="POST" action="/teams/{{$team->team_id}}/add-member">
                 @csrf
 
                 <ul id="list-of-users">

@@ -10,6 +10,28 @@ use Illuminate\Http\Request;
 class TeamController extends Controller
 {
     /**
+     * List of teams
+     */
+    public function index(Request $request)
+    {
+        $teamName = '';
+        $input = $request->all();
+
+        if (isset($input['search'])) {
+            $teamName = $input['search'];
+        }
+
+        $teams = Team::where('team_name', 'like', '%'. $teamName .'%')->get();
+
+        $viewData = array(
+            'teams' => $teams,
+        );
+
+        return view('teams.index')->with($viewData);
+    }
+
+
+    /**
      * Team Detail
      */
     public function show(Request $request)
@@ -39,7 +61,7 @@ class TeamController extends Controller
             'users' => $users,
         );
 
-        return view('team.index')->with($viewData);
+        return view('teams.show')->with($viewData);
     }
 
 
@@ -54,7 +76,7 @@ class TeamController extends Controller
             'users' => $users
         );
 
-        return view('team.create')->with($viewData);
+        return view('teams.create')->with($viewData);
     }
 
 

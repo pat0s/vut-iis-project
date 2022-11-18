@@ -2,7 +2,7 @@
     <h3>Teams</h3>
 
     @if($profileOwner)
-        <button class="button-styled" onclick="window.changePage('{{asset('/team/create')}}')">
+        <button class="button-styled" onclick="window.changePage('{{asset('/teams/create')}}')">
             Create Team
         </button>
     @endif

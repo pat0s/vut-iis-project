@@ -4,7 +4,7 @@
         <section>
             <h2>Create Team</h2>
 
-            <form method="POST" action="/team">
+            <form method="POST" action="/teams">
                 @csrf
 
                 <div id="left-box">

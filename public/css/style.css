@@ -1474,8 +1474,8 @@ div#teams-list-parent {
   width: 100%;
 }
 div#teams-list-parent #list-legend {
-  width: 50%;
-  margin-left: 45%;
+  width: 85%;
+  margin-left: 10%;
   margin-right: 5%;
   margin-bottom: 10px;
   display: flex;

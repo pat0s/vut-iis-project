@@ -58,27 +58,23 @@ Route::get('/users', function () {
 // -----------------------------------------------------
 
 // --------------------- TeamController ---------------------------
+// List of teams
+Route::get('/teams', [TeamController::class, 'index']);
+
 // Create new team
-Route::post('/team', [TeamController::class, 'store']);
+Route::post('/teams', [TeamController::class, 'store']);
 
 // Show create team form
-Route::get('/team/create', [TeamController::class, 'create']);
-
+Route::get('/teams/create', [TeamController::class, 'create']);
 
 // Single team
-Route::get('/team/{team_id}', [TeamController::class, 'show'])->where('team_id', '[0-9]+');
+Route::get('/teams/{team_id}', [TeamController::class, 'show'])->where('team_id', '[0-9]+');
 
 // Add member to team
-Route::post('/team/{team_id}/add-member', [TeamController::class, 'addMember'])->where('team_id', '[0-9]+');
+Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])->where('team_id', '[0-9]+');
 
 // Edit team
-Route::post('/team/{team_id}/edit', [TeamController::class, 'edit'])->where('team_id', '[0-9]+');
-
-// List of teams
-Route::get('/teams', function () {
-    return view('team.teams');
-});
-
+Route::post('/teams/{team_id}/edit', [TeamController::class, 'edit'])->where('team_id', '[0-9]+');
 
 // -----------------------------------------------------
 Route::get('/tournament/create', function () {
