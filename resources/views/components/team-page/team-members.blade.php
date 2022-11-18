@@ -24,7 +24,7 @@
         
     </ul>
 
-    <button type="button" onclick="window.addMemberToTeambuttonHandler()"><p>+</p></button>
+    <button onclick="window.addMemberToTeambuttonHandler()"><p>+</p></button>
 
     <div class="hidden-element" id="add-new-member-to-team-fieldset">
 

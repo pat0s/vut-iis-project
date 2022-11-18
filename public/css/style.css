@@ -2133,11 +2133,11 @@ main#sport-page > section {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 20%;
+  padding-right: 20%;
   -moz-column-gap: 150px;
        column-gap: 150px;
-  row-gap: 80px;
+  row-gap: 50px;
 }
 main#sport-page > section h2 {
   width: 100%;
@@ -2146,7 +2146,9 @@ main#sport-page > section h2 {
   color: #FFDFD0;
 }
 main#sport-page > section form#search-from {
-  width: 60%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -2178,9 +2180,107 @@ main#sport-page > section form#search-from button[type=submit]:hover {
 main#sport-page > section form#search-from button[type=submit] img {
   transform: scale(0.8);
 }
+main#sport-page > section button#plus-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 2px #FFDFD0;
+  border-radius: 50px;
+  color: #FFDFD0;
+  cursor: pointer;
+}
+main#sport-page > section button#plus-btn p {
+  position: relative;
+  top: -4px;
+  font-size: 2.2em;
+  font-weight: 200;
+}
 main#sport-page > section form#create-form {
   width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  row-gap: 20px;
+}
+main#sport-page > section form#create-form div {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  color: #FFDFD0;
+}
+main#sport-page > section form#create-form div input {
+  background-color: transparent;
+  outline: initial;
+  border: initial;
+  color: #FFDFD0;
+  border-bottom: solid 2px #FFDFD0;
+}
+main#sport-page > section form#create-form button[type=submit] {
+  grid-column: 1/span 4;
+}
+
+div#sports-list-parent {
+  width: 100%;
+}
+div#sports-list-parent #list-legend {
+  width: 50%;
+  margin-left: 45%;
+  margin-right: 5%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+div#sports-list-parent #list-legend p {
+  color: #FFDFD0;
+}
+div#sports-list-parent #sports-list {
+  width: 100%;
+  height: 100vh;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 15px;
+  overflow-y: auto;
+}
+div#sports-list-parent #sports-list::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+div#sports-list-parent #sports-list::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
+  border-radius: 20px;
+}
+div#sports-list-parent #sports-list::-webkit-scrollbar-track {
+  background: #23273E;
+  border-radius: 20px;
+}
+
+.sport-list-item {
+  width: 100%;
+  padding: 5px 10%;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFDFD0;
+  color: #23273E;
+  border-radius: 30px;
 }
 
 * {
