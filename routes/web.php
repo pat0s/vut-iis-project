@@ -81,6 +81,8 @@ Route::get('/tournament/create', function () {
     return view('tournament.create');
 });
 
+
+
 Route::get('/tournament/{tournament_id}', function () {
     return view('tournament.index');
 });
@@ -97,3 +99,11 @@ Route::get('/statistics', function () {
     return view('welcome');
 });
 
+//--------------------- Sport ---------------------
+Route::get('/sport', function () {
+    return view('sport.index');
+});
+
+Route::get('/sport/create', function () {
+    return view('sport.create');
+});

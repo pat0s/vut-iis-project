@@ -14,6 +14,8 @@
                 :ID="1"
             />
 
+            <x-user-page.admin-section />
+
         </section>
     </main>
 </x-layout>

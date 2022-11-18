@@ -23,9 +23,7 @@
                         <input type="text" name="team-name">
                     </section>
 
-                    <x-team-page.team-members 
-                        :useFlag="2"
-                    />
+                    <x-team-page.create-page-team-members />
 
                 </div>
 
