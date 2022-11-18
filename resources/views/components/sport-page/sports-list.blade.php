@@ -8,7 +8,7 @@
     <ul id="sports-list">
         
         @for ($i = 0; $i < 20; $i++)
-            <x-team-page.teams-list-item
+            <x-sport-page.sports-list-item
                 :teamID="1"
                 :teamName="'Sport name'"
                 :numberOfMembers="1"
