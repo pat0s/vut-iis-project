@@ -1,50 +1,40 @@
-@props([
-    'useFlag' => '1',
-])
-
 <section id="team-members">
     <h3>Members</h3>
     <ul>
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-
-        
+        @foreach($members as $member)
+            <x-team-page.team-members-item
+                :member="$member"
+            />
+        @endforeach
     </ul>
 
-    <button type="button" onclick="window.addMemberToTeambuttonHandler({{$useFlag}})"><p>+</p></button>
+    @if($teamManager)
+        <button type="button" onclick="window.addMemberToTeambuttonHandler()"><p>+</p></button>
 
-    <fieldset id="add-new-member-to-team-fieldset" class="hidden-element">
-        <input list="members" name="member-name">
-        <datalist id="members">
+        <div id="add-new-member-to-team-fieldset">
+            <form method="POST" action="/team/{{$team->team_id}}/add-member">
+                @csrf
+                <select name="members[]" placeholder="Select users" multiple="multiple" required>
+                    @foreach($users as $user)
+                        <option value="{{$user->person_id}}">{{$user->username}}</option>
+                    @endforeach
+                </select>
 
-            {{-- @foreach ($users as $user)
-                <option value="{{$user->name}}">
-            @endforeach --}}
+                <input type="submit" value="Add">
+            </form>
 
-            <option value="Mista MrDalo">
-            <option value="Mista Pat0s">
-            <option value="Mista Sek1no">
-            <option value="Mista Anton van der Tonislav">
-            <option value="Mista LOva">
-        </datalist>
-        <input type="button" value="Add">
-    </fieldset>
+        </div>
+
+    @endif
 
 </section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+<script defer>
+    $(function () {
+        $('select').multipleSelect()
+    })
+</script>
+

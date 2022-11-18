@@ -22,21 +22,20 @@ window.clickOnUserNavDiv = () =>{
 }
 
 
-window.addMemberToTeambuttonHandler = (useFlag) => {
+window.addMemberToTeambuttonHandler = () => {
 
     addNewMemberFieldset.classList.toggle('hidden-element');
-    console.log(useFlag);
 }
 
 let isChecked = false;
 window.switchButtonHandler = () => {
-    
+
     isChecked = !isChecked;
-    
+
     if (isChecked) {
         console.log("Checkbox is checked..");
         labelForSwitch.innerText = "Teams";
-        
+
     } else {
         console.log("Checkbox is not checked..");
         labelForSwitch.innerText = "Individual participants";

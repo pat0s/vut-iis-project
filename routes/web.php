@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,13 +28,15 @@ Route::get('/registration', [PersonController::class, 'create']);
 Route::post('/user', [PersonController::class, 'store']);
 
 // Show user login form
-Route::get('/login', [PersonController::class, 'login']);
+Route::get('/login', [PersonController::class, 'login'])
+    ->name('login');
 
 // Log user out
 Route::get('/logout', [PersonController::class, 'logout']);
 
 // Show change password form
-Route::get('/password', [PersonController::class, 'password']);
+Route::get('/password', [PersonController::class, 'password'])
+    ->middleware('auth');
 
 // Change user password
 Route::post('/password/update', [PersonController::class, 'updatePassword']);
@@ -54,24 +57,20 @@ Route::get('/users', function () {
 
 // -----------------------------------------------------
 
-// --------------------- Team ---------------------------
-Route::get('/team/create', function () {
-    return view('team.create');
-});
+// --------------------- TeamController ---------------------------
+// Create new team
+Route::post('/team/create', [TeamController::class, 'store']);
 
-// Route::get("/team/{team_id}", function($team_id){
-//     dd($team_id);
-//     return response("Post " . $team_id);
-// })->where('team_id', '[0-9]+');
+// Single team
+Route::get('/team/{team_id}', [TeamController::class, 'show'])->where('team_id', '[0-9]+');
 
-Route::get('/team/{team_id}', function () {
-    return view('team.index');
-});
+// Add member to team
+Route::post('/team/{team_id}/add-member', [TeamController::class, 'addMember'])->where('team_id', '[0-9]+');
 
-Route::get('/team/{team_id}/edit', function () {
-    return view('welcome');
-});
+// Edit team
+Route::post('/team/{team_id}/edit', [TeamController::class, 'edit'])->where('team_id', '[0-9]+');
 
+// List of teams
 Route::get('/teams', function () {
     return view('team.teams');
 });
