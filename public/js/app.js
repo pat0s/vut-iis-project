@@ -2081,9 +2081,8 @@ window.changePage = function (URL) {
 window.clickOnUserNavDiv = function () {
   userNavDiv.classList.toggle('hidden-element');
 };
-window.addMemberToTeambuttonHandler = function (useFlag) {
+window.addMemberToTeambuttonHandler = function () {
   addNewMemberFieldset.classList.toggle('hidden-element');
-  console.log(useFlag);
 };
 var isChecked = false;
 window.switchButtonHandler = function () {
