@@ -4,6 +4,8 @@
         @foreach($members as $member)
             <x-team-page.team-members-item
                 :member="$member"
+                :teamManager="$teamManager"
+                :teamManagerId="$team->manager_id"
             />
         @endforeach
     </ul>
