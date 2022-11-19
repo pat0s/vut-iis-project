@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,23 +77,32 @@ Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])
     ->where('team_id', '[0-9]+');
 
 // -----------------------------------------------------
-Route::get('/tournament/create', function () {
-    return view('tournament.create');
-});
+
+// Show create form
+Route::get('/tournaments/create', [TournamentController::class, 'create']);
+
+// Show list of tournaments
+Route::get('/tournaments', [TournamentController::class, 'index']);
+
+// Store tournament data
+Route::post('/tournaments', [TournamentController::class, 'store']);
+
+// Single tournament
+Route::get('/tournaments/{tournament_id}', [TournamentController::class, 'show'])
+    ->where('tournament_id', '[0-9]+');
+
+//Route::get('/tournaments/{tournament}/edit', [TournamentController::class, 'e'])
 
 
 
-Route::get('/tournament/{tournament_id}', function () {
-    return view('tournament.index');
-});
-
-Route::get('/tournament/{tournament_id}/edit', function () {
-    return view('welcome');
-});
-
-Route::get('/tournaments', function () {
-    return view('tournament.tournaments');
-});
+//Route::get('/tournament/{tournament_id}', [TournamentController::class, 'show'])->where('tournament_id', '[0-9]+');
+//
+//Route::get('/tournament/{tournament_id}/edit', function () {
+//    return view('welcome');
+//});
+//
+//
+//Route::get('/tournaments', [TournamentController::class, 'index']);
 
 Route::get('/statistics', function () {
     return view('welcome');

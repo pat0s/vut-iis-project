@@ -1,5 +1,5 @@
 <li>
-    <a href="/tournament/{{$tournamentID}}">
+    <a href="/tournaments/{{$tournamentID}}">
         {{$tournamentName}}
     </a>
 </li>
