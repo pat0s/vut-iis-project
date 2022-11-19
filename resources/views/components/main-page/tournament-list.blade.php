@@ -2,7 +2,7 @@
     <h2>
         Tournaments
     </h2>
-    <a href="/tournament/create" class="button-styled">Create Tournament</a>
+    <a href="/tournaments/create" class="button-styled">Create Tournament</a>
     <div>
         <ul>
 

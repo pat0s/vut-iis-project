@@ -90,7 +90,7 @@ Route::get('/tournaments', [TournamentController::class, 'index']);
 Route::post('/tournaments', [TournamentController::class, 'store']);
 
 // Single tournament
-Route::get('/tournaments/{tournament}', [TournamentController::class, 'show'])
+Route::get('/tournaments/{tournament_id}', [TournamentController::class, 'show'])
     ->where('tournament_id', '[0-9]+');
 
 //Route::get('/tournaments/{tournament}/edit', [TournamentController::class, 'e'])

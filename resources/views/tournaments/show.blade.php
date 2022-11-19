@@ -3,7 +3,7 @@
         <section>
             <h2>{{$tournament->tournament_name}}</h2>
 
-            <a href="/tournament/1/approved" class="button-styled" id="approved-button">Approve tournament</a>
+            <a href="/tournaments/1/approved" class="button-styled" id="approved-button">Approve tournament</a>
 
             <section id="tournament-description">
                 <h3>Description</h3>

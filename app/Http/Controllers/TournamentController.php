@@ -9,27 +9,39 @@ use Illuminate\Support\Facades\DB;
 class TournamentController extends Controller
 {
     // Show all tournaments
-    public function index() {
-        return view('tournament.tournaments', [
-            'tournaments' => Tournament::all()
+    public function index(Request $request) {
+
+        $tournamentName = '';
+        if (isset($request['search'])) {
+            $tournamentName = $request['search'];
+        }
+
+        $tournaments = Tournament::where('tournament_name', 'like', '%'. $tournamentName .'%')
+            ->get();
+
+        return view('tournaments.index', [
+            'tournaments' => $tournaments,
         ]);
     }
 
     // Show single tournament
-    public function show(Tournament $tournament) {
-        return view('tournament.index', [
+    public function show(Request $request) {
+
+        $tournament = Tournament::find($request->tournament_id);
+
+        return view('tournaments.show', [
             'tournament' => $tournament
         ]);
     }
 
     // Show create form
     public function create() {
-        return view('tournament.create');
+        return view('tournaments.create');
     }
 
     // Store tournament data
     public function store() {
-        return view('tournament.show');
+        return back();
     }
 
 }
