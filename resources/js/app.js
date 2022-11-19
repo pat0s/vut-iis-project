@@ -29,13 +29,13 @@ window.addMemberToTeambuttonHandler = () => {
 
 let isChecked = false;
 window.switchButtonHandler = () => {
-    
+
     isChecked = !isChecked;
-    
+
     if (isChecked) {
         console.log("Checkbox is checked..");
         labelForSwitch.innerText = "Teams";
-        
+
     } else {
         console.log("Checkbox is not checked..");
         labelForSwitch.innerText = "Individual participants";

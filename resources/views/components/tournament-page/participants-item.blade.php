@@ -4,7 +4,7 @@
 ])
 
 <li>
-    <a href="/user/{{$userID}}">
+    <a href="/users/{{$userID}}">
         {{$userName}}
     </a>
     <!-- <a href=""><img src="./img/Trash.svg" alt="Trash"></a> -->

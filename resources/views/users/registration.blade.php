@@ -12,7 +12,7 @@
         <section>
             <h1>Sign up</h1>
 
-            <form method="POST" action="/user">
+            <form method="POST" action="/users">
                 @csrf
 
                 <input type="text" placeholder="First name*" name="first_name" value="{{old('first_name')}}">

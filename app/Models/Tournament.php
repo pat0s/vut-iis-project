@@ -11,4 +11,14 @@ class Tournament extends Model
 
     public $timestamps = false;
     protected $table = 'TOURNAMENT';
+    protected $primaryKey = 'tournament_id';
+
+
+    /**
+     * Tournament has many participants
+     */
+    public function participants()
+    {
+        return $this->hasMany(Participant::class, 'tournament_id', 'tournament_id');
+    }
 }

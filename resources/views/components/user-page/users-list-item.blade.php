@@ -1,13 +1,8 @@
-@props([
-    'userID' => '1',
-    'userName' => 'User name',
-])
-
 <li class="user-list-item">
-
-    <a href="/user/{{$userID}}">
-        <p>ID: &nbsp;&nbsp;{{$userID}}</p>
-        <p>{{$userName}}</p>
+    <a href="/users/{{$userID}}">
+        <p>{{$userID}}</p>
+        <p>{{$username}}</p>
+        <p>{{$firstName}}</p>
+        <p>{{$surname}}</p>
     </a>
-
 </li>

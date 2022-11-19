@@ -1,21 +1,21 @@
 <div id="users-list-parent">
 
     <div id="list-legend">
-        <p>ID of the user</p>
-        <p>Name of the user</p>
+        <p>#</p>
+        <p>Username</p>
+        <p>First Name</p>
+        <p>Surname</p>
     </div>
-    
+
     <ul id="users-list">
-        
-        @for ($i = 0; $i < 20; $i++)
+        @foreach ($users as $user)
             <x-user-page.users-list-item
-                :userID="1"
-                :userName="'Mista MrDalo'"
+                :userID="$user->person_id"
+                :username="$user->username"
+                :firstName="$user->first_name"
+                :surname="$user->surname"
             />
-            
-        @endfor
-
+        @endforeach
     </ul>
-
 
 </div>
