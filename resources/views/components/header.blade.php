@@ -29,7 +29,7 @@
             </div>
             <div id="user-nav-div" class="hidden-element">
                 <ul>
-                    <li><a href="/user/{{auth()->user()->person_id}}"><img src="{{asset('/img/profileBlue.svg')}}">Profile</a></li>
+                    <li><a href="/users/{{auth()->user()->person_id}}"><img src="{{asset('/img/profileBlue.svg')}}">Profile</a></li>
                     <li><a href="/sport"><img src="{{asset('/img/sports.svg')}}">Sports</a></li>
                     <li><a href="/teams/create"><img src="{{asset('/img/create-team.svg')}}">Create team</a></li>
                     <li><a href="/tournament/create"><img src="{{asset('/img/tournament.svg')}}">Create tournament</a></li>

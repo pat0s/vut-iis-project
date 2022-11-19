@@ -10,9 +10,34 @@ use Illuminate\Support\Facades\Hash;
 class PersonController extends Controller
 {
     /**
-     * User profile
+     * List of users
      */
     public function index(Request $request)
+    {
+        $username = '';
+        $input = $request->all();
+
+        if (isset($input['search'])) {
+            $username = $input['search'];
+        }
+
+        $users = Person::orWhere('username', 'like', '%'. $username .'%')
+            ->orWhere('first_name', 'like', '%'. $username .'%')
+            ->orWhere('surname', 'like', '%'. $username .'%')
+            ->get();
+
+        $viewData = array(
+            'users' => $users,
+        );
+
+        return view('users.index')->with($viewData);
+    }
+
+
+    /**
+     * User profile
+     */
+    public function show(Request $request)
     {
         $userId = $request->user_id;
         $user = Person::findOrFail($userId);  // fail -> show page "Error 404"
@@ -23,7 +48,7 @@ class PersonController extends Controller
             'teams' => $user->teams,
         );
 
-        return view('user.index')->with($viewData);
+        return view('users.show')->with($viewData);
     }
 
 
@@ -32,7 +57,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        return view('user.registration');
+        return view('users.registration');
     }
 
 
@@ -81,7 +106,7 @@ class PersonController extends Controller
      */
     public function login()
     {
-        return view('user.login');
+        return view('users.login');
     }
 
 
@@ -141,7 +166,7 @@ class PersonController extends Controller
      */
     public function password()
     {
-        return view('user.password');
+        return view('users.password');
     }
 
 

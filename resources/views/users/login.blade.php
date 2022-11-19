@@ -12,7 +12,7 @@
         <section>
             <h1>Sign in</h1>
 
-            <form method="POST" action="/user/authenticate">
+            <form method="POST" action="/users/authenticate">
                 @csrf
 
                 <input type="text" placeholder="Username" name="username" value="{{old('username')}}">

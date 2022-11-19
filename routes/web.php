@@ -24,8 +24,11 @@ Route::get('/', function () {
 // Show user registration form
 Route::get('/registration', [PersonController::class, 'create']);
 
+// List of all users
+Route::get('/users', [PersonController::class, 'index']);
+
 // Create new user
-Route::post('/user', [PersonController::class, 'store']);
+Route::post('/users', [PersonController::class, 'store']);
 
 // Show user login form
 Route::get('/login', [PersonController::class, 'login'])
@@ -42,18 +45,15 @@ Route::get('/password', [PersonController::class, 'password'])
 Route::post('/password/update', [PersonController::class, 'updatePassword']);
 
 // Log user in
-Route::post('/user/authenticate', [PersonController::class, 'authenticate']);
+Route::post('/users/authenticate', [PersonController::class, 'authenticate']);
 
 // Single user
-Route::get('/user/{user_id}', [PersonController::class, 'index'])->where('user_id', '[0-9]+');
+Route::get('/users/{user_id}', [PersonController::class, 'show'])
+    ->where('user_id', '[0-9]+');
 
 // Edit profile info
-Route::post('/user/{user_id}/edit', [PersonController::class, 'edit'])->where('user_id', '[0-9]+');
-
-// List of all users
-Route::get('/users', function () {
-    return view('user.users');
-});
+Route::post('/users/{user_id}/edit', [PersonController::class, 'edit'])
+    ->where('user_id', '[0-9]+');
 
 // -----------------------------------------------------
 
