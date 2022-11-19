@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use App\Models\Person;
-use App\Models\Participant;
+use App\Models\Tournament;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -39,14 +39,10 @@ class TeamController extends Controller
         $teamId = $request->team_id;
         $team = Team::findOrFail($teamId);  // fail -> show page "Error 404"
 
-        // TODO
-//        select *
-//        from TEAM t
-//          join PARTICIPANT p on t.team_id = p.team_id
-//          join TOURNAMENT tour on p.tournament_id = tour.tournament_id
-//        where
-//          t.team_id = :team_id;
-        $tournaments = array();
+        $tournaments = Tournament::with('participants')
+                ->whereHas('participants', function ($query) use ($teamId) {
+                $query->where("PARTICIPANT.team_id", $teamId);
+                })->get();
 
         $users = Person::with('teams')
             ->whereDoesntHave('teams', function ($query) use ($teamId) {
@@ -92,7 +88,10 @@ class TeamController extends Controller
         $userIds = $input['members'];
 
         $team = Team::findOrFail($request->team_id);
+
         $team->members()->attach($userIds);
+        $team->number_of_players += count($userIds);
+        $team->save();
 
         return redirect()->back()->with('message', 'List of team members was updated.');
     }

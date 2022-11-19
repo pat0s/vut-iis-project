@@ -68,13 +68,12 @@ Route::post('/teams', [TeamController::class, 'store']);
 Route::get('/teams/create', [TeamController::class, 'create']);
 
 // Single team
-Route::get('/teams/{team_id}', [TeamController::class, 'show'])->where('team_id', '[0-9]+');
+Route::get('/teams/{team_id}', [TeamController::class, 'show'])
+    ->where('team_id', '[0-9]+');
 
 // Add member to team
-Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])->where('team_id', '[0-9]+');
-
-// Edit team
-Route::post('/teams/{team_id}/edit', [TeamController::class, 'edit'])->where('team_id', '[0-9]+');
+Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])
+    ->where('team_id', '[0-9]+');
 
 // -----------------------------------------------------
 Route::get('/tournament/create', function () {

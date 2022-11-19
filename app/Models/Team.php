@@ -32,4 +32,13 @@ class Team extends Model
     {
         return $this->belongsToMany(Person::class, 'MEMBER_OF_TEAM', 'team_id', 'person_id');
     }
+
+    /**
+     * Get participants for the team.
+     */
+    public function asParticipant()
+    {
+        return $this->hasMany(Participant::class, 'team_id', 'team_id');
+    }
+
 }
