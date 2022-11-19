@@ -3,11 +3,11 @@
     'tournamentName' => 'Tournament Name',
     'sport' => 'Sport',
     'numberOfParticipants',
-    'dateOfStart', 
+    'dateOfStart',
 ])
 
 <li>
-    <a href="tournament/{{$tournamentID}}">
+    <a href="tournaments/{{$tournamentID}}">
         <div>
             <p>ID: &nbsp;&nbsp;{{$tournamentID}}</p>
             <p>{{$tournamentName}}</p>

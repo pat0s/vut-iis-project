@@ -9,7 +9,7 @@
                 <button type="submit"><img src="{{asset('./img/search.svg')}}" alt="search"></button>
             </form>
 
-            <a href="/tournament/create" class="button-styled">Create tournament</a>
+            <a href="/tournaments/create" class="button-styled">Create tournament</a>
 
             <x-tournament-page.tournaments-list :tournaments="$tournaments" />
 

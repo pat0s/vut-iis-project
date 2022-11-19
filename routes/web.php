@@ -80,17 +80,20 @@ Route::get('/teams', function () {
 
 // -----------------------------------------------------
 
+// Show create form
+Route::get('/tournaments/create', [TournamentController::class, 'create']);
 
-Route::get('/tournament/create', function () {
-    return view('tournament.create');
-});
-
-
+// Show list of tournaments
 Route::get('/tournaments', [TournamentController::class, 'index']);
 
+// Store tournament data
+Route::post('/tournaments', [TournamentController::class, 'store']);
 
-Route::get('/tournament/{tournament}', [TournamentController::class, 'show'])
+// Single tournament
+Route::get('/tournaments/{tournament}', [TournamentController::class, 'show'])
     ->where('tournament_id', '[0-9]+');
+
+//Route::get('/tournaments/{tournament}/edit', [TournamentController::class, 'e'])
 
 
 
