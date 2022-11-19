@@ -2,7 +2,7 @@
 
     <h3>Admin section</h3>
 
-    <a href="/user/admin/add" class="button-styled-full">Add admin role</a>
+    <a href="/users/admin/add" class="button-styled-full">Add admin role</a>
     {{-- <a href="/user/admin/remove" class="button-styled">Remove admin role</a> --}}
 
 </section>

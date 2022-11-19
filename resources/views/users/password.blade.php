@@ -22,7 +22,7 @@
 
                     <div id="form-buttons">
                         <button type="submit" name="submit-button">Change password</button>
-                        <a href="/user/{{auth()->user()->person_id}}" class="button-styled">Cancel</a>
+                        <a href="/users/{{auth()->user()->person_id}}" class="button-styled">Cancel</a>
                     </div>
                 </form>
 

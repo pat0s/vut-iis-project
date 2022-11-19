@@ -5,16 +5,17 @@
             <h2>Teams</h2>
 
             <form method="GET" action="">
-                <input type="text" name="search" placeholder="Search">
+                <input type="text" name="search" placeholder="Search" value="{{old('search')}}">
                 <button type="submit"><img src="{{asset('./img/search.svg')}}" alt="search"></button>
             </form>
 
-            <a href="/team/create" class="button-styled">Create team</a>
+            @auth
+                <a href="/teams/create" class="button-styled">Create team</a>
+            @endauth
 
-            <x-team-page.teams-list />
+            <x-team-page.teams-list :teams="$teams"/>
 
         </section>
-
     </main>
 
 </x-layout>

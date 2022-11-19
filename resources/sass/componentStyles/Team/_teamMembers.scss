@@ -11,7 +11,7 @@ section#team-members{
 
     min-height: 60vh;
 
-    
+
 
     h3{
         width: 90%;
@@ -27,11 +27,11 @@ section#team-members{
         overflow-y: auto;
 
         &::-webkit-scrollbar {
-            width: 7px; 
-            height: 10px; 
+            width: 7px;
+            height: 10px;
         }
 
-        &::-webkit-scrollbar-thumb { 
+        &::-webkit-scrollbar-thumb {
             background: $mainLightBrown;
             border-radius: 20px;
         }
@@ -40,7 +40,7 @@ section#team-members{
             background: $mainBlue;
             border-radius: 20px;
         }
-    
+
         li{
             width: 98%;
             margin-bottom: 12px;
@@ -66,7 +66,7 @@ section#team-members{
             }
 
         }
-        
+
     }
 
     button{
@@ -122,7 +122,7 @@ section#team-members{
                 width: 80%;
                 height: 30vh;
                 overflow-y: auto;
-                
+
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -131,15 +131,15 @@ section#team-members{
                 row-gap: 12px;
 
                 &::-webkit-scrollbar {
-                    width: 7px; 
-                    height: 10px; 
+                    width: 7px;
+                    height: 10px;
                 }
-        
-                &::-webkit-scrollbar-thumb { 
+
+                &::-webkit-scrollbar-thumb {
                     background: $mainLightBrown;
                     border-radius: 20px;
                 }
-        
+
                 &::-webkit-scrollbar-track {
                     background: $mainBlue;
                     border-radius: 20px;
@@ -148,12 +148,12 @@ section#team-members{
                 li{
                     width: 90%;
                     padding: 3px 15px;
-        
+
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
                     flex-wrap: nowrap;
-        
+
                     color: $mainBlue;
                     font-weight: 800;
                     background-color: $mainLightBrown;
@@ -166,11 +166,11 @@ section#team-members{
                 }
 
             }
-            
+
             input[type=submit]{
                 width: 80px;
                 height: 35px;
-                
+
                 background-color: transparent;
                 border-radius: 20px;
                 border: 2px solid $mainLightBrown;
@@ -179,10 +179,6 @@ section#team-members{
             }
         }
 
-
     }
 
-
 }
-
-

@@ -6,8 +6,8 @@ div#teams-list-parent{
 
 
     #list-legend{
-        width: 50%;
-        margin-left: 45%;
+        width: 85%;
+        margin-left: 10%;
         margin-right: 5%;
         margin-bottom: 10px;
 
@@ -33,15 +33,15 @@ div#teams-list-parent{
         flex-direction: column;
         flex-wrap: nowrap;
         row-gap: 15px;
-        
+
         overflow-y: auto;
 
         &::-webkit-scrollbar {
-            width: 6px; 
-            height: 10px; 
+            width: 6px;
+            height: 10px;
         }
 
-        &::-webkit-scrollbar-thumb { 
+        &::-webkit-scrollbar-thumb {
             background: $mainLightBrown;
             border-radius: 20px;
         }
