@@ -4,70 +4,74 @@ main#create-team-page{
     margin-bottom: 40vh;
     margin-top: 10vh;
 
-    
+
     >section{
         width: 100%;
+        padding-left: 15%;
+        padding-right: 15%;
 
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
         flex-wrap: wrap;
-        padding-left: 15%;
-        padding-right: 15%;
         column-gap: 150px;
         row-gap: 80px;
 
         h2{
             width: 100%;
-            
+
+            color: $mainLightBrown;
             text-align: center;
             font-size: 3em;
-            color: $mainLightBrown;
         }
-        
+
         form{
             width: 100%;
 
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: row;
             flex-wrap: wrap;
-            row-gap: 60px;
+            row-gap: 120px;
 
 
 
             #left-box{
                 width: 250px;
-                color: $mainLightBrown;
+                margin-top: 100px;
+
                 display: flex;
                 justify-content: center;
                 align-items: flex-start;
                 flex-direction: column;
                 flex-wrap: nowrap;
 
+                color: $mainLightBrown;
+
                 #profile-picture{
                     width: 100%;
                     aspect-ratio: 0.9;
-                    align-self: flex-start;
-    
+
                     display: flex;
                     justify-content: center;
+                    align-self: flex-start;
                     align-items: center;
-            
+
                     object-fit: cover;
                     background-color: $mainLightBrown;
-        
+
                     img{
                         transform: scale(1.5);
                     }
-            
+
                 }
 
                 h3{
                     margin-top: 40px;
                     margin-bottom: 10px;
+
                     font-size: 2em;
 
                 }
@@ -77,23 +81,19 @@ main#create-team-page{
                     padding: 5px 10px;
                     border-radius: 20px;
                 }
-
-
             }
-            
+
 
             #right-box{
                 width: 40%;
-                
+
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
                 flex-wrap: nowrap;
 
-                
-                
-                
+
                 #team-name-input{
                     width: 100%;
                     margin-bottom: 40px;
@@ -112,12 +112,13 @@ main#create-team-page{
                     input{
                         width: 60%;
                         padding: 5px 10px;
+
                         border-radius: 20px;
                     }
 
                 }
-                
-                
+
+
                 section#team-members{
                     width: 100% !important;
                 }
@@ -127,13 +128,14 @@ main#create-team-page{
                 width: 20%;
                 margin-left: 40%;
                 margin-right: 40%;
-                
                 padding: 5px 10px;
-                cursor: pointer;
+
 
                 color: $mainLightBrown;
                 font-size: 1.5em;
                 text-align: center;
+                cursor: pointer;
+
                 background-color: transparent;
                 border: 2px solid $mainLightBrown;
                 border-radius: 60px;

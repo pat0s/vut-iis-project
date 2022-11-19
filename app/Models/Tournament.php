@@ -13,10 +13,12 @@ class Tournament extends Model
     protected $table = 'TOURNAMENT';
     protected $primaryKey = 'tournament_id';
 
-//    protected $fillable = [
-//        'tournament_name',
-//        'description',
-//        'start_date',
-//        'pricepool',
-//    ];
+
+    /**
+     * Tournament has many participants
+     */
+    public function participants()
+    {
+        return $this->hasMany(Participant::class, 'tournament_id', 'tournament_id');
+    }
 }

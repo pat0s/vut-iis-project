@@ -1,10 +1,12 @@
-@props([
-    'userID' => '1',
-])
-
 <li>
-    <a href="/user/{{$userID}}">
-        Mista MrDalo
+    <a href="/users/{{$member->person_id}}">
+        {{$member->username}}
     </a>
-    <a href=""><img src="{{asset('/img/Star.svg')}}" alt="Trash"></a>
+    @if($teamManager and $member->person_id != $teamManagerId)
+        <a href=""><img src="{{asset('/img/Trash.svg')}}" alt="Trash"></a>
+    @endif
+
+    @if($member->person_id == $teamManagerId)
+        <img src="{{asset('/img/Star.svg')}}" alt="Star">
+    @endif
 </li>

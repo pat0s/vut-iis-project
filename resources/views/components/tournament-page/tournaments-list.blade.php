@@ -16,6 +16,14 @@
             <input type="radio" id="unstarted" name="filterValue" value="unstarted">
             <label for="unstarted">unstarted</label>
         </div>
+        <div>
+            <input type="radio" id="unstarted" name="filterValue" value="approved">
+            <label for="unstarted">approved</label>
+        </div>
+        <div>
+            <input type="radio" id="unstarted" name="filterValue" value="unapproved">
+            <label for="unstarted">unapproved</label>
+        </div>
     </form>
 
     <ul>

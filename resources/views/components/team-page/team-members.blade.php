@@ -1,50 +1,35 @@
-@props([
-    'useFlag' => '1',
-])
-
 <section id="team-members">
     <h3>Members</h3>
-    <ul>
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-        
-        <x-team-page.team-members-item 
-            :userID="1"
-        />
-
-        
+    <ul id="list-of-members">
+        @foreach($members as $member)
+            <x-team-page.team-members-item
+                :member="$member"
+                :teamManager="$teamManager"
+                :teamManagerId="$team->manager_id"
+            />
+        @endforeach
     </ul>
 
-    <button type="button" onclick="window.addMemberToTeambuttonHandler({{$useFlag}})"><p>+</p></button>
+    @if($teamManager)
+        <button type="button" onclick="window.addMemberToTeambuttonHandler()"><p>+</p></button>
 
-    <fieldset id="add-new-member-to-team-fieldset" class="hidden-element">
-        <input list="members" name="member-name">
-        <datalist id="members">
+        <div class="hidden-element" id="add-new-member-to-team-fieldset">
 
-            {{-- @foreach ($users as $user)
-                <option value="{{$user->name}}">
-            @endforeach --}}
+            <form method="POST" action="/teams/{{$team->team_id}}/add-member">
+                @csrf
 
-            <option value="Mista MrDalo">
-            <option value="Mista Pat0s">
-            <option value="Mista Sek1no">
-            <option value="Mista Anton van der Tonislav">
-            <option value="Mista LOva">
-        </datalist>
-        <input type="button" value="Add">
-    </fieldset>
+                <ul id="list-of-users">
+                     @foreach($users as $user)
+                         <li>
+                            <input type="checkbox" name="members[]" value="{{$user->person_id}}" id="{{$user->person_id}}">
+                            <label for="{{$user->person_id}}">{{$user->username}}</label>
+                         </li>
+                    @endforeach
+                </ul>
+
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    @endif
 
 </section>

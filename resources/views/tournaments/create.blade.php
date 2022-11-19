@@ -26,14 +26,23 @@
                     <option value="8">8</option>
                     <option value="4">4</option>
                     <option value="2">2</option>
-                  </select>
+                </select>
+                
+                <label class="item" for="tournament-sport">Sport</label>
+                <select class="item" id="tournament-sport" name="tournament-sport">
+                    <option value="tenis-1">tenis (1v1)</option>
+                    <option value="futbal-5">futbal (5v5)</option>
+                    <option value="CSGO-5">CSGO (5v5)</option>
+                    <option value="sipky-1">sipky (1v1)</option>
+                    <option value="stolnifutbal-2">stolni futbal (2v2)</option>
+                </select>
 
-                <span class="item" id="label-for-switch"> Individual participants</span>
+                {{-- <span class="item" id="label-for-switch"> Individual participants</span>
                 <label class="switch item" for="tournament-for-teams">
 
                         <input type="checkbox" name="tournament-for-teams" id="tournament-for-teams" onclick="window.switchButtonHandler()">
                         <span class="slider round" id="switch-round-button"></span>
-                </label>
+                </label> --}}
 
                 <input type="submit" id="submit-button" value="Create tournament">
             </form>

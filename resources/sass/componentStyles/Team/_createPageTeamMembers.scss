@@ -1,0 +1,133 @@
+@import "../variables";
+
+
+section#create-page-team-members{
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+
+
+    h3{
+        width: 90%;
+        text-align: center;
+        color: $mainLightBrown;
+        font-size: 2em;
+        //padding-right: 10%;
+    }
+
+
+
+    button{
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: transparent;
+        border: solid 2px $mainLightBrown;
+        border-radius: 50px;
+        color: $mainLightBrown;
+
+        cursor: pointer;
+
+        p{
+            position:relative;
+            top: -4px;
+            font-size: 2.2em;
+            font-weight: 200;
+        }
+    }
+
+
+    #add-new-member-to-team-fieldset{
+        width: 100%;
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        row-gap: 30px;
+
+        border: initial;
+
+        ul#list-of-users{
+            width: 80%;
+            height: 30vh;
+            overflow-y: auto;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            row-gap: 12px;
+
+            &::-webkit-scrollbar {
+                width: 7px;
+                height: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $mainLightBrown;
+                border-radius: 20px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: $mainBlue;
+                border-radius: 20px;
+            }
+
+            li{
+                width: 90%;
+                padding: 3px 15px;
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-wrap: nowrap;
+
+                color: $mainBlue;
+                font-weight: 800;
+                background-color: $mainLightBrown;
+                border-radius: 30px;
+
+                label{
+                    width: 90%;
+                    text-align: center;
+                }
+            }
+
+            #team-manager{
+                background-color: $mainBlack;
+                color: $mainLightBrown;
+                border: $mainLightBrown solid 2px;
+            }
+        }
+
+
+        input[type=submit]{
+            width: 80px;
+            height: 35px;
+
+            background-color: transparent;
+            border-radius: 20px;
+            border: 2px solid $mainLightBrown;
+            color: $mainLightBrown;
+            cursor: pointer;
+        }
+    }
+
+
+}
+
+

@@ -1,11 +1,24 @@
 .button-styled{
     // width: 40%;
-    padding: 4px 10px;
+    padding: 4px 20px;
     
     color: $mainLightBrown;
     font-weight: 800;
     border: 2px solid $mainLightBrown;
     background-color: transparent;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    
+}
+
+.button-styled-full{
+    padding: 4px 20px;
+    
+    color: $mainBlue;
+    font-weight: 800;
+    border: 2px solid $mainLightBrown;
+    background-color: $mainLightBrown;
     border-radius: 30px;
     cursor: pointer;
     text-decoration: none;

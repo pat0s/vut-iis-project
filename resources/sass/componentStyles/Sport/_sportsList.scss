@@ -1,14 +1,14 @@
 @import "../variables";
 
 
-div#users-list-parent{
-    width: 80%;
+div#sports-list-parent{
+    width: 100%;
 
 
     #list-legend{
-        width: 60%;
-        margin-left: 18%;
-        margin-right: 22%;
+        width: 50%;
+        margin-left: 45%;
+        margin-right: 5%;
         margin-bottom: 10px;
 
         display: flex;
@@ -22,9 +22,9 @@ div#users-list-parent{
         }
     }
 
-    #users-list{
+    #sports-list{
         width: 100%;
-        max-height: 80vh;
+        max-height: 60vh;
         padding: 5px 20px;
 
         display: flex;
