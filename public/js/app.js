@@ -2058,43 +2058,19 @@ module.exports = {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_tournament__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/tournament */ "./resources/js/modules/tournament.js");
-/* harmony import */ var _modules_tournament__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_tournament__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/profile */ "./resources/js/modules/profile.js");
-/* harmony import */ var _modules_profile__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_profile__WEBPACK_IMPORTED_MODULE_1__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-
-var loggedUserDiv = document.getElementById('logged-user-div');
+__webpack_require__(/*! ./modules/user */ "./resources/js/modules/user.js");
+__webpack_require__(/*! ./modules/sport */ "./resources/js/modules/sport.js");
+__webpack_require__(/*! ./modules/team */ "./resources/js/modules/team.js");
+__webpack_require__(/*! ./modules/tournament */ "./resources/js/modules/tournament.js");
 var userNavDiv = document.getElementById('user-nav-div');
-var addNewMemberFieldset = document.getElementById('add-new-member-to-team-fieldset');
-var switchRoundButton = document.getElementById('switch-round-button');
-var labelForSwitch = document.getElementById('label-for-switch');
-var switchButton = document.getElementById('tournament-for-teams');
 window.changePage = function (URL) {
   window.location.href = URL;
 };
 window.clickOnUserNavDiv = function () {
   userNavDiv.classList.toggle('hidden-element');
-};
-window.addMemberToTeambuttonHandler = function () {
-  addNewMemberFieldset.classList.toggle('hidden-element');
-};
-var isChecked = false;
-window.switchButtonHandler = function () {
-  isChecked = !isChecked;
-  if (isChecked) {
-    console.log("Checkbox is checked..");
-    labelForSwitch.innerText = "Teams";
-  } else {
-    console.log("Checkbox is not checked..");
-    labelForSwitch.innerText = "Individual participants";
-  }
-  switchRoundButton.classList.toggle('triggered');
 };
 
 /***/ }),
@@ -2135,28 +2111,28 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/modules/profile.js":
-/*!*****************************************!*\
-  !*** ./resources/js/modules/profile.js ***!
-  \*****************************************/
+/***/ "./resources/js/modules/sport.js":
+/*!***************************************!*\
+  !*** ./resources/js/modules/sport.js ***!
+  \***************************************/
 /***/ (() => {
 
-var editButton = document.getElementById('edit-button');
-var submitButton = document.getElementById('submit-button');
-var cancelButton = document.getElementById('cancel-button');
-var formPTags = Array.from(document.getElementsByClassName('form-p-tag'));
-var formInputTags = Array.from(document.getElementsByClassName('form-input-tag'));
-window.buttonPressedProfile = function () {
-  console.log("button pressed");
-  editButton.classList.toggle('hidden-element');
-  submitButton.classList.toggle('hidden-element');
-  cancelButton.classList.toggle('hidden-element');
-  formPTags.forEach(function (item) {
-    item.classList.toggle('hidden-element');
-  });
-  formInputTags.forEach(function (item) {
-    item.classList.toggle('hidden-element');
-  });
+var sportCreateForm = document.getElementById('create-form');
+window.createSportButtonHandler = function () {
+  sportCreateForm.classList.toggle('hidden-element');
+};
+
+/***/ }),
+
+/***/ "./resources/js/modules/team.js":
+/*!**************************************!*\
+  !*** ./resources/js/modules/team.js ***!
+  \**************************************/
+/***/ (() => {
+
+var addNewMemberFieldset = document.getElementById('add-new-member-to-team-fieldset');
+window.addMemberToTeambuttonHandler = function () {
+  addNewMemberFieldset.classList.toggle('hidden-element');
 };
 
 /***/ }),
@@ -2192,6 +2168,32 @@ window.buttonPressedTournament = function () {
 window.joinTournament = function () {
   console.log("join Tournament");
   // return false;
+};
+
+/***/ }),
+
+/***/ "./resources/js/modules/user.js":
+/*!**************************************!*\
+  !*** ./resources/js/modules/user.js ***!
+  \**************************************/
+/***/ (() => {
+
+var editButton = document.getElementById('edit-button');
+var submitButton = document.getElementById('submit-button');
+var cancelButton = document.getElementById('cancel-button');
+var formPTags = Array.from(document.getElementsByClassName('form-p-tag'));
+var formInputTags = Array.from(document.getElementsByClassName('form-input-tag'));
+window.buttonPressedProfile = function () {
+  console.log("button pressed");
+  editButton.classList.toggle('hidden-element');
+  submitButton.classList.toggle('hidden-element');
+  cancelButton.classList.toggle('hidden-element');
+  formPTags.forEach(function (item) {
+    item.classList.toggle('hidden-element');
+  });
+  formInputTags.forEach(function (item) {
+    item.classList.toggle('hidden-element');
+  });
 };
 
 /***/ }),
@@ -19688,30 +19690,6 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	
