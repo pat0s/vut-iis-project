@@ -301,7 +301,7 @@ input:checked + .slider:before {
 }
 
 div#flash-message {
-  position: absolute;
+  position: fixed;
   bottom: 5vh;
   right: 5%;
   padding: 10px 15px;
@@ -313,9 +313,12 @@ div#flash-message {
   background-color: #FFDFD0;
   color: #23273E;
   border-radius: 20px;
+  z-index: 10;
 }
 div#flash-message h2 {
   text-align: center;
+  font-size: 1em !important;
+  color: #23273E !important;
 }
 div#flash-message.success {
   background-color: #90ff90;

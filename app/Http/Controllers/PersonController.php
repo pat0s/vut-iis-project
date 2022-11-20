@@ -154,7 +154,7 @@ class PersonController extends Controller
         try {
             $user->save();
         } catch (\Exception $e) {
-            return back()->withErrors(['update-error' => 'Failed to update your profile.']);
+            return redirect()->back()->with('error', 'Failed to update your profile.');
         }
 
         return redirect()->back()->with('message', 'Your profile has been updated.');
@@ -180,7 +180,7 @@ class PersonController extends Controller
         try {
             $user->save();
         } catch (\Exception $e) {
-            return back()->withErrors(['update-error' => 'Failed to update admin role.']);
+            return back()->with('error','Failed to update admin role.');
         }
 
         return redirect()->back()->with('message', $message);
@@ -218,7 +218,7 @@ class PersonController extends Controller
         try {
             $user->save();
         } catch (\Exception $e) {
-            return back()->withErrors(['update-error' => 'Failed to change your password.']);
+            return back()->with('error', 'Failed to change your password.');
         }
 
         return redirect('/')->with('message', 'Your password has been changed.');

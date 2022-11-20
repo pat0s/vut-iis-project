@@ -1,3 +1,3 @@
-<div id="flash-message" class="hidden-element {{$successOrerror}}">
+<div id="flash-message" class="{{$successOrerror}}">
     <h2>{{$message}}</h2>
 </div>

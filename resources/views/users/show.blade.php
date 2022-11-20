@@ -1,5 +1,11 @@
 <x-layout>
     <main id="profile-page">
+        @if(Session::has('message'))
+            <x-flash-message message="{{Session::get('message')}}" successOrerror="success"/>
+        @elseif(Session::has('error'))
+            <x-flash-message message="{{Session::get('error')}}" successOrerror="error"/>
+        @endif
+
         <section>
             <h2>{{$user->username}}</h2>
             <div id="profile-picture">
