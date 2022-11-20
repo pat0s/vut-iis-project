@@ -1588,6 +1588,11 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
   padding-right: 25%;
   text-align: right;
 }
+.team-list-item a.highlighted-team {
+  background-color: #202227;
+  color: #FFDFD0;
+  border: #FFDFD0 solid 2px;
+}
 
 #tournament-form {
   width: 100%;

@@ -1,5 +1,10 @@
 <li class="team-list-item">
-    <a href="/teams/{{$teamID}}">
+    @auth
+        <a href="/teams/{{$teamID}}" class={{array_search($teamID , array_column( auth()->user()->teams->toArray(), 'team_id')) ? "highlighted-team" : ""}}>
+    @endauth
+    @guest
+        <a href="/teams/{{$teamID}}" >
+    @endguest
         <p>{{$teamID}}</p>
         <p>{{$teamName}}</p>
         <p>{{$numberOfMembers}}</p>
