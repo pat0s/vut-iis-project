@@ -1591,6 +1591,11 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
   padding-right: 25%;
   text-align: right;
 }
+.team-list-item a.highlighted-team {
+  background-color: #202227;
+  color: #FFDFD0;
+  border: #FFDFD0 solid 2px;
+}
 
 #tournament-form {
   width: 100%;
@@ -2247,7 +2252,7 @@ main#sport-page > section form#create-form {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-items: center;
-  row-gap: 20px;
+  row-gap: 50px;
 }
 main#sport-page > section form#create-form div {
   display: flex;
@@ -2274,18 +2279,21 @@ div#sports-list-parent {
   width: 100%;
 }
 div#sports-list-parent #list-legend {
-  width: 50%;
-  margin-left: 45%;
-  margin-right: 5%;
+  width: 100%;
+  padding-left: calc(10% + 20px);
+  padding-right: calc(10% + 20px);
   margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 div#sports-list-parent #list-legend p {
   color: #FFDFD0;
+}
+div#sports-list-parent #list-legend p:nth-child(2) {
+  text-align: center;
+}
+div#sports-list-parent #list-legend p:nth-child(3) {
+  text-align: right;
 }
 div#sports-list-parent #sports-list {
   width: 100%;
@@ -2316,12 +2324,18 @@ div#sports-list-parent #sports-list::-webkit-scrollbar-track {
   width: 100%;
   padding: 5px 10%;
   list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: #FFDFD0;
   color: #23273E;
   border-radius: 30px;
+}
+.sport-list-item p:nth-child(2) {
+  text-align: center;
+}
+.sport-list-item p:nth-child(3) {
+  padding-right: 20%;
+  text-align: right;
 }
 
 * {

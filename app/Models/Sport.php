@@ -11,4 +11,12 @@ class Sport extends Model
 
     public $timestamps = false;
     protected $table = 'SPORT';
+    protected $primaryKey = 'sport_id';
+
+
+    protected $fillable = [
+        'name',
+        'number_of_players',
+    ];
+
 }

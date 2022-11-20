@@ -1,21 +1,18 @@
 <div id="sports-list-parent">
 
     <div id="list-legend">
+        <p></p>
         <p>Name of the sport</p>
         <p>Number of members</p>
     </div>
     
     <ul id="sports-list">
-        
-        @for ($i = 0; $i < 20; $i++)
+        @foreach ($sports as $sport)
             <x-sport-page.sports-list-item
-                :teamID="1"
-                :teamName="'Sport name'"
-                :numberOfMembers="1"
+                :sportID="$sport->sport_id"
+                :sportName="$sport->name"
+                :numberOfPlayers="$sport->number_of_players"
             />
-        @endfor
-
+        @endforeach
     </ul>
-
-
 </div>
