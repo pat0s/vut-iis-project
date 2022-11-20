@@ -177,7 +177,7 @@ class PersonController extends Controller
     {
         $formFields = $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|confirmed|min:6',
+            'new_password' => 'required|confirmed|min:6|different:old_password',
         ]);
 
         // check old password
