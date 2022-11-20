@@ -6,20 +6,20 @@ div#users-list-parent{
 
 
     #list-legend{
-        width: 60%;
-        margin-left: 18%;
-        margin-right: 22%;
+        width: calc(100% - 45px);
         margin-bottom: 10px;
+        margin-left: 20px;
+        margin-right: 25px;
+        padding-left: 14%;
+        padding-right: 5%;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: 0.75fr 1fr 1fr 1fr;
 
         p{
             color: $mainLightBrown;
         }
+        
     }
 
     #users-list{

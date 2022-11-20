@@ -3,27 +3,44 @@
 
 div#teams-list-parent{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
 
 
     #list-legend{
-        width: 85%;
-        margin-left: 10%;
-        margin-right: 5%;
+        width: 62%;
+        margin-left: 19%;
+        margin-right: 19%;
         margin-bottom: 10px;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+        // flex-direction: row;
+        // flex-wrap: nowrap;
+
+        display: grid;
+        grid-template-columns: 0.75fr 1fr 1fr;
+
 
         p{
             color: $mainLightBrown;
         }
+
+        p:nth-child(2){
+            text-align: center;
+        }
+
+        p:nth-child(3){
+            text-align: right;
+        }
     }
 
     #teams-list{
-        width: 100%;
+        width: 80%;
         max-height: 80vh;
         padding: 5px 20px;
 

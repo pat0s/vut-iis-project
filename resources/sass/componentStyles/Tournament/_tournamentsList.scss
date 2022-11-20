@@ -84,21 +84,39 @@
                     background-color: $mainLightBrown;
                     border-radius: 15px;
                     color: $mainBlue;
-                    column-gap: 33%;
                     outline: 2px solid $mainLightBrown;
+
+                    p{
+                        width: calc((1/3)*100%);
+                    }
 
                     p:nth-child(2){
                         font-weight: 800;
                         font-size: 1.2em;
+                        text-align: center;
                     }
                 }
                 
                 div:nth-child(2){
                     height: 40%;    
 
-                    justify-content: space-between;
+                    justify-content: flex-start;
 
                     color: $mainLightBrown;
+                    
+                    p{
+                        width: calc((1/3)*100%);
+                    }
+
+                    p:nth-child(2){
+                        text-align: center;
+                    }
+                    
+                    p:nth-child(3){
+                        text-align: right;
+                    }
+
+                    
 
                 }
 

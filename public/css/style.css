@@ -399,18 +399,29 @@ main#main-page #quote a {
   background-color: #FFDFD0;
   border-radius: 15px;
   color: #23273E;
-  -moz-column-gap: 30%;
-       column-gap: 30%;
   outline: 2px solid #FFDFD0;
+}
+.main-tournament-list div ul li a div:first-child p {
+  width: 33.3333333333%;
 }
 .main-tournament-list div ul li a div:first-child p:nth-child(2) {
   font-weight: 800;
   font-size: 1.2em;
+  text-align: center;
 }
 .main-tournament-list div ul li a div:nth-child(2) {
   height: 40%;
   justify-content: space-between;
   color: #FFDFD0;
+}
+.main-tournament-list div ul li a div:nth-child(2) p {
+  width: 33.3333333333%;
+}
+.main-tournament-list div ul li a div:nth-child(2) p:nth-child(2) {
+  text-align: center;
+}
+.main-tournament-list div ul li a div:nth-child(2) p:nth-child(3) {
+  text-align: right;
 }
 .main-tournament-list div ul li:last-child {
   margin-bottom: 0;
@@ -901,15 +912,14 @@ div#users-list-parent {
   width: 80%;
 }
 div#users-list-parent #list-legend {
-  width: 60%;
-  margin-left: 18%;
-  margin-right: 22%;
+  width: calc(100% - 45px);
   margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  margin-left: 20px;
+  margin-right: 25px;
+  padding-left: 14%;
+  padding-right: 5%;
+  display: grid;
+  grid-template-columns: 0.75fr 1fr 1fr 1fr;
 }
 div#users-list-parent #list-legend p {
   color: #FFDFD0;
@@ -945,10 +955,12 @@ div#users-list-parent #users-list::-webkit-scrollbar-track {
 }
 .user-list-item a {
   width: 100%;
-  padding: 5px 20%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15%;
+  padding-right: 5%;
+  display: grid;
+  grid-template-columns: 0.75fr 1fr 1fr 1fr;
   background-color: #FFDFD0;
   color: #23273E;
   border-radius: 30px;
@@ -1015,7 +1027,6 @@ section#team-members {
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: column;
-  min-height: 60vh;
 }
 section#team-members h3 {
   width: 90%;
@@ -1472,23 +1483,31 @@ main#teams-page > section a.button-styled {
 
 div#teams-list-parent {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 div#teams-list-parent #list-legend {
-  width: 85%;
-  margin-left: 10%;
-  margin-right: 5%;
+  width: 62%;
+  margin-left: 19%;
+  margin-right: 19%;
   margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: 0.75fr 1fr 1fr;
 }
 div#teams-list-parent #list-legend p {
   color: #FFDFD0;
 }
+div#teams-list-parent #list-legend p:nth-child(2) {
+  text-align: center;
+}
+div#teams-list-parent #list-legend p:nth-child(3) {
+  text-align: right;
+}
 div#teams-list-parent #teams-list {
-  width: 100%;
+  width: 80%;
   max-height: 80vh;
   padding: 5px 20px;
   display: flex;
@@ -1519,13 +1538,19 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
 .team-list-item a {
   width: 100%;
   padding: 5px 10%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.75fr 1fr 1fr;
   background-color: #FFDFD0;
   color: #23273E;
   border-radius: 30px;
   text-decoration: none;
+}
+.team-list-item a p:nth-child(2) {
+  text-align: center;
+}
+.team-list-item a p:nth-child(3) {
+  padding-right: 25%;
+  text-align: right;
 }
 
 #tournament-form {
@@ -1996,18 +2021,29 @@ section#more-info div#more-info-box p {
   background-color: #FFDFD0;
   border-radius: 15px;
   color: #23273E;
-  -moz-column-gap: 33%;
-       column-gap: 33%;
   outline: 2px solid #FFDFD0;
+}
+#tournament-tournaments-list ul li a div:first-child p {
+  width: 33.3333333333%;
 }
 #tournament-tournaments-list ul li a div:first-child p:nth-child(2) {
   font-weight: 800;
   font-size: 1.2em;
+  text-align: center;
 }
 #tournament-tournaments-list ul li a div:nth-child(2) {
   height: 40%;
-  justify-content: space-between;
+  justify-content: flex-start;
   color: #FFDFD0;
+}
+#tournament-tournaments-list ul li a div:nth-child(2) p {
+  width: 33.3333333333%;
+}
+#tournament-tournaments-list ul li a div:nth-child(2) p:nth-child(2) {
+  text-align: center;
+}
+#tournament-tournaments-list ul li a div:nth-child(2) p:nth-child(3) {
+  text-align: right;
 }
 #tournament-tournaments-list ul li:last-child {
   margin-bottom: 0;

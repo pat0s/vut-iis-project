@@ -12,8 +12,11 @@
                 <label class="item" for="tournament-description">Description</label>
                 <textarea class="item" name="tournament-description" id="tournament-description" cols="50" rows="5"></textarea>
                 
-                <label class="item" for="tournament-date">Date</label>
-                <input class="item" type="datetime-local" name="tournament-date" id="tournament-date">
+                <label class="item" for="tournament-start-date">Start date</label>
+                <input class="item" type="datetime-local" name="tournament-start-date" id="tournament-start-date">
+                
+                <label class="item" for="tournament-end-date">End date</label>
+                <input class="item" type="datetime-local" name="tournament-end-date" id="tournament-end-date">
                 
                 <label class="item" for="tournament-pricepool">Pricepool</label>
                 <input class="item" type="text" name="tournament-pricepool" id="tournament-pricepool">

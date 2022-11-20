@@ -11,10 +11,11 @@
         <div>
             <p>ID: &nbsp;&nbsp;{{$tournamentID}}</p>
             <p>{{$tournamentName}}</p>
+            <p></p>
         </div>
         <div>
             <p>{{$sport}}</p>
-            <p>Počet účastníku: &nbsp;&nbsp; {{$numberOfParticipants}}</p>
+            <p>Number of participants: &nbsp;&nbsp; {{$numberOfParticipants}}</p>
             <p>{{$dateOfStart}}</p>
         </div>
     </a>
