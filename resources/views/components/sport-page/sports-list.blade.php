@@ -6,14 +6,22 @@
     </div>
     
     <ul id="sports-list">
-        
-        @for ($i = 0; $i < 20; $i++)
+        @foreach ($sports as $sport)
+        {{-- {{dd($sport)}} --}}
+            <x-sport-page.sports-list-item
+                :sportID="$sport->sport_id"
+                :sportName="$sport->name"
+                :numberOfPlayers="$sport->number_of_players"
+            />
+        @endforeach
+
+        {{-- @for ($i = 0; $i < 20; $i++)
             <x-sport-page.sports-list-item
                 :teamID="1"
                 :teamName="'Sport name'"
                 :numberOfMembers="1"
             />
-        @endfor
+        @endfor --}}
 
     </ul>
 

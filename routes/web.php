@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
@@ -109,10 +110,6 @@ Route::get('/statistics', function () {
 });
 
 //--------------------- Sport ---------------------
-Route::get('/sport', function () {
-    return view('sport.index');
-});
+Route::get('/sport', [SportController::class, 'index']);
 
-Route::get('/sport/create', function () {
-    return view('sport.create');
-});
+Route::post('/sport/create', [SportController::class, 'store']);
