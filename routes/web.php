@@ -56,6 +56,10 @@ Route::get('/users/{user_id}', [PersonController::class, 'show'])
 Route::post('/users/{user_id}/edit', [PersonController::class, 'edit'])
     ->where('user_id', '[0-9]+');
 
+// Edit profile info
+Route::post('/users/{user_id}/admin', [PersonController::class, 'admin'])
+    ->where('user_id', '[0-9]+');
+
 // -----------------------------------------------------
 
 // --------------------- TeamController ---------------------------

@@ -162,6 +162,32 @@ class PersonController extends Controller
 
 
     /**
+     * Edit profile - add or remove admin role
+     */
+    public function admin(Request $request)
+    {
+        $userId = $request->user_id;
+        $user = Person::find($userId);
+
+        if($request->get('btn-add')) {
+            $message = 'Admin role has been added.';
+            $user->role_id = 2;
+        } elseif ($request->get('btn-remove')) {
+            $message = 'Admin role has been remove.';
+            $user->role_id = 1;
+        }
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return back()->withErrors(['update-error' => 'Failed to update admin role.']);
+        }
+
+        return redirect()->back()->with('message', $message);
+    }
+
+
+    /**
      * Show change password form
      */
     public function password()
