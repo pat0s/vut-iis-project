@@ -1,7 +1,7 @@
 <div id="users-list-parent">
 
     <div id="list-legend">
-        <p>#</p>
+        <p>ID</p>
         <p>Username</p>
         <p>First Name</p>
         <p>Surname</p>

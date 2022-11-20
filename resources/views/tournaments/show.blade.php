@@ -17,6 +17,7 @@
             <x-tournament-page.more-info
 
                 :dateOfStart="'23.10.2022'"
+                :dateOfEnd="'25.10.2022'"
                 :pricePool="'5000EUR and trophies'"
                 :capacity="$tournament->number_of_participants"
                 :sport="'Cycling'"

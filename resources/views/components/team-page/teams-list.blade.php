@@ -1,7 +1,7 @@
 <div id="teams-list-parent">
 
     <div id="list-legend">
-        <p>#</p>
+        <p>ID</p>
         <p>Name of the team</p>
         <p>Number of participants</p>
     </div>
