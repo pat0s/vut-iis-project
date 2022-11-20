@@ -2,7 +2,7 @@
 
 
 div#flash-message{
-    position: absolute;
+    position: fixed;
     bottom: 5vh;
     right: 5%;
     padding: 10px 15px;
@@ -17,9 +17,12 @@ div#flash-message{
     background-color: $mainLightBrown;
     color: $mainBlue;
     border-radius: 20px;
+    z-index: 10;
 
     h2{
         text-align: center;
+        font-size: 1em !important;
+        color: $mainBlue !important;
     }
 
 
@@ -27,7 +30,7 @@ div#flash-message{
         background-color: $successGreen;
         color: $mainBlue;
     }
-    
+
     &.error{
         background-color: $errorRed;
         color: $mainBlue;

@@ -1,5 +1,4 @@
 <x-layout>
-
     <main id="sport-page">
         <section>
             <h2>Sports</h2>
@@ -12,21 +11,22 @@
             <button id="plus-btn" onclick="window.createSportButtonHandler()"><p>+</p></button>
 
 
-            <form method="POST" action="" id="create-form" class="hidden-element">
+            <form method="POST" action="/sport/create" id="create-form" class="hidden-element">
+                    @csrf
                 <div>
-                    <label for="sport-name">Sport name</label>
-                    <input type="text" name="sport-name">
+                    <label for="name">Sport name</label>
+                    <input type="text" name="name">
                 </div>
                 <div>
-                    <label for="team-member-number">Members in team</label>
-                    <input type="number" min="1" max="20" name="team-member-number">
+                    <label for="number_of_players">Members in team</label>
+                    <input type="number" min="1" max="20" name="number_of_players">
                 </div>
 
                 <button type="submit" class="button-styled">Create sport</button>
 
             </form>
 
-            <x-sport-page.sports-list />
+            <x-sport-page.sports-list :sports="$sports"/>
 
         </section>
 

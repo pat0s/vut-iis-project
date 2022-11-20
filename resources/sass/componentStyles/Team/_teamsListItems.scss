@@ -28,4 +28,10 @@
         }
     }
 
+    a.highlighted-team{
+        background-color: $mainBlack;
+        color: $mainLightBrown;
+        border: $mainLightBrown solid 2px;
+    }
+
 }

@@ -3,7 +3,7 @@
         <p style="color:red;">{{$message}}</p>
     @enderror
 
-    <form method="POST" action="{{'/user/'. $user->person_id .'/edit'}}" id="profile-edit-form">
+    <form method="POST" action="{{'/users/'. $user->person_id .'/edit'}}" id="profile-edit-form">
         @csrf
 
         <table>

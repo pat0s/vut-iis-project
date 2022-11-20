@@ -1,8 +1,14 @@
 <section id="admin-section">
-
     <h3>Admin section</h3>
+    <form method="POST" action="/users/{{$user->person_id}}/admin">
+        @csrf
 
-    <a href="/users/admin/add" class="button-styled-full">Add admin role</a>
-    {{-- <a href="/user/admin/remove" class="button-styled">Remove admin role</a> --}}
+        @if($user->role_id == 1)
+            <input type="submit" name="btn-add" class="button-styled-full" value="Add admin role">
+        @endif
 
+        @if($user->role_id == 2)
+            <input type="submit" name="btn-remove" class="button-styled" value="Remove admin role">
+        @endif
+    </form>
 </section>

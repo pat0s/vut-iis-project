@@ -154,10 +154,36 @@ class PersonController extends Controller
         try {
             $user->save();
         } catch (\Exception $e) {
-            return back()->withErrors(['update-error' => 'Failed to update your profile.']);
+            return redirect()->back()->with('error', 'Failed to update your profile.');
         }
 
         return redirect()->back()->with('message', 'Your profile has been updated.');
+    }
+
+
+    /**
+     * Edit profile - add or remove admin role
+     */
+    public function admin(Request $request)
+    {
+        $userId = $request->user_id;
+        $user = Person::find($userId);
+
+        if($request->get('btn-add')) {
+            $message = 'Admin role has been added.';
+            $user->role_id = 2;
+        } elseif ($request->get('btn-remove')) {
+            $message = 'Admin role has been remove.';
+            $user->role_id = 1;
+        }
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return back()->with('error','Failed to update admin role.');
+        }
+
+        return redirect()->back()->with('message', $message);
     }
 
 
@@ -177,7 +203,7 @@ class PersonController extends Controller
     {
         $formFields = $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|confirmed|min:6',
+            'new_password' => 'required|confirmed|min:6|different:old_password',
         ]);
 
         // check old password
@@ -192,7 +218,7 @@ class PersonController extends Controller
         try {
             $user->save();
         } catch (\Exception $e) {
-            return back()->withErrors(['update-error' => 'Failed to change your password.']);
+            return back()->with('error', 'Failed to change your password.');
         }
 
         return redirect('/')->with('message', 'Your password has been changed.');
