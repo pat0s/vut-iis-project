@@ -1,0 +1,35 @@
+@import "./variables";
+
+
+div#flash-message{
+    position: absolute;
+    bottom: 5vh;
+    right: 5%;
+    padding: 10px 15px;
+
+    width: 250px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $mainLightBrown;
+    color: $mainBlue;
+    border-radius: 20px;
+
+    h2{
+        text-align: center;
+    }
+
+
+    &.success{
+        background-color: $successGreen;
+        color: $mainBlue;
+    }
+    
+    &.error{
+        background-color: $errorRed;
+        color: $mainBlue;
+    }
+}

@@ -300,6 +300,32 @@ input:checked + .slider:before {
   text-decoration: none;
 }
 
+div#flash-message {
+  position: absolute;
+  bottom: 5vh;
+  right: 5%;
+  padding: 10px 15px;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFDFD0;
+  color: #23273E;
+  border-radius: 20px;
+}
+div#flash-message h2 {
+  text-align: center;
+}
+div#flash-message.success {
+  background-color: #90ff90;
+  color: #23273E;
+}
+div#flash-message.error {
+  background-color: #ff9595;
+  color: #23273E;
+}
+
 main#main-page {
   margin-bottom: 40vh;
 }
