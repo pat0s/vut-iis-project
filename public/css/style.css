@@ -1012,7 +1012,7 @@ main#team-page > section h2 {
 }
 main#team-page > section #profile-picture {
   width: 250px;
-  margin-top: 100px;
+  margin-top: 60px;
   aspect-ratio: 0.9;
   display: flex;
   justify-content: center;
@@ -1073,6 +1073,11 @@ section#team-members ul#list-of-members li {
 section#team-members ul#list-of-members li a {
   text-decoration: none;
   color: #23273E;
+}
+section#team-members ul#list-of-members li a:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 section#team-members ul#list-of-members li img {
   transform: scale(0.8);

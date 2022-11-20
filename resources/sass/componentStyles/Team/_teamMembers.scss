@@ -58,6 +58,11 @@ section#team-members{
                 text-decoration: none;
                 color: $mainBlue;
             }
+            a:nth-child(2){
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
             img{
                 transform: scale(0.8);
