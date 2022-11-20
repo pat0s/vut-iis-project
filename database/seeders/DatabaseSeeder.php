@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        Role::factory(3)->create();
+        Role::create(['role_name' => 'user']);  // ID=1
+        Role::create(['role_name' => 'admin']);  // ID=2
+        Role::create(['role_name' => 'super admin']);  // ID=3
 
         Person::factory(50)->create();
         Person::create(array(
@@ -36,7 +37,5 @@ class DatabaseSeeder extends Seeder
         Tournament::factory(2)->create();
 
         Team::factory(5)->create();
-
-
     }
 }
