@@ -966,6 +966,11 @@ div#users-list-parent #users-list::-webkit-scrollbar-track {
   border-radius: 30px;
   text-decoration: none;
 }
+.user-list-item a#highlighted-user {
+  background-color: #202227;
+  color: #FFDFD0;
+  border: #FFDFD0 solid 2px;
+}
 
 section#admin-section {
   width: 40%;
