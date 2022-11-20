@@ -6,19 +6,29 @@ div#sports-list-parent{
 
 
     #list-legend{
-        width: 50%;
-        margin-left: 45%;
-        margin-right: 5%;
+        width: 100%;
+        padding-left:  calc(10% + 20px);
+        padding-right: calc(10% + 20px);
         margin-bottom: 10px;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+        // flex-direction: row;
+        // flex-wrap: nowrap;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
 
         p{
             color: $mainLightBrown;
+        }
+        p:nth-child(2){
+            text-align: center;
+        }
+
+        p:nth-child(3){
+            text-align: right;
         }
     }
 

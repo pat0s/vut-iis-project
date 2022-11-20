@@ -9,8 +9,7 @@
         </section>
 
         <x-main-page.tournament-list />
-        <x-flash-message message="User logged succesfully" successOrerror="success"/>
-    
+
     </main>
 
 </x-layout>
