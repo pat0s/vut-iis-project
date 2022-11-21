@@ -1839,23 +1839,27 @@ main#tournaments-page > section {
   padding-right: 15%;
   -moz-column-gap: 150px;
        column-gap: 150px;
-  row-gap: 80px;
+  row-gap: 30px;
 }
 main#tournaments-page > section h2 {
   width: 100%;
+  margin-bottom: 50px;
   text-align: center;
   font-size: 3em;
   color: #FFDFD0;
 }
 main#tournaments-page > section form#search-from {
-  width: 60%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
 }
 main#tournaments-page > section form#search-from input[type=text] {
-  width: 100%;
+  width: 60%;
   padding: 4px 20px;
   border-radius: 30px;
   background-color: #fff;
@@ -1864,7 +1868,7 @@ main#tournaments-page > section form#search-from button[type=submit] {
   width: 32px;
   height: 32px;
   position: relative;
-  left: -34px;
+  left: -5.5%;
   top: 2px;
   z-index: 4;
   display: flex;
@@ -1880,9 +1884,24 @@ main#tournaments-page > section form#search-from button[type=submit]:hover {
 main#tournaments-page > section form#search-from button[type=submit] img {
   transform: scale(0.8);
 }
-main#tournaments-page > section a.button-styled {
+main#tournaments-page > section form#search-from a.button-styled {
   padding: 4px 20px;
   text-decoration: none;
+}
+main#tournaments-page > section form#search-from div#radio-filter {
+  width: 70%;
+  height: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  color: #FFDFD0;
+}
+main#tournaments-page > section form#search-from div#radio-filter label {
+  font-size: 1.2em;
 }
 
 section#participants {
@@ -2005,21 +2024,6 @@ section#more-info div#more-info-box p {
   align-items: center;
   flex-wrap: wrap;
   row-gap: 30px;
-}
-#tournament-tournaments-list form {
-  width: 70%;
-  height: 30px;
-  margin-left: 15%;
-  margin-right: 15%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  color: #FFDFD0;
-}
-#tournament-tournaments-list form label {
-  font-size: 1.2em;
 }
 #tournament-tournaments-list ul {
   width: 100%;

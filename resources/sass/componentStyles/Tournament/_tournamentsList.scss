@@ -11,27 +11,6 @@
     flex-wrap: wrap;
     row-gap: 30px;
 
-    form{
-        width: 70%;
-        height: 30px;
-        margin-left: 15%;
-        margin-right: 15%;
-
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        
-        color: $mainLightBrown;
-
-        label{
-            font-size: 1.2em;
-        }
-    }
-
-
-
     ul{
         width: 100%;
         max-height: 110vh;
