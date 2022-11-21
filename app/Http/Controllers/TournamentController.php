@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tournament;
+use App\Models\Sport;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TournamentController extends Controller
 {
@@ -29,9 +29,21 @@ class TournamentController extends Controller
 
         $tournament = Tournament::find($request->tournament_id);
 
-        return view('tournaments.show', [
-            'tournament' => $tournament
-        ]);
+        $approved = $this->_isApproved($tournament);
+
+        $viewData = array(
+            'name' => $tournament->tournament_name,
+            'description' => $tournament->description,
+            'start_date' => date('d-m-Y', strtotime($tournament->start_date)),
+            'end_date' => date('d-m-Y', strtotime($tournament->end_date)),
+            'capacity' => $tournament->number_of_participants,
+            'price_pool' => round($tournament->pricepool),
+            'sport' => $tournament->sport->name,
+            'approved' => $approved,
+            'tournament' => $tournament,
+        );
+
+        return view('tournaments.show')->with($viewData);
     }
 
     // Show create form
@@ -44,4 +56,11 @@ class TournamentController extends Controller
         return back();
     }
 
+    private function _isApproved(Tournament $tournament) {
+        $approved = "False";
+        if ($tournament->approved){
+            $approved = "True";
+        }
+        return $approved;
+    }
 }

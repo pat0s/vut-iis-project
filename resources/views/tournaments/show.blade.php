@@ -1,14 +1,14 @@
 <x-layout>
     <main id="tournament-page">
         <section>
-            <h2>{{$tournament->tournament_name}}</h2>
+            <h2>{{$name}}</h2>
 
             <a href="/tournaments/1/approved" class="button-styled" id="approved-button">Approve tournament</a>
 
             <section id="tournament-description">
                 <h3>Description</h3>
 
-                <p>{{$tournament->description}}</p>
+                <p>{{$description}}</p>
 
             </section>
 
@@ -16,11 +16,11 @@
 
             <x-tournament-page.more-info
 
-                :dateOfStart="'23.10.2022'"
-                :dateOfEnd="'25.10.2022'"
-                :pricePool="'5000EUR and trophies'"
-                :capacity="$tournament->number_of_participants"
-                :sport="'Cycling'"
+                :dateOfStart="$start_date"
+                :dateOfEnd="$end_date"
+                :pricePool="$price_pool.'$'"
+                :capacity="$capacity"
+                :sport="$sport"
                 :approved="'True'"
 
                 {{-- :dateOfStart="$tournament->dateOfStart"

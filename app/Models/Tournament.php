@@ -21,4 +21,11 @@ class Tournament extends Model
     {
         return $this->hasMany(Participant::class, 'tournament_id', 'tournament_id');
     }
+
+    /**
+     * Tournament has sport
+    */
+    public function sport() {
+        return $this->belongsTo(Sport::class, 'sport_id', 'sport_id');
+    }
 }

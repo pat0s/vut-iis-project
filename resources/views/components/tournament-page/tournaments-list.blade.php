@@ -32,9 +32,9 @@
             <x-tournament-page.tournaments-list-item
                 :tournamentID="$tournament->tournament_id"
                 :tournamentName="$tournament->tournament_name"
-                :sport="'Futsal'"
+                :sport="$tournament->sport->name"
                 :numberOfParticipants="$tournament->number_of_participants"
-                :dateOfStart="'16/12/2022'"
+                :dateOfStart="date('d-m-Y', strtotime($tournament->start_date))"
             />
         @endforeach
 

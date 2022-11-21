@@ -82,6 +82,7 @@ Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])
     ->where('team_id', '[0-9]+');
 
 // -----------------------------------------------------
+// ----------------------- TournamentController ------------------------------
 
 // Show create form
 Route::get('/tournaments/create', [TournamentController::class, 'create']);
@@ -99,19 +100,11 @@ Route::get('/tournaments/{tournament_id}', [TournamentController::class, 'show']
 //Route::get('/tournaments/{tournament}/edit', [TournamentController::class, 'e'])
 
 
-
-//Route::get('/tournament/{tournament_id}', [TournamentController::class, 'show'])->where('tournament_id', '[0-9]+');
-//
-//Route::get('/tournament/{tournament_id}/edit', function () {
-//    return view('welcome');
-//});
-//
-//
-//Route::get('/tournaments', [TournamentController::class, 'index']);
-
 Route::get('/statistics', function () {
     return view('welcome');
 });
+
+// -----------------------------------------------------
 
 //--------------------- Sport ---------------------
 Route::get('/sport', [SportController::class, 'index']);
