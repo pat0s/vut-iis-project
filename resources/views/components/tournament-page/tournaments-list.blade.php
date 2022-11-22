@@ -24,6 +24,7 @@
             <input type="radio" id="unstarted" name="filterValue" value="unapproved">
             <label for="unstarted">unapproved</label>
         </div>
+        <button type="submit"><img src="{{asset('./img/search.svg')}}" alt="search"></button>
     </form>
 
     <ul>

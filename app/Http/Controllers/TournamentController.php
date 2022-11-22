@@ -15,9 +15,30 @@ class TournamentController extends Controller
         if (isset($request['search'])) {
             $tournamentName = $request['search'];
         }
-
-        $tournaments = Tournament::where('tournament_name', 'like', '%'. $tournamentName .'%')
+        $tournaments1 = Tournament::where('tournament_name', 'like', '%'. $tournamentName .'%')
             ->get();
+
+        $date = date('Y-m-d');;
+        $requestFilterValue = $request['filterValue'];
+//        $request['filterValue'];
+
+
+        if ($requestFilterValue == "finished") {
+            $tournaments2 = Tournament::all()->where('end_date', '<=', $date);
+        } elseif ($requestFilterValue == 'ongoing') {
+            $tournaments2 = Tournament::all()->where('end_date', '>=', $date)
+                ->where('start_date', '<=', $date);
+        } elseif ($requestFilterValue == 'unstarted') {
+            $tournaments2 = Tournament::all()->where('start_date', '<=', $date);
+        } elseif ($requestFilterValue == 'approved') {
+            $tournaments2 = Tournament::all()->where('is_approved', 1);
+        } elseif ($requestFilterValue == 'unapproved') {
+            $tournaments2 = Tournament::all()->where('is_approved', 0);
+        } else {
+            $tournaments2 = Tournament::all();
+        }
+
+        $tournaments = $tournaments1->intersect($tournaments2);
 
         return view('tournaments.index', [
             'tournaments' => $tournaments,
