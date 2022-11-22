@@ -5,52 +5,17 @@
     <a href="/tournaments/create" class="button-styled">Create Tournament</a>
     <div>
         <ul>
+            @foreach($tournaments as $tournament)
+            <x-main-page.tournament-list-item
+                :tournamentID="$tournament->tournament_id"
 
-            <x-main-page.tournament-list-item
-                :tournamentID="'132456'"
+                :tournamentName="$tournament->tournament_name"
 
-                :tournamentName="'Nazov Huj'"
-
-                :sport="'Futsal'"
-                :numberOfParticipants="'8'"
-                :dateOfStart="'16/12/2022'"
+                :sport="$tournament->sport->name"
+                :numberOfParticipants="$tournament->number_of_participants"
+                :dateOfStart="date('d-m-Y', strtotime($tournament->start_date))"
             />
-            <x-main-page.tournament-list-item
-                :tournamentID="'132456'"
-                :tournamentName="'Nazov Turnaja'"
-                :sport="'DOTA 2'"
-                :numberOfParticipants="'16'"
-                :dateOfStart="'16/12/2022'"
-            />
-            <x-main-page.tournament-list-item
-                :tournamentID="'132456'"
-                :tournamentName="'Nazov Turnaja'"
-                :sport="'CSGO: 1v1'"
-                :numberOfParticipants="'4'"
-                :dateOfStart="'16/12/2022'"
-            />
-            <x-main-page.tournament-list-item
-                :tournamentID="'132456'"
-                :tournamentName="'Nazov Turnaja'"
-                :sport="'Tenis'"
-                :numberOfParticipants="'16'"
-                :dateOfStart="'16/12/2022'"
-            />
-            <x-main-page.tournament-list-item
-                :tournamentID="'132456'"
-                :tournamentName="'Nazov Turnaja'"
-                :sport="'CSGO: 1v1'"
-                :numberOfParticipants="'32'"
-                :dateOfStart="'16/12/2022'"
-            />
-            <x-main-page.tournament-list-item
-                :tournamentID="'132456'"
-                :tournamentName="'Nazov Turnaja'"
-                :sport="'Tenis'"
-                :numberOfParticipants="'16'"
-                :dateOfStart="'16/12/2022'"
-            />
-
+            @endforeach
         </ul>
     </div>
 

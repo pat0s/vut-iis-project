@@ -13,7 +13,7 @@
             <a href="#tournaments">></a>
         </section>
 
-        <x-main-page.tournament-list />
+        <x-main-page.tournament-list :tournaments="$tournaments"/>
     </main>
 
 </x-layout>

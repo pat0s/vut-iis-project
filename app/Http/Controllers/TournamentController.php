@@ -71,7 +71,7 @@ class TournamentController extends Controller
         // create tournament
         Tournament::create($params);
 
-        return redirect('/')->with('message', 'Tournament was successfully created.');
+        return redirect('/tournaments')->with('message', 'Tournament was successfully created.');
     }
 
     private function _isApproved(Tournament $tournament) {

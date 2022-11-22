@@ -4,7 +4,6 @@
         <section>
 
             <h2>Create tournament</h2>
-
             <form method="POST" action="/tournaments">
                 @csrf
 
