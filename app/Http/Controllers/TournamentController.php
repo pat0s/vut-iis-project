@@ -57,10 +57,10 @@ class TournamentController extends Controller
         $formFields = $request->validate([
             'tournament_name' => ['required', 'min:3', 'max:50'],
             'description' => 'required',
-            'start-date' => 'required',
-            'end-date' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'pricepool' => 'required',
-            'number-of-participants' => 'required',
+            'number_of_participants' => 'required',
             'sport_id' => 'required',
         ]);
 
