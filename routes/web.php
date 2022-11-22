@@ -84,14 +84,15 @@ Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])
 // -----------------------------------------------------
 // ----------------------- TournamentController ------------------------------
 
-// Show create form
-Route::get('/tournaments/create', [TournamentController::class, 'create']);
-
 // Show list of tournaments
 Route::get('/tournaments', [TournamentController::class, 'index']);
 
 // Store tournament data
 Route::post('/tournaments', [TournamentController::class, 'store']);
+
+// Show create form
+Route::get('/tournaments/create', [TournamentController::class, 'create']);
+
 
 // Single tournament
 Route::get('/tournaments/{tournament_id}', [TournamentController::class, 'show'])

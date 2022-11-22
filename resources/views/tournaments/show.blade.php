@@ -21,7 +21,7 @@
                 :pricePool="$price_pool.'$'"
                 :capacity="$capacity"
                 :sport="$sport"
-                :approved="'True'"
+                :approved="$approved"
 
                 {{-- :dateOfStart="$tournament->dateOfStart"
                 :pricePool="$tournament->pricePool"

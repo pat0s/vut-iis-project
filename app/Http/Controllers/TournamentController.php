@@ -48,17 +48,35 @@ class TournamentController extends Controller
 
     // Show create form
     public function create() {
-        return view('tournaments.create');
+        $sports = Sport::all();
+        return view('tournaments.create', ['sports' => $sports]);
     }
 
     // Store tournament data
-    public function store() {
-        return back();
+    public function store(Request $request) {
+        $formFields = $request->validate([
+            'tournament_name' => ['required', 'min:3', 'max:50'],
+            'description' => 'required',
+            'start-date' => 'required',
+            'end-date' => 'required',
+            'pricepool' => 'required',
+            'number-of-participants' => 'required',
+            'sport_id' => 'required',
+        ]);
+
+        $params = $formFields;
+        $params['manager_id'] = auth()->user()->person_id;
+        $params['is_approved'] = 0;
+
+        // create tournament
+        Tournament::create($params);
+
+        return redirect('/')->with('message', 'Tournament was successfully created.');
     }
 
     private function _isApproved(Tournament $tournament) {
         $approved = "False";
-        if ($tournament->approved){
+        if ($tournament->is_approved){
             $approved = "True";
         }
         return $approved;
