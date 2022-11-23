@@ -13,11 +13,13 @@ class SportFactory extends Factory
      */
     public function definition()
     {
-        $sportNames = ['CSGO 1v1', 'CSGO 5v5', 'Bowling', 'Futsal', 'Darts', 'Double'];
+        $sportNames = ['CSGO', 'DOTA', 'Bowling', 'Futsal', 'Darts', 'Badminton', 'Basketball',
+            'Double', 'Chess', 'Billiard', 'Football', 'Ping-pong', 'Kinball', 'Baseball',
+            'Call of Duty', 'Hide-and-seek', 'League of Legends', 'Running', 'Figure skating'];
 
         return [
             'name' => $this->faker->unique()->randomElement($sportNames),
-            'number_of_players' => $this->faker->randomDigit(),
+            'number_of_players' => $this->faker->randomDigitNotZero(),
         ];
     }
 }

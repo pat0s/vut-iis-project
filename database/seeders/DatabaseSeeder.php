@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         Role::create(['role_name' => 'admin']);  // ID=2
         Role::create(['role_name' => 'super admin']);  // ID=3
 
-        Person::factory(50)->create();
+        Person::factory(500)->create();
         Person::create(array(
             'first_name' => 'admin',
             'surname' => 'super',
@@ -32,10 +32,16 @@ class DatabaseSeeder extends Seeder
             'role_id' => 3,
         ));
 
-        Sport::factory(5)->create();
+        Sport::factory(15)->create();
 
-        Tournament::factory(2)->create();
+        Tournament::factory(25)->create();
 
-        Team::factory(5)->create();
+        Team::factory(50)->create()->each( function($team) {
+            $noMembersWithoutManager = $team->number_of_players-1;
+            $manager = Person::find($team->manager_id);
+            $members = Person::where('person_id', '!=', $team->manager_id)->skip(rand(1,480))->take($noMembersWithoutManager)->get();
+            $members->push($manager);
+            $team->members()->attach($members);
+        });
     }
 }
