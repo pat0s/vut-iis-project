@@ -89,7 +89,7 @@ Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])
     ->middleware('auth');
 
 // Remove member from team
-Route::post('/teams/{team_id}/remove-member/{user_id}', [TeamController::class, 'removeMember'])
+Route::delete('/teams/{team_id}/remove-member/{user_id}', [TeamController::class, 'removeMember'])
     ->where('team_id', '[0-9]+')
     ->where('user_id', '[0-9]+')
     ->middleware('auth');

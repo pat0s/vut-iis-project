@@ -15,7 +15,7 @@
 
             <x-team-page.team-members
                 :members="$members"
-                :teamManager="$teamManager"
+                :isTeamManager="$isTeamManager"
                 :users="$users"
                 :team="$team"
             />

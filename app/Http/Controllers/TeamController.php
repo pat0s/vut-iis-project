@@ -53,7 +53,7 @@ class TeamController extends Controller
             'team' => $team,
             'members' => $team->members,
             'tournaments' => $tournaments,
-            'teamManager' => $this->_isTeamManager($team),
+            'isTeamManager' => $this->_isTeamManager($team),
             'users' => $users,
         );
 
@@ -96,6 +96,23 @@ class TeamController extends Controller
         return redirect()->back()->with('message', 'List of team members was updated.');
     }
 
+    /**
+     * Remove member(s) from team
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function removeMember(Request $request)
+    {
+        $team = Team::findOrFail($request->team_id);
+
+        $team->members()->detach($request->user_id);
+        $team->number_of_players -= 1;
+        $team->save();
+
+        return redirect()->back()->with('message', 'List of team members was updated.');
+    }
+
 
     /**
      * Create new team
@@ -119,7 +136,7 @@ class TeamController extends Controller
         $team->members()->attach($userIds);
         $team->save();
 
-        return redirect('/')->with('message', 'Team was successfully created.');
+        return redirect('/teams')->with('message', 'Team was successfully created.');
     }
 
 
