@@ -31,6 +31,15 @@ class Tournament extends Model
         'is_generated',
     ];
 
+    public function isIndividual()
+    {
+        if($this->sport->number_of_players == 1){
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * Tournament has many participants
      */

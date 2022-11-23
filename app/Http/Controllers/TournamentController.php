@@ -52,8 +52,7 @@ class TournamentController extends Controller
     public function show(Request $request) {
 
         $tournament = Tournament::findOrFail($request->tournament_id);
-        $user = Auth::user();
-        $teamsOfUser = $user->teams;
+
 
         $matches = TournamentMatch::where('tournament_id', $request->tournament_id)->orderBy('round', 'desc')->orderBy('index_of_match', 'asc')->get();
 
@@ -65,14 +64,12 @@ class TournamentController extends Controller
 
 
         $viewData = array(
-            'teams' => $teamsOfUser,
             'tournament' => $tournament,
             'startDate' => $startDate,
             'endDate' => $endDate,
             'pricepool' => $pricepool,
             'approved' => $approved,
             'participants' => $tournament->participants,
-            'tournament' => $tournament,
             'matches' => $matches,
         );
 

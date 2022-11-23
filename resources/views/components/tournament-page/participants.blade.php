@@ -11,28 +11,34 @@
 
     </ul>
 
-    {{-- Only if tournaments is for teamns --}}
+    
+    @auth
+        {{-- Only if tournament is for induvidual particiapants --}}
+        @if($tournament->isIndividual())
+            <form action="" method="POST">
+                <button type='submit' class="button-styled">Join tournament</button>
+            </form>
+        @else
+        {{-- Only if tournaments is for teamns --}}
+            <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament">
+                @csrf
 
-    <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament">
-        @csrf
+                <select name="team-selection" id="team-selection">
 
-        <select name="team-selection" id="team-selection">
+                    @foreach(auth()->user()->teams as $team)
+                    <option value="{{$team->team_id}}">{{$team->team_name}}</option>
+                    @endforeach
 
-            @foreach($teams as $team)
-                <option value="{{$team->team_id}}">{{$team->team_name}}</option>
-            @endforeach
+                </select>
+                @error('team')
+                <p style="color:red;">{{$message}}</p>
+                @enderror
+                <button type='submit' class="button-styled">Join tournament</button>
+            </form>
 
-        </select>
-        @error('team')
-        <p style="color:red;">{{$message}}</p>
-        @enderror
-        <button type='submit' class="button-styled">Join tournament</button>
-    </form>
-
-    {{-- Only if tournament is for induvidual particiapants --}}
-    {{-- <a href="" class="button-styled">Join tournament</a> --}}
-
-
+        @endif
+    @endauth
+        
     {{-- <a href="" class="button-styled">Opt out of the tournament</a> --}}
 </section>
 
