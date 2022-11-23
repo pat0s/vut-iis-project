@@ -30,7 +30,5 @@ class AddEndDate extends Migration
         Schema::table('TOURNAMENT', function (Blueprint $table) {
             $table->dropColumn('end_date');
         });
-
-        DB::statement('ALTER TABLE TOURNAMENT DROP CONSTRAINT check_dates;');
     }
 }
