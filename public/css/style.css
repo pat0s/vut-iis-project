@@ -756,6 +756,11 @@ main#profile-page > section #profile-picture {
   background-color: #FFDFD0;
 }
 main#profile-page > section #profile-picture img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main#profile-page > section #profile-picture #duck-image {
   transform: scale(1.5);
 }
 main#profile-page > section #profile-info {
@@ -1051,6 +1056,11 @@ main#team-page > section #profile-picture {
   background-color: #FFDFD0;
 }
 main#team-page > section #profile-picture img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main#team-page > section #profile-picture #duck-image {
   transform: scale(1.5);
 }
 

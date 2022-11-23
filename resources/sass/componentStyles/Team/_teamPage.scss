@@ -37,7 +37,13 @@ main#team-page{
             background-color: $mainLightBrown;
 
             img{
+                max-width: 100%;
+                object-fit: cover;
+            }
+            
+            #duck-image{
                 transform: scale(1.5);
+                
             }
     
         }
