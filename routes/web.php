@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Home;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamController;
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Main page
-Route::get('/', [Home::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 // --------------------- User ---------------------------
 // Show user registration form
