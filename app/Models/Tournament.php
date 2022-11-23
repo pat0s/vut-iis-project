@@ -31,6 +31,12 @@ class Tournament extends Model
         'is_generated',
     ];
 
+
+    /**
+     * Check if tournament is for individuals or teams.
+     *
+     * @return bool
+     */
     public function isIndividual()
     {
         if($this->sport->number_of_players == 1){
@@ -40,18 +46,29 @@ class Tournament extends Model
         return false;
     }
 
+
     /**
-     * Tournament has many participants
+     * Tournament has many participants.
      */
     public function participants()
     {
         return $this->hasMany(Participant::class, 'tournament_id', 'tournament_id');
     }
 
+
     /**
      * Tournament has sport
     */
     public function sport() {
         return $this->belongsTo(Sport::class, 'sport_id', 'sport_id');
+    }
+
+
+    /**
+     * Tournament has many tournament matches.
+     */
+    public function matches()
+    {
+        return $this->hasMany(TournamentMatch::class, 'tournament_id', 'tournament_id');
     }
 }

@@ -115,6 +115,31 @@ class TournamentController extends Controller
         return redirect('/tournaments')->with('message', 'Tournament was successfully created.');
     }
 
+    /**
+     * Assign participants to the first round of tournament matches.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function generate(Request $request)
+    {
+        $tournament = Tournament::findOrFail($request->tournament_id);
+
+        $noMatchesInRound = $tournament->number_of_participants / 2;
+        $indexOfMatch = 0;
+        $participants = $tournament->participants;
+        $pos = 0;
+
+        while ($indexOfMatch < $noMatchesInRound) {
+            $match = $tournament->matches[$indexOfMatch];
+            $match->participant1_id = $participants[$pos++]->participant_id;
+            $match->participant2_id = $participants[$pos++]->participant_id;
+            $match->save();
+
+            $indexOfMatch++;
+        }
+    }
+
     private function _isApproved(Tournament $tournament) {
         $approved = "False";
         if ($tournament->is_approved){
