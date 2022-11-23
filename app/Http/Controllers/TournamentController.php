@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use App\Models\Tournament;
 use App\Models\Sport;
+use App\Models\TournamentMatch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,6 +55,8 @@ class TournamentController extends Controller
         $user = Auth::user();
         $teamsOfUser = $user->teams;
 
+        $matches = TournamentMatch::where('tournament_id', $request->tournament_id)->orderBy('round', 'desc')->orderBy('index_of_match', 'asc')->get();
+
         $approved = $this->_isApproved($tournament);
         $startDate = date('d-m-Y', strtotime($tournament->start_date));
         $endDate = date('d-m-Y', strtotime($tournament->end_date));
@@ -69,6 +72,8 @@ class TournamentController extends Controller
             'pricepool' => $pricepool,
             'approved' => $approved,
             'participants' => $tournament->participants,
+            'tournament' => $tournament,
+            'matches' => $matches,
         );
 
         return view('tournaments.show')->with($viewData);

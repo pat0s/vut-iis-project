@@ -28,9 +28,10 @@
             />
 
         </section>
-
+            
         <x-tournament-page.tournament-schedule
             :tournament="$tournament"
+            :matches="$matches"
         />
 
 

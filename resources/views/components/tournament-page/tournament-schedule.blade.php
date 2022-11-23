@@ -1,6 +1,7 @@
-@props([
+{{-- @props([
     'tournament',
-])
+    'matches',
+]) --}}
 
 <form method="POST" action="tournaments/edit" id="tournament-form">
     @csrf
@@ -17,17 +18,25 @@
     @endif
 
     <div id="tournament-schedule">
+        @php
+            $indexOfMatch = 0;
+        @endphp
         @while(intdiv($tournament->number_of_participants, 2) > 0 )
-
+        
             <div id="ul{{$tournament->number_of_participants}}">
 
                 @for ($i = 0; $i < intdiv($tournament->number_of_participants, 2); $i++)
-                    <fieldset>
-                        <span><a href="/user/1">Mista MrDalo</a> <input type="radio" name="{{$tournament->number_of_participants}}i{{$i}}" value="participant-name" class="participant-name-input hidden-element"></span>
-                            <p class="match-result">16</p><input type="number" min="0" max="30" step="1" class="match-result-input hidden-element" name="r{{$tournament->number_of_participants}}i{{$i}}p1">
-                        <span><a href="/user/1">Mista Pat0s</a> <input type="radio" name="{{$tournament->number_of_participants}}i{{$i}}" value="participant-name" class="participant-name-input hidden-element"></span>
-                            <p class="match-result">5</p><input type="number" min="0" max="30" step="1" class="match-result-input hidden-element" name="r{{$tournament->number_of_participants}}i{{$i}}p2">
-                    </fieldset>
+
+                        <fieldset>
+                            <span><a href="/user/1">{{$matches[$indexOfMatch]->participant1_id}}</a> <input type="radio" name="{{$tournament->number_of_participants}}i{{$i}}" value="participant-name" class="participant-name-input hidden-element"></span>
+                                <p class="match-result">{{$matches[$indexOfMatch]->participant1_result}}</p><input type="number" min="0" max="30" step="1" class="match-result-input hidden-element" name="r{{$tournament->number_of_participants}}i{{$i}}p1">
+                            <span><a href="/user/1">{{$matches[$indexOfMatch]->participant2_id}}</a> <input type="radio" name="{{$tournament->number_of_participants}}i{{$i}}" value="participant-name" class="participant-name-input hidden-element"></span>
+                                <p class="match-result">{{$matches[$indexOfMatch]->participant2_result}}</p><input type="number" min="0" max="30" step="1" class="match-result-input hidden-element" name="r{{$tournament->number_of_participants}}i{{$i}}p2">
+                        </fieldset>
+                        
+                        @php
+                            $indexOfMatch++;
+                        @endphp
                 @endfor
 
             </div>
@@ -40,7 +49,7 @@
 
         <!-- final -->
         <div id="ul-final">
-            <span><a class="participant-name" href="/user/1">Mista MrDalo</a></span>
+            <span><a class="participant-name" href="/user/1">{{$matches[$indexOfMatch]->participant2_id}}</a></span>
         </div>
 
     
