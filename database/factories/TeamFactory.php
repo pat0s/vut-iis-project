@@ -15,7 +15,6 @@ class TeamFactory extends Factory
     {
         return [
             'team_name' => 'Team_'.$this->faker->unique()->randomNumber(3),
-            'logo_url' => $this->faker->imageUrl(),
             'number_of_players' => $this->faker->randomDigitNotZero(),
             'manager_id' => rand(1,100),
         ];

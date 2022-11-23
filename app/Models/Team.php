@@ -20,10 +20,27 @@ class Team extends Model
      */
     protected $fillable = [
         'team_name',
-        'logo_url',
+        'image',
         'number_of_players',
         'manager_id',
     ];
+
+
+    /**
+     * Get team image name
+     *
+     * @param string|null $value
+     * @return string
+     */
+    public function getImageAttribute($value): string
+    {
+        if ($value) {
+            return asset('storage/teams/img/'. $value);
+        } else {
+            return asset('img/profilePlaceholder.svg');
+        }
+    }
+
 
     /**
      * The people that belong to the team.
@@ -32,6 +49,7 @@ class Team extends Model
     {
         return $this->belongsToMany(Person::class, 'MEMBER_OF_TEAM', 'team_id', 'person_id');
     }
+
 
     /**
      * Get participants for the team.

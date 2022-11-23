@@ -10,11 +10,7 @@
         <section>
             <h2>{{$team->team_name}}</h2>
             <div id="profile-picture">
-                @if($team->logo_url)
-                    <img src="{{$team->logo_url}}" alt="team-logo">
-                @else
-                    <img src="{{asset('/img/DuckBlue.svg')}}"" id="duck-image" alt="team-logo">
-                @endif
+                <img src="{{$team->image}}" alt="team-logo">
             </div>
 
             <x-team-page.team-members

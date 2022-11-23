@@ -121,13 +121,20 @@ class TeamController extends Controller
     {
         $formFields = $request->validate([
             'team_name' => ['required', 'min:3', 'max:50'],
+            'image' => 'image',
         ]);
 
         $userIds = $request->get('members');
 
+        $destinationPath = 'public/teams/img';
+        $teamImage = $request->file('image');
+        $imageName = $teamImage->hashName();
+        $teamImage->storeAs($destinationPath, $imageName);
+
         $params = $formFields;
         $params['manager_id'] = auth()->user()->person_id;
         $params['number_of_players'] = count($userIds);
+        $params['image'] = $imageName;
 
         // create team
         $team = Team::create($params);
