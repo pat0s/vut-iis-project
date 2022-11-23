@@ -2172,11 +2172,21 @@ main#create-tournament-page > section form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 60px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
   justify-items: center;
   align-items: center;
 }
-main#create-tournament-page > section form .item:nth-child(odd) {
-  justify-self: left;
+main#create-tournament-page > section form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 20px;
+}
+main#create-tournament-page > section form label {
   font-weight: 800;
   color: #FFDFD0;
   font-size: 1.5em;
@@ -2203,6 +2213,22 @@ main#create-tournament-page > section form textarea {
   border: solid 2px #FFDFD0;
   color: #FFDFD0;
 }
+main#create-tournament-page > section form textarea::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  margin-right: 5px;
+  opacity: 0;
+}
+main#create-tournament-page > section form textarea::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
+  border-radius: 20px;
+  opacity: 0;
+}
+main#create-tournament-page > section form textarea::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 20px;
+  opacity: 0;
+}
 main#create-tournament-page > section form textarea:focus {
   outline: 1px solid #FFDFD0;
 }
@@ -2218,8 +2244,9 @@ main#create-tournament-page > section form input[type=submit] {
   cursor: pointer;
 }
 main#create-tournament-page > section form select {
-  width: 20%;
+  width: 40%;
   text-align: center;
+  align-self: center;
 }
 
 main#sport-page {
