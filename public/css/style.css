@@ -329,6 +329,46 @@ div#flash-message.error {
   color: #23273E;
 }
 
+body#errorBody {
+  background-color: #23273E;
+}
+body#errorBody header {
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 10px;
+  background-color: #23273E;
+}
+body#errorBody header div, body#errorBody header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+body#errorBody main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFDFD0;
+  font-size: 2.5em;
+}
+body#errorBody main #mainPage-link {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  transform: scale(0.8);
+}
+
 main#main-page {
   margin-bottom: 40vh;
 }

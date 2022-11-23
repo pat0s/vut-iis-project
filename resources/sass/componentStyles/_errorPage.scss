@@ -1,0 +1,58 @@
+@import "./variables";
+
+
+body#errorBody{
+    background-color: $mainBlue;
+
+
+
+    
+    header{
+        width: 100%;
+        height: 120px;
+        position: absolute;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 10px;
+
+        background-color: $mainBlue;
+        
+        
+        div, a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            column-gap: 40px;
+        }
+    }
+
+    main{
+        width: 100%;
+        // height: calc(100vh - 120px);
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $mainLightBrown;
+        font-size: 2.5em;
+
+
+        #mainPage-link{
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+            transform: scale(0.8);
+
+        }
+    }
+
+}
