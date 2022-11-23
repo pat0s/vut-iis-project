@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Person;
 use App\Models\Tournament;
 use App\Models\Sport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TournamentController extends Controller
 {
@@ -48,20 +50,25 @@ class TournamentController extends Controller
     // Show single tournament
     public function show(Request $request) {
 
-        $tournament = Tournament::find($request->tournament_id);
+        $tournament = Tournament::findOrFail($request->tournament_id);
+        $user = Auth::user();
+        $teamsOfUser = $user->teams;
 
         $approved = $this->_isApproved($tournament);
+        $startDate = date('d-m-Y', strtotime($tournament->start_date));
+        $endDate = date('d-m-Y', strtotime($tournament->end_date));
+        $pricepool = round($tournament->pricepool);
+//        $isManager = $this->_isTournamentManager($tournament);
+
 
         $viewData = array(
-            'name' => $tournament->tournament_name,
-            'description' => $tournament->description,
-            'start_date' => date('d-m-Y', strtotime($tournament->start_date)),
-            'end_date' => date('d-m-Y', strtotime($tournament->end_date)),
-            'capacity' => $tournament->number_of_participants,
-            'price_pool' => round($tournament->pricepool),
-            'sport' => $tournament->sport->name,
-            'approved' => $approved,
+            'teams' => $teamsOfUser,
             'tournament' => $tournament,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'pricepool' => $pricepool,
+            'approved' => $approved,
+            'participants' => $tournament->participants,
         );
 
         return view('tournaments.show')->with($viewData);
@@ -71,6 +78,12 @@ class TournamentController extends Controller
     public function create() {
         $sports = Sport::all();
         return view('tournaments.create', ['sports' => $sports]);
+    }
+
+    // Join tournament
+    public function joinTournament(Request $request) {
+        $input = $request->all();
+
     }
 
     // Store tournament data
@@ -101,5 +114,13 @@ class TournamentController extends Controller
             $approved = "True";
         }
         return $approved;
+    }
+
+    private function _isTournamentManager(Tournament $tournament) {
+        $tournamentManager = false;
+        if (auth()->user() and auth()->user()->person_id == $tournament->manager_id) {
+            $tournamentManager = true;
+        }
+        return $tournamentManager;
     }
 }

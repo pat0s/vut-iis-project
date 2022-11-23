@@ -17,5 +17,5 @@
         <h4>Sport:</h4><p>{{$sport}}</p>
         <h4>Is approved:</h4><p>{{$approved}}</p>
     </div>
-    
+
 </section>

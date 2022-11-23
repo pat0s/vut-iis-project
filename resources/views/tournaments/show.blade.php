@@ -1,32 +1,30 @@
 <x-layout>
     <main id="tournament-page">
         <section>
-            <h2>{{$name}}</h2>
+            <h2>{{$tournament->tournament_name}}</h2>
 
             <a href="/tournaments/1/approved" class="button-styled" id="approved-button">Approve tournament</a>
 
             <section id="tournament-description">
                 <h3>Description</h3>
 
-                <p>{{$description}}</p>
+                <p>{{$tournament->description}}</p>
 
             </section>
 
-            <x-tournament-page.participants />
+            <x-tournament-page.participants
+                :tournament="$tournament"
+                :participants="$participants"
+                :teams="$teams"
+            />
 
             <x-tournament-page.more-info
-
-                :dateOfStart="$start_date"
-                :dateOfEnd="$end_date"
-                :pricePool="$price_pool.'$'"
-                :capacity="$capacity"
-                :sport="$sport"
+                :dateOfStart="$startDate"
+                :dateOfEnd="$endDate"
+                :pricePool="$pricepool.'$'"
+                :capacity="$tournament->number_of_participants"
+                :sport="$tournament->sport->name"
                 :approved="$approved"
-
-                {{-- :dateOfStart="$tournament->dateOfStart"
-                :pricePool="$tournament->pricePool"
-                :capacity="$tournament->capacity" --}}
-
             />
 
         </section>
