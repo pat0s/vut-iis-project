@@ -8,9 +8,9 @@
                 <input type="text" name="search" placeholder="Search">
                 <button type="submit"><img src="{{asset('./img/search.svg')}}" alt="search"></button>
 
-            @auth
-            <a href="/tournaments/create" class="button-styled">Create tournament</a>
-            @endauth
+                @auth
+                    <a href="/tournaments/create" class="button-styled">Create tournament</a>
+                @endauth
 
                 <div id="radio-filter">
                     <div>

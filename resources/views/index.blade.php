@@ -1,5 +1,6 @@
 <x-layout>
     <main id="main-page">
+
         @if(Session::has('message'))
             <x-flash-message message="{{Session::get('message')}}" successOrerror="success"/>
         @elseif(Session::has('error'))
