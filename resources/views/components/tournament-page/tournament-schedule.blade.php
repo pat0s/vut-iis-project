@@ -7,7 +7,7 @@
     
     <input type="submit" placeholder="Submit button" id="submit-button" class="button-styled hidden-element" onclick="window.buttonPressedTournament()">
     <button id="cancel-button" class="button-styled hidden-element" type="button" onclick="window.buttonPressedTournament()">Cancel</button>
-    @if(auth()->user()->person_id == $tournament->manager_id)
+    @if(auth()->user() && auth()->user()->person_id == $tournament->manager_id)
 
         @if($tournament->is_generated == 0)
             <input type="submit" value="Generate tournament schedule" id="generate-button" class="button-styled">
