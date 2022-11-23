@@ -28,6 +28,7 @@ class TournamentFactory extends Factory
             'end_date' => $this->faker->dateTimeBetween($startDate, $startDateClone->modify("+$numberOfParticipants days")),
             'pricepool' => $this->faker->randomFloat(2, 1000, 100000),
             'is_approved' => rand(0, 1),
+            'is_generated' => 0,
             'number_of_participants' => $numberOfParticipants,
             'manager_id' => rand(480, 500),
             'sport_id' => rand(1, 15),
