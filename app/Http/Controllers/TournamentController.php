@@ -83,7 +83,12 @@ class TournamentController extends Controller
     // Join tournament
     public function joinTournament(Request $request) {
         $input = $request->all();
+        $teamId = $input['team-selection'];
 
+        $tournament = Tournament::findOrFail($request->tournament_id);
+
+
+        return redirect()->back()->with('message', 'Your team joined to tournament');
     }
 
     // Store tournament data

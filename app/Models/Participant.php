@@ -13,6 +13,24 @@ class Participant extends Model
     protected $table = 'PARTICIPANT';
     protected $primaryKey = 'participant_id';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'participant_name',
+        'is_ap',
+        'start_date',
+        'pricepool',
+        'is_approved',
+        'number_of_participants',
+        'manager_id',
+        'sport_id',
+        'end_date',
+        'is_generated',
+    ];
+
 
     /**
      * Get the tournament that owns the participant.
