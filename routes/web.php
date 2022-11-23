@@ -23,7 +23,8 @@ Route::get('/', [Home::class, 'index']);
 
 // --------------------- User ---------------------------
 // Show user registration form
-Route::get('/registration', [PersonController::class, 'create']);
+Route::get('/registration', [PersonController::class, 'create'])
+    ->middleware('guest');
 
 // List of all users
 Route::get('/users', [PersonController::class, 'index']);
@@ -33,17 +34,20 @@ Route::post('/users', [PersonController::class, 'store']);
 
 // Show user login form
 Route::get('/login', [PersonController::class, 'login'])
-    ->name('login');
+    ->name('login')
+    ->middleware('guest');
 
 // Log user out
-Route::get('/logout', [PersonController::class, 'logout']);
+Route::get('/logout', [PersonController::class, 'logout'])
+    ->middleware('auth');
 
 // Show change password form
 Route::get('/password', [PersonController::class, 'password'])
     ->middleware('auth');
 
 // Change user password
-Route::post('/password/update', [PersonController::class, 'updatePassword']);
+Route::post('/password/update', [PersonController::class, 'updatePassword'])
+    ->middleware('auth');
 
 // Log user in
 Route::post('/users/authenticate', [PersonController::class, 'authenticate']);
@@ -54,11 +58,13 @@ Route::get('/users/{user_id}', [PersonController::class, 'show'])
 
 // Edit profile info
 Route::post('/users/{user_id}/edit', [PersonController::class, 'edit'])
-    ->where('user_id', '[0-9]+');
+    ->where('user_id', '[0-9]+')
+    ->middleware('auth');
 
 // Edit profile info
 Route::post('/users/{user_id}/admin', [PersonController::class, 'admin'])
-    ->where('user_id', '[0-9]+');
+    ->where('user_id', '[0-9]+')
+    ->middleware('auth');
 
 // -----------------------------------------------------
 
@@ -70,7 +76,8 @@ Route::get('/teams', [TeamController::class, 'index']);
 Route::post('/teams', [TeamController::class, 'store']);
 
 // Show create team form
-Route::get('/teams/create', [TeamController::class, 'create']);
+Route::get('/teams/create', [TeamController::class, 'create'])
+    ->middleware('auth');
 
 // Single team
 Route::get('/teams/{team_id}', [TeamController::class, 'show'])
@@ -78,7 +85,14 @@ Route::get('/teams/{team_id}', [TeamController::class, 'show'])
 
 // Add member to team
 Route::post('/teams/{team_id}/add-member', [TeamController::class, 'addMember'])
-    ->where('team_id', '[0-9]+');
+    ->where('team_id', '[0-9]+')
+    ->middleware('auth');
+
+// Remove member from team
+Route::post('/teams/{team_id}/remove-member/{user_id}', [TeamController::class, 'removeMember'])
+    ->where('team_id', '[0-9]+')
+    ->where('user_id', '[0-9]+')
+    ->middleware('auth');
 
 // -----------------------------------------------------
 // ----------------------- TournamentController ------------------------------
@@ -90,15 +104,12 @@ Route::get('/tournaments', [TournamentController::class, 'index']);
 Route::post('/tournaments', [TournamentController::class, 'store']);
 
 // Show create form
-Route::get('/tournaments/create', [TournamentController::class, 'create']);
-
+Route::get('/tournaments/create', [TournamentController::class, 'create'])
+    ->middleware('auth');
 
 // Single tournament
 Route::get('/tournaments/{tournament_id}', [TournamentController::class, 'show'])
     ->where('tournament_id', '[0-9]+');
-
-//Route::get('/tournaments/{tournament}/edit', [TournamentController::class, 'e'])
-
 
 Route::get('/statistics', function () {
     return view('welcome');
