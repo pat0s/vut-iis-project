@@ -142,17 +142,23 @@ class PersonController extends Controller
             'surname' => ['required', 'min:3', 'max:50'],
             'username' => ['required', 'min:3', 'max:50', Rule::unique('PERSON', 'username')->ignore($userId, 'person_id')],
             'email' => 'required|email',
+            'profile_image' => 'image',
         ]);
+
+        $destinationPath = 'public/users/img';
+        $profileImage = $request->file('profile_image');
+        $name = $profileImage->hashName();
+        $profileImage->storeAs($destinationPath, $name);
 
         $user = Person::find($userId);
         $user->first_name = $formFields['first_name'];
         $user->surname = $formFields['surname'];
         $user->username = $formFields['username'];
         $user->email = $formFields['email'];
-        $user->image_url = $request['image_url'];
+        $user->profile_image = $name;
 
         try {
-            $user->save();
+            $user->update();
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to update your profile.');
         }

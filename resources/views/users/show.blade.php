@@ -9,11 +9,7 @@
         <section>
             <h2>{{$user->username}}</h2>
             <div id="profile-picture">
-                @if($user->image_url)
-                    <img src="{{$user->image_url}}" alt="user-logo">
-                @else
-                    <img src="{{asset('/img/DuckBlue.svg')}}"" id="duck-image" alt="user-logo">
-                @endif
+                <img src="{{$user->profile_image}}" alt="user-logo">
             </div>
 
             <x-user-page.profile-info

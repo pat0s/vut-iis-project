@@ -24,8 +24,10 @@ class Person extends Authenticatable
         'surname',
         'username',
         'email',
+        'profile_image',
         'password',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -35,6 +37,23 @@ class Person extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+
+    /**
+     * Get profile image name
+     *
+     * @param string|null $value
+     * @return string
+     */
+    public function getProfileImageAttribute($value): string
+    {
+        if ($value) {
+            return asset('storage/users/img/'. $value);
+        } else {
+            return asset('img/profilePlaceholder.svg');
+        }
+    }
+
 
     /**
      * The teams that belong to the user.
