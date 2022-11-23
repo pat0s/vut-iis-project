@@ -32,8 +32,7 @@
         </section>
 
         <x-tournament-page.tournament-schedule
-            :tournamentID="1"
-            :tournamentCapacity="32"
+            :tournament="$tournament"
         />
 
 

@@ -13,7 +13,7 @@
 
     @if($member->person_id == $team->manager_id)
         <img src="{{asset('/img/Star.svg')}}" alt="Star">
-    @elseif($member->person_id == auth()->user()->person_id)
+    @elseif(auth()->user() && $member->person_id == auth()->user()->person_id)
         <form method="POST" action="/teams/{{$team->team_id}}/remove-member/{{$member->person_id}}">
             @csrf
             @method('DELETE')

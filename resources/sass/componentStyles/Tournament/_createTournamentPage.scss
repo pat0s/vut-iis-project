@@ -30,16 +30,25 @@ main#create-tournament-page{
             display: grid;
             grid-template-columns: 1fr 1fr;
             row-gap: 60px;
+            column-gap: 50px;
             justify-items: center;
             align-items: center;
 
-            .item:nth-child(odd){
-                justify-self: left;
+            div{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                flex-wrap: nowrap;
 
+                row-gap: 20px;
+            }
+            
+            label{
                 font-weight: 800;
                 color: $mainLightBrown;
                 font-size: 1.5em;
-
             }
 
             input{
@@ -51,8 +60,9 @@ main#create-tournament-page{
 
                 text-align: center;
                 color: $mainLightBrown;
-            }
 
+            }
+            
             input:focus{
                 outline: initial;
                 border-bottom: 4px solid $mainLightBrown;
@@ -71,6 +81,25 @@ main#create-tournament-page{
                 border: initial;
                 border: solid 2px $mainLightBrown;
                 color: $mainLightBrown;
+
+                &::-webkit-scrollbar {
+                    width: 4px; 
+                    height: 10px; 
+                    margin-right: 5px;
+                    opacity: 0;
+                }
+
+                &::-webkit-scrollbar-thumb { 
+                    background: $mainLightBrown;
+                    border-radius: 20px;
+                    opacity: 0;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                    border-radius: 20px;
+                    opacity: 0;
+                }
             }
 
 
@@ -93,8 +122,9 @@ main#create-tournament-page{
             }
 
             select{
-                width: 20%;
+                width: 40%;
                 text-align: center;
+                align-self: center;
             }
         }
 

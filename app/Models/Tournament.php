@@ -28,6 +28,7 @@ class Tournament extends Model
         'manager_id',
         'sport_id',
         'end_date',
+        'is_generated',
     ];
 
     /**
