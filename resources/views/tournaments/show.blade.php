@@ -23,12 +23,12 @@
                 :dateOfEnd="$endDate"
                 :pricePool="$pricepool.'$'"
                 :capacity="$tournament->number_of_participants"
-                :sport="$tournament->sport->name"
+                :sport="$tournament->sport->name.' ('.$tournament->sport->number_of_players.' vs '.$tournament->sport->number_of_players.')'"
                 :approved="$approved"
             />
 
         </section>
-            
+
         <x-tournament-page.tournament-schedule
             :tournament="$tournament"
             :matches="$matches"

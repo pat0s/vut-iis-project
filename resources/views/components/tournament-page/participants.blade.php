@@ -27,7 +27,7 @@
                 <select name="team_id" id="team-selection">
 
                     @foreach(auth()->user()->teams as $team)
-                    <option value="{{$team->team_id}}">{{$team->team_name}}</option>
+                    <option value="{{$team->team_id}}">{{$team->team_name}} ({{$team->number_of_players}} players) estli ne full body vyucujici gay</option>
                     @endforeach
 
                 </select>
