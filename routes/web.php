@@ -111,8 +111,13 @@ Route::get('/tournaments/create', [TournamentController::class, 'create'])
 Route::get('/tournaments/{tournament_id}', [TournamentController::class, 'show'])
     ->where('tournament_id', '[0-9]+');
 
-// Joint tournament
-Route::post('/tournaments/{tournament_id}/join-tournament', [TournamentController::class, 'joinTournament'])
+// Joint tournament for person
+Route::post('/tournaments/{tournament_id}/join-tournament-person', [TournamentController::class, 'joinTournamentPerson'])
+    ->where('tournament_id', '[0-9]+')
+    ->middleware('auth');
+
+// Joint tournament for team
+Route::post('/tournaments/{tournament_id}/join-tournament-team', [TournamentController::class, 'joinTournamentTeam'])
     ->where('tournament_id', '[0-9]+')
     ->middleware('auth');
 

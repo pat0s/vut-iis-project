@@ -20,15 +20,11 @@ class Participant extends Model
      */
     protected $fillable = [
         'participant_name',
-        'is_ap',
-        'start_date',
-        'pricepool',
         'is_approved',
-        'number_of_participants',
-        'manager_id',
-        'sport_id',
-        'end_date',
-        'is_generated',
+        'participant_type',
+        'team_id',
+        'person_id',
+        'tournament_id'
     ];
 
 

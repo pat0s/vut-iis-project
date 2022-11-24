@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participant;
 use App\Models\Person;
+use App\Models\Team;
 use App\Models\Tournament;
 use App\Models\Sport;
 use App\Models\TournamentMatch;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 class TournamentController extends Controller
@@ -82,13 +85,59 @@ class TournamentController extends Controller
         return view('tournaments.create', ['sports' => $sports]);
     }
 
-    // Join tournament
-    public function joinTournament(Request $request) {
-        $input = $request->all();
-        $teamId = $input['team-selection'];
-
+    // Join tournament for person
+    public function joinTournamentPerson(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $person = Auth::user();
         $tournament = Tournament::findOrFail($request->tournament_id);
 
+        $params['participant_name'] = $person->username;
+        $params['is_approved'] = 1;
+        $params['participant_type'] = "person";
+        $params['person_id'] = $person->person_id;
+        $params['tournament_id'] = $tournament->tournament_id;
+
+        $partipipant = Participant::create($params);
+//        $tournament->participants()->attach($tournament->tournament_id);
+        $partipipant->save();
+//        $tournament->save();
+        return redirect()->back()->with('message', 'You joined to tournament');
+    }
+
+    // Join tournament for team
+    public function joinTournamentTeam(Request $request): \Illuminate\Http\RedirectResponse
+    {
+//        $numberOfPlayersInTeam = $team->number_of_players;
+//        dd($request->team);
+//        dd($request);
+//        $person = Auth::user();
+//        $team = Team::findOrFail($request->team_id);
+        $input = $request->all();
+        dd($input);
+
+//        dd($team->manager_id == $person->person_id);
+        $request->validate([
+            'team_id' => [
+                function($attribute, $value, $fail) {
+                    $person = Auth::user();
+                    $team = Team::findOrFail($value);
+//                    dd($person, $team);
+                    if ($team->manager_id != $person->person_id) {
+                        $fail('You are kokot');
+                    }
+                }
+            ],
+        ]);
+        $tournament = Tournament::findOrFail($request->tournament_id);
+
+        $params['participant_name'] = $team->team_name;
+        $params['is_approved'] = 1;
+        $params['participant_type'] = "team";
+        $params['team_id'] = $team->team_id;
+        $params['tournament_id'] = $tournament->tournament_id;
+
+        $participant = Participant::create($params);
+        $participant->save();
 
         return redirect()->back()->with('message', 'Your team joined to tournament');
     }
