@@ -99,8 +99,8 @@ class TournamentController extends Controller
             'tournament_name' => ['required', 'min:3', 'max:50'],
             'description' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
-            'pricepool' => 'required',
+            'end_date' => ['required', 'after_or_equal:start_date'],
+            'pricepool' => ['required', 'integer', 'min:0'],
             'number_of_participants' => 'required',
             'sport_id' => 'required',
         ]);
