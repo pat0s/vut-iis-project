@@ -49,7 +49,7 @@
 
         <!-- final -->
         <div id="ul-final">
-            <span><a class="participant-name" href="/user/1">{{$matches[$indexOfMatch]->participant2_id}}</a></span>
+            <span><a class="participant-name" href="/user/1">{{$matches[$indexOfMatch-1]->winner_id}}</a></span>
         </div>
 
     
