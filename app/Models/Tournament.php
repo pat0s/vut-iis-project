@@ -71,4 +71,13 @@ class Tournament extends Model
     {
         return $this->hasMany(TournamentMatch::class, 'tournament_id', 'tournament_id');
     }
+
+
+    /**
+     * Tournament has manager (FK to PERSON table)
+     */
+    public function manager()
+    {
+        return $this->belongsTo(Person::class, 'manager_id', 'person_id');
+    }
 }
