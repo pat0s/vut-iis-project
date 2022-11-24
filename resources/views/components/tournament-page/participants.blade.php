@@ -31,7 +31,7 @@
                     @endforeach
 
                 </select>
-                @error('team')
+                @error('team_id')
                 <p style="color:red;">{{$message}}</p>
                 @enderror
                 <button type='submit' class="button-styled">Join tournament</button>

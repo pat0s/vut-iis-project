@@ -108,27 +108,31 @@ class TournamentController extends Controller
     public function joinTournamentTeam(Request $request): \Illuminate\Http\RedirectResponse
     {
 //        $numberOfPlayersInTeam = $team->number_of_players;
-//        dd($request->team);
-//        dd($request);
-//        $person = Auth::user();
-//        $team = Team::findOrFail($request->team_id);
-        $input = $request->all();
-        dd($input);
-
-//        dd($team->manager_id == $person->person_id);
-        $request->validate([
-            'team_id' => [
-                function($attribute, $value, $fail) {
-                    $person = Auth::user();
-                    $team = Team::findOrFail($value);
-//                    dd($person, $team);
-                    if ($team->manager_id != $person->person_id) {
-                        $fail('You are kokot');
-                    }
-                }
-            ],
-        ]);
+        $person = Auth::user();
+        $team = Team::findOrFail($request->get('team_id'));
         $tournament = Tournament::findOrFail($request->tournament_id);
+        if ($team->manager_id != $person->person_id) {
+            return back()->withErrors(['team_id' => 'You are kokot'])->onlyInput('team_id');
+        }
+        if ($team->number_of_players != $tournament->sport->number_of_players) {
+            return back()->withErrors(['team_id' => 'Omg radsi zamri'])->onlyInput('team_id');
+        }
+
+//        $request->validate([
+//            'team_id' => [
+//                function($attribute, $value, $fail) {
+//                    $person = Auth::user();
+//                    $team = Team::findOrFail($value);
+////                    dd($person, $team);
+//                    if ($team->manager_id != $person->person_id) {
+//                        $fail('You are kokot');
+//                    }
+//                },
+//                function($attribute, $value, $fail) {
+//                    $tournament = Tournament::findOrFail($request->tournament_id);
+//                }
+//            ],
+//        ]);
 
         $params['participant_name'] = $team->team_name;
         $params['is_approved'] = 1;
