@@ -25,7 +25,7 @@
             />
 
             <x-statistics
-                :ID="1"
+                :data="$statistics"
             />
         </section>
     </main>

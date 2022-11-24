@@ -34,7 +34,7 @@
             <x-tournament-page.more-info
                 :dateOfStart="$startDate"
                 :dateOfEnd="$endDate"
-                :pricePool="$pricepool.'$'"
+                :pricePool="$pricepool"
                 :capacity="$tournament->number_of_participants"
                 :sport="$tournament->sport->name.' ('.$tournament->sport->number_of_players.' vs '.$tournament->sport->number_of_players.')'"
                 :approved="$approved"

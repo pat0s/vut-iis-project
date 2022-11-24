@@ -49,12 +49,15 @@ class TeamController extends Controller
             $query->where('MEMBER_OF_TEAM.team_id', $teamId);
             })->get();
 
+        $statistics = $this->_loadStatistics($team);
+
         $viewData = array(
             'team' => $team,
             'members' => $team->members,
             'tournaments' => $tournaments,
             'isTeamManager' => $this->_isTeamManager($team),
             'users' => $users,
+            'statistics' => $statistics,
         );
 
         return view('teams.show')->with($viewData);
@@ -165,4 +168,54 @@ class TeamController extends Controller
         return $teamManager;
     }
 
+
+    /**
+     * Load team statistics
+     *
+     * @param Team $team
+     * @return array|\int[][]
+     */
+    private function _loadStatistics(Team $team)
+    {
+        $ret = array(
+            'matches' => array('wins' => 0, 'losses' => 0),
+            'tournaments' => array('first' => 0, 'second' => 0),
+        );
+
+        $asParticipant = $team->asParticipant;
+
+        foreach ($asParticipant as $participant) {
+            $participantId = $participant->participant_id;
+
+            $tournament = $participant->inTournament;
+            $matches = $tournament->matches;
+
+            foreach ($matches as $match) {
+
+                // check, if the match is finished
+                if (!$match->is_finished) {continue;}
+
+                // check, if the participant is in the match
+                if ($match->participant1_id == $participantId || $match->participant2_id == $participantId) {
+                    if ($match->winner_id == $participantId) {
+                        $ret['matches']['wins'] += 1;
+                    } else {
+                        $ret['matches']['losses'] += 1;
+                    }
+
+                    // final match
+                    if ($match->round == 1) {
+                        if ($match->winnner_id == $participantId) {
+                            $ret['tournaments']['first'] += 1;
+                        } else {
+                            $ret['tournaments']['second'] += 1;
+                        }
+                    }
+
+                } // end if
+            } // end foreach
+        } // end foreach
+
+        return $ret;
+    }
 }

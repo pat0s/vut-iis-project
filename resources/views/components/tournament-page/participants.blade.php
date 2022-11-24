@@ -10,7 +10,7 @@
     </ul>
 
     @auth
-        {{-- Only if tournament is for induvidual particiapants --}}
+        {{-- Only if tournament is for induvidual participants --}}
         @if($tournament->isIndividual())
             <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament-person">
                 @csrf
