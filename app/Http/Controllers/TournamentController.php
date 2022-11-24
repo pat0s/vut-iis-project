@@ -85,6 +85,25 @@ class TournamentController extends Controller
         return view('tournaments.create', ['sports' => $sports]);
     }
 
+
+    public function edit(Request $request){
+        // dd($request);
+        // if($request->parameters['generate-button'])
+        if($request['generate-button']){
+
+            $this->_generateSchedule($request->tournament_id);
+            return redirect()->back()->with('message', 'You generated tournament schedule successfully');
+            
+        }
+        elseif($request['submit-button']){
+
+            return redirect()->back()->with('message', 'You edit tournament successfully');
+
+
+        }
+        
+    }
+
     // Join tournament for person
     public function joinTournamentPerson(Request $request): \Illuminate\Http\RedirectResponse
     {
@@ -171,12 +190,12 @@ class TournamentController extends Controller
     /**
      * Assign participants to the first round of tournament matches.
      *
-     * @param Request $request
+     * @param int $tournamentId
      * @return void
      */
-    public function generate(Request $request)
+    private function _generateSchedule(int $tournamentId)
     {
-        $tournament = Tournament::findOrFail($request->tournament_id);
+        $tournament = Tournament::findOrFail($tournamentId);
 
         $noMatchesInRound = $tournament->number_of_participants / 2;
         $indexOfMatch = 0;
