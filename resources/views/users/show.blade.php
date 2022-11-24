@@ -23,7 +23,8 @@
             />
 
             <x-statistics
-                :ID="1"
+                :data="$statistics"
+                :individual="1"
             />
 
             @auth

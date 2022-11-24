@@ -42,10 +42,13 @@ class PersonController extends Controller
         $userId = $request->user_id;
         $user = Person::findOrFail($userId);  // fail -> show page "Error 404"
 
+        $statistics = $this->_loadStatistics($user);
+
         $viewData = array(
             'user' => $user,
             'profileOwner' => $this->_isProfileOwner($user),
             'teams' => $user->teams,
+            'statistics' => $statistics,
         );
 
         return view('users.show')->with($viewData);
@@ -129,6 +132,7 @@ class PersonController extends Controller
 
         return back()->withErrors(['username' => 'Invalid Credentials'])->onlyInput('username');
     }
+
 
     /**
      * Edit profile
@@ -245,5 +249,54 @@ class PersonController extends Controller
         }
 
         return $profileOwner;
+    }
+
+
+    /**
+     * @param Person $person
+     * @return \int[][]
+     */
+    private function _loadStatistics(Person $person)
+    {
+        $ret = array(
+            'matches' => array('wins' => 0, 'losses' => 0),
+            'tournaments' => array('first' => 0, 'second' => 0),
+        );
+
+        $asParticipant = $person->asParticipant;
+
+        foreach ($asParticipant as $participant) {
+            $participantId = $participant->participant_id;
+
+            $tournament = $participant->inTournament;
+            $matches = $tournament->matches;
+
+            foreach ($matches as $match) {
+
+                // check, if the match is finished
+                if (!$match->is_finished) {continue;}
+
+                // check, if the participant is in the match
+                if ($match->participant1_id == $participantId || $match->participant2_id == $participantId) {
+                    if ($match->winner_id == $participantId) {
+                        $ret['matches']['wins'] += 1;
+                    } else {
+                        $ret['matches']['losses'] += 1;
+                    }
+
+                    // final match
+                    if ($match->round == 1) {
+                        if ($match->winnner_id == $participantId) {
+                            $ret['tournaments']['first'] += 1;
+                        } else {
+                            $ret['tournaments']['second'] += 1;
+                        }
+                    }
+
+                } // end if
+            } // end foreach
+        } // end foreach
+
+        return $ret;
     }
 }

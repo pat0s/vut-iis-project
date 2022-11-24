@@ -62,4 +62,13 @@ class Person extends Authenticatable
     {
         return $this->belongsToMany(Team::class, 'MEMBER_OF_TEAM', 'person_id', 'team_id');
     }
+
+
+    /**
+     * Get participants for the person.
+     */
+    public function asParticipant()
+    {
+        return $this->hasMany(Participant::class, 'person_id', 'person_id');
+    }
 }

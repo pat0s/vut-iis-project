@@ -26,6 +26,7 @@
 
             <x-statistics
                 :data="$statistics"
+                :individual="0"
             />
         </section>
     </main>

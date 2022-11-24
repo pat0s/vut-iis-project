@@ -1,5 +1,5 @@
 <section id="statistic">
-    <h3>Statistics</h3>
+    <h3>{{$individual ? 'Individual Statistics' : 'Statistics'}}</h3>
     <div id="statistic-table">
         <h4>Tournaments</h4>
         <ul>
