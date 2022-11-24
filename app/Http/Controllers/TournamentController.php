@@ -106,11 +106,17 @@ class TournamentController extends Controller
     {
         $person = Auth::user();
         $tournament = Tournament::findOrFail($request->tournament_id);
+        $participants = $tournament->participants;
 
         $maxParticipantsCount = $tournament->number_of_participants;
         $actualParticipantsCount = $tournament->participants->count();
         if ($maxParticipantsCount <= $actualParticipantsCount) {
-            return back()->withErrors(['person_id' => 'Guess who fucked your mom 🤓'])->onlyInput('person_id');
+            return back()->withErrors(['person_id' => 'Capacity of tournament is max'])->onlyInput('person_id');
+        }
+        foreach ($participants as $participant) {
+            if ($participant->person_id == $person->person_id) {
+                return back()->withErrors(['person_id' => 'You cant joint two times'])->onlyInput('person_id');
+            }
         }
 
         $params['participant_name'] = $person->username;
@@ -132,17 +138,27 @@ class TournamentController extends Controller
 //        $numberOfPlayersInTeam = $team->number_of_players;
         $person = Auth::user();
         $team = Team::findOrFail($request->get('team_id'));
+        $teamManageId = $team->manager_id;
         $tournament = Tournament::findOrFail($request->tournament_id);
         $maxParticipantsCount = $tournament->number_of_participants;
         $actualParticipantsCount = $tournament->participants->count();
+        $participants = $tournament->participants;
         if ($maxParticipantsCount == $actualParticipantsCount) {
-            return back()->withErrors(['team_id' => 'Guess who fucked your mom 🤓'])->onlyInput('team_id');
+            return back()->withErrors(['team_id' => 'Capacity of tournament is max'])->onlyInput('team_id');
         }
         if ($team->manager_id != $person->person_id) {
-            return back()->withErrors(['team_id' => 'You are kokot'])->onlyInput('team_id');
+            return back()->withErrors(['team_id' => 'You need to be manager of team to join'])->onlyInput('team_id');
         }
         if ($team->number_of_players != $tournament->sport->number_of_players) {
-            return back()->withErrors(['team_id' => 'Omg radsi zamri'])->onlyInput('team_id');
+            return back()->withErrors(['team_id' => 'Your team need to have number of players which sport require'])->onlyInput('team_id');
+        }
+        foreach ($participants as $participant) {
+            $team_id = $participant->team_id;
+            $teamOnTournament = Team::findOrFail($team_id);
+            $teamManageIdOnTournament = $teamOnTournament->manager_id;
+            if ($teamManageId == $teamManageIdOnTournament) {
+                return back()->withErrors(['team_id' => 'You cant join two teams'])->onlyInput('team_id');
+            }
         }
 
 //        $request->validate([
