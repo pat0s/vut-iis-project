@@ -9,7 +9,14 @@
         <section>
             <h2>{{$tournament->tournament_name}}</h2>
 
-            <a href="/tournaments/1/approved" class="button-styled" id="approved-button">Approve tournament</a>
+            @auth
+                @if(!$tournament->is_approved and $isAdmin)
+                    <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/edit">
+                        @csrf
+                        <input type="submit" name="approve-button" class="button-styled" value="Approve tournament"/>
+                    </form>
+                @endif
+            @endauth
 
             <section id="tournament-description">
                 <h3>Description</h3>

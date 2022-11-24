@@ -55,16 +55,12 @@ class TournamentController extends Controller
     public function show(Request $request) {
 
         $tournament = Tournament::findOrFail($request->tournament_id);
-
-
         $matches = TournamentMatch::where('tournament_id', $request->tournament_id)->orderBy('round', 'desc')->orderBy('index_of_match', 'asc')->get();
 
         $approved = $this->_isApproved($tournament);
         $startDate = date('d-m-Y', strtotime($tournament->start_date));
         $endDate = date('d-m-Y', strtotime($tournament->end_date));
         $pricepool = round($tournament->pricepool);
-//        $isManager = $this->_isTournamentManager($tournament);
-
 
         $viewData = array(
             'tournament' => $tournament,
@@ -74,6 +70,7 @@ class TournamentController extends Controller
             'approved' => $approved,
             'participants' => $tournament->participants,
             'matches' => $matches,
+            'isAdmin' => $this->_isAdmin(),
         );
 
         return view('tournaments.show')->with($viewData);
@@ -86,20 +83,20 @@ class TournamentController extends Controller
     }
 
 
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
         // dd($request);
         // if($request->parameters['generate-button'])
-        if($request['generate-button']){
-
+        if ($request['generate-button']) {
             $this->_generateSchedule($request->tournament_id);
             return redirect()->back()->with('message', 'You generated tournament schedule successfully');
-
         }
-        elseif($request['submit-button']){
-
-            return redirect()->back()->with('message', 'You edit tournament successfully');
-
-
+        elseif ($request['submit-button']) {
+            return redirect()->back()->with('message', 'You edited tournament successfully');
+        }
+        elseif ($request['approve-button']) {
+            $this->_approveTournament($request->tournament_id);
+            return redirect()->back()->with('message', 'You approved tournament successfully');
         }
 
     }
@@ -109,6 +106,7 @@ class TournamentController extends Controller
     {
         $person = Auth::user();
         $tournament = Tournament::findOrFail($request->tournament_id);
+
         $maxParticipantsCount = $tournament->number_of_participants;
         $actualParticipantsCount = $tournament->participants->count();
         if ($maxParticipantsCount <= $actualParticipantsCount) {
@@ -198,6 +196,20 @@ class TournamentController extends Controller
     }
 
     /**
+     * Approve tournament -> participants will be able to join tournament
+     *
+     * @param int $tournamentId
+     * @return void
+     */
+    private function _approveTournament(int $tournamentId)
+    {
+        $tournament = Tournament::findOrFail($tournamentId);
+
+        $tournament->is_approved = 1;
+        $tournament->save();
+    }
+
+    /**
      * Assign participants to the first round of tournament matches.
      *
      * @param int $tournamentId
@@ -239,5 +251,18 @@ class TournamentController extends Controller
             $tournamentManager = true;
         }
         return $tournamentManager;
+    }
+
+    /**
+     * Check if auth user is admin or super-admin.
+     *
+     * @return bool
+     */
+    private function _isAdmin(): bool
+    {
+        if (in_array(auth()->user()->role_id, [2,3])) {
+            return true;
+        }
+        return false;
     }
 }
