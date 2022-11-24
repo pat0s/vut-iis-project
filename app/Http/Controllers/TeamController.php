@@ -125,16 +125,18 @@ class TeamController extends Controller
         ]);
 
         $userIds = $request->get('members');
-
-        $destinationPath = 'public/teams/img';
-        $teamImage = $request->file('image');
-        $imageName = $teamImage->hashName();
-        $teamImage->storeAs($destinationPath, $imageName);
-
         $params = $formFields;
         $params['manager_id'] = auth()->user()->person_id;
         $params['number_of_players'] = count($userIds);
-        $params['image'] = $imageName;
+
+        if (array_key_exists('image', $formFields)) {
+            $destinationPath = 'public/teams/img';
+            $teamImage = $request->file('image');
+            $imageName = $teamImage->hashName();
+            $teamImage->storeAs($destinationPath, $imageName);
+
+            $params['image'] = $imageName;
+        }
 
         // create team
         $team = Team::create($params);
