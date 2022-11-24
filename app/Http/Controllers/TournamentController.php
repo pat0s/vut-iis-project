@@ -87,22 +87,72 @@ class TournamentController extends Controller
 
 
     public function edit(Request $request){
-        // dd($request);
-        // if($request->parameters['generate-button'])
-        if($request['generate-button']){
 
+        if($request['generate-button']){
+            
             $this->_generateSchedule($request->tournament_id);
             return redirect()->back()->with('message', 'You generated tournament schedule successfully');
             
         }
         elseif($request['submit-button']){
+            
+            $matches = TournamentMatch::where('tournament_id', $request->tournament_id)->orderBy('round', 'desc')->orderBy('index_of_match', 'asc')->get();
 
+            foreach($matches as $match){
+
+                $nextMatchOfWinner = TournamentMatch::where('tournament_id', $request->tournament_id)->where('round', $match->round / 2 )->where('index_of_match', intdiv(($match->index_of_match-1),2)+1)->get();//1-> 0+1 = 1; 2 -> 0+1 -> 1; 3 -> 1+1 = 2; 4-> 1+1 = 2; 5-> 2+1 = 3; 6-> 2+1 = 3; 7-> 3+1 = 4; 8-> 3+1 = 4
+
+                if($request['r'.$match->round.'i'.($match->index_of_match-1).'p1']){
+                    $match->participant1_result = intval($request['r'.$match->round.'i'.($match->index_of_match-1).'p1']);
+                }
+                
+                if($request['r'.$match->round.'i'.($match->index_of_match-1).'p2']){
+                    $match->participant2_result = intval($request['r'.$match->round.'i'.($match->index_of_match-1).'p2']);
+                }
+
+                
+                if($request[$match->round.'i'.($match->index_of_match-1)]){
+                    
+                    $match->winner_id = intval($request[$match->round.'i'.($match->index_of_match-1)]);
+                    $match->is_finished = 1;
+                    
+                    
+                    if($match->round != 1){
+    
+                        if(($match->index_of_match - 1) % 2){
+                            $nextMatchOfWinner[0]->participant2_id = $match->winner_id;
+                        }
+                        else{
+                            $nextMatchOfWinner[0]->participant1_id = $match->winner_id;
+                        }
+    
+    
+                        try {
+                            $nextMatchOfWinner[0]->update();
+                        } catch (\Exception $e) {
+                            return redirect()->back()->with('error', '2Failed to update your tournament schedule.');
+                        }
+    
+                    }
+                }
+
+
+
+                try {
+                    $match->update();
+                } catch (\Exception $e) {
+                    return redirect()->back()->with('error', '1Failed to update your tournament schedule.');
+                }
+
+            }
+            
             return redirect()->back()->with('message', 'You edit tournament successfully');
-
 
         }
         
     }
+
+
 
     // Join tournament for person
     public function joinTournamentPerson(Request $request): \Illuminate\Http\RedirectResponse
@@ -122,6 +172,8 @@ class TournamentController extends Controller
 //        $tournament->save();
         return redirect()->back()->with('message', 'You joined to tournament');
     }
+
+
 
     // Join tournament for team
     public function joinTournamentTeam(Request $request): \Illuminate\Http\RedirectResponse
