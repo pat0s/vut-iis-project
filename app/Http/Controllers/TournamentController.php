@@ -85,6 +85,24 @@ class TournamentController extends Controller
         return view('tournaments.create', ['sports' => $sports]);
     }
 
+
+    public function editTournamentOrGenerateSchedule(Request $request){
+        // dd($request);
+        // if($request->parameters['generate-button'])
+        if($request['generate-button']){
+
+            return redirect()->back()->with('message', 'You generated tournament schedule successfully');
+            
+        }
+        elseif($request['submit-button']){
+
+            return redirect()->back()->with('message', 'You edit tournament successfully');
+
+
+        }
+        
+    }
+
     // Join tournament for person
     public function joinTournamentPerson(Request $request): \Illuminate\Http\RedirectResponse
     {

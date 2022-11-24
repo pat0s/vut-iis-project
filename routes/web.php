@@ -121,6 +121,11 @@ Route::post('/tournaments/{tournament_id}/join-tournament-team', [TournamentCont
     ->where('tournament_id', '[0-9]+')
     ->middleware('auth');
 
+    // Edit tournament 
+Route::post('/tournaments/{tournament_id}/edit', [TournamentController::class, 'editTournamentOrGenerateSchedule'])
+    ->where('tournament_id', '[0-9]+')
+    ->middleware('auth');
+
 Route::get('/statistics', function () {
     return view('welcome');
 });
