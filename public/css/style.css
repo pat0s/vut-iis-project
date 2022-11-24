@@ -2428,6 +2428,10 @@ div#sports-list-parent #sports-list::-webkit-scrollbar-track {
   scroll-behavior: smooth;
 }
 
+button:disabled, input:disabled, select:disabled {
+  cursor: not-allowed !important;
+}
+
 body {
   background-color: #23273E;
 }
