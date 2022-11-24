@@ -122,7 +122,7 @@ Route::post('/tournaments/{tournament_id}/join-tournament-team', [TournamentCont
     ->middleware('auth');
 
     // Edit tournament 
-Route::post('/tournaments/{tournament_id}/edit', [TournamentController::class, 'editTournamentOrGenerateSchedule'])
+Route::post('/tournaments/{tournament_id}/edit', [TournamentController::class, 'edit'])
     ->where('tournament_id', '[0-9]+')
     ->middleware('auth');
 

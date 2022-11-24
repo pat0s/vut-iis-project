@@ -86,11 +86,12 @@ class TournamentController extends Controller
     }
 
 
-    public function editTournamentOrGenerateSchedule(Request $request){
+    public function edit(Request $request){
         // dd($request);
         // if($request->parameters['generate-button'])
         if($request['generate-button']){
 
+            $this->_generateSchedule($request->tournament_id);
             return redirect()->back()->with('message', 'You generated tournament schedule successfully');
             
         }
@@ -185,12 +186,12 @@ class TournamentController extends Controller
     /**
      * Assign participants to the first round of tournament matches.
      *
-     * @param Request $request
+     * @param int $tournamentId
      * @return void
      */
-    public function generate(Request $request)
+    private function _generateSchedule(int $tournamentId)
     {
-        $tournament = Tournament::findOrFail($request->tournament_id);
+        $tournament = Tournament::findOrFail($tournamentId);
 
         $noMatchesInRound = $tournament->number_of_participants / 2;
         $indexOfMatch = 0;
