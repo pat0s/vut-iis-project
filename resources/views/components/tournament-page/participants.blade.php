@@ -18,6 +18,9 @@
             <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament-person">
                 @csrf
                 <button type='submit' class="button-styled">Join tournament</button>
+                @error('person_id')
+                <p style="color:red;">{{$message}}</p>
+                @enderror
             </form>
         @else
         {{-- Only if tournaments is for teamns --}}

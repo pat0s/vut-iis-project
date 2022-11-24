@@ -20,31 +20,31 @@ class TournamentController extends Controller
         $tournamentName = '';
         if (isset($request['search'])) {
             $tournamentName = $request['search'];
+
         }
         $tournaments1 = Tournament::where('tournament_name', 'like', '%'. $tournamentName .'%')
             ->get();
 
         $date = date('Y-m-d');;
-        $requestFilterValue = $request['filterValue'];
-//        $request['filterValue'];
-
-
+        $requestFilterValue = $request['filter-value'];
         if ($requestFilterValue == "finished") {
-            $tournaments2 = Tournament::all()->where('end_date', '<=', $date);
+            $tournaments2 = Tournament::where('end_date', '<=', $date)->get();
         } elseif ($requestFilterValue == 'ongoing') {
-            $tournaments2 = Tournament::all()->where('end_date', '>=', $date)
-                ->where('start_date', '<=', $date);
+            $tournaments2 = Tournament::where('end_date', '>=', $date)
+                ->where('start_date', '<=', $date)->get();
         } elseif ($requestFilterValue == 'unstarted') {
-            $tournaments2 = Tournament::all()->where('start_date', '<=', $date);
+            $tournaments2 = Tournament::where('start_date', '<=', $date)->get();
         } elseif ($requestFilterValue == 'approved') {
-            $tournaments2 = Tournament::all()->where('is_approved', 1);
+            $tournaments2 = Tournament::where('is_approved', 1)->get();
         } elseif ($requestFilterValue == 'unapproved') {
-            $tournaments2 = Tournament::all()->where('is_approved', 0);
-        } else {
-            $tournaments2 = Tournament::all();
+            $tournaments2 = Tournament::where('is_approved', 0)->get();
         }
+        if (isset($tournaments2)) {
 
-        $tournaments = $tournaments1->intersect($tournaments2);
+            $tournaments = $tournaments1->intersect($tournaments2);
+        } else {
+            $tournaments = $tournaments1;
+        }
 
         return view('tournaments.index', [
             'tournaments' => $tournaments,
@@ -109,6 +109,11 @@ class TournamentController extends Controller
     {
         $person = Auth::user();
         $tournament = Tournament::findOrFail($request->tournament_id);
+        $maxParticipantsCount = $tournament->number_of_participants;
+        $actualParticipantsCount = $tournament->participants->count();
+        if ($maxParticipantsCount <= $actualParticipantsCount) {
+            return back()->withErrors(['person_id' => 'Guess who fucked your mom 🤓'])->onlyInput('person_id');
+        }
 
         $params['participant_name'] = $person->username;
         $params['is_approved'] = 1;
@@ -130,6 +135,11 @@ class TournamentController extends Controller
         $person = Auth::user();
         $team = Team::findOrFail($request->get('team_id'));
         $tournament = Tournament::findOrFail($request->tournament_id);
+        $maxParticipantsCount = $tournament->number_of_participants;
+        $actualParticipantsCount = $tournament->participants->count();
+        if ($maxParticipantsCount == $actualParticipantsCount) {
+            return back()->withErrors(['team_id' => 'Guess who fucked your mom 🤓'])->onlyInput('team_id');
+        }
         if ($team->manager_id != $person->person_id) {
             return back()->withErrors(['team_id' => 'You are kokot'])->onlyInput('team_id');
         }
