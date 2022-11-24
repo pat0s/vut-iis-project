@@ -93,7 +93,7 @@ class TournamentController extends Controller
 
             $this->_generateSchedule($request->tournament_id);
             return redirect()->back()->with('message', 'You generated tournament schedule successfully');
-            
+
         }
         elseif($request['submit-button']){
 
@@ -101,7 +101,7 @@ class TournamentController extends Controller
 
 
         }
-        
+
     }
 
     // Join tournament for person
@@ -210,6 +210,9 @@ class TournamentController extends Controller
 
             $indexOfMatch++;
         }
+
+        $tournament->is_generated = 1;
+        $tournament->save();
     }
 
     private function _isApproved(Tournament $tournament) {
