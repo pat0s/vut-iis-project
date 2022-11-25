@@ -121,15 +121,15 @@ Route::post('/tournaments/{tournament_id}/join-tournament-team', [TournamentCont
     ->where('tournament_id', '[0-9]+')
     ->middleware('auth');
 
-    // Edit tournament 
+// Edit tournament
 Route::post('/tournaments/{tournament_id}/edit', [TournamentController::class, 'edit'])
     ->where('tournament_id', '[0-9]+')
     ->middleware('auth');
 
-Route::get('/statistics', function () {
-    return view('welcome');
-});
-
+// Remove participant
+Route::delete('/participants/{participant_id}', [TournamentController::class, 'removeParticipant'])
+    ->where('participant_id', '[0-9]+')
+    ->middleware('auth');
 // -----------------------------------------------------
 
 //--------------------- Sport ---------------------
