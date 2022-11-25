@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
@@ -127,7 +128,7 @@ Route::post('/tournaments/{tournament_id}/edit', [TournamentController::class, '
     ->middleware('auth');
 
 // Remove participant
-Route::delete('/participants/{participant_id}', [TournamentController::class, 'removeParticipant'])
+Route::delete('/participants/{participant_id}', [ParticipantController::class, 'destroy'])
     ->where('participant_id', '[0-9]+')
     ->middleware('auth');
 // -----------------------------------------------------

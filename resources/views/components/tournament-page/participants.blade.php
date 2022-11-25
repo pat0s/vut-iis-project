@@ -44,14 +44,14 @@
 
         @endif
 
-        @if($isParticipant && !$tournament->is_generated)
-            <form action="" method="POST">
-                <input type="submit" name="remove-participant" id="remove-participant" class="button-styled" value="Opt out of the tournament"></input>
+        @if($asParticipantId && !$tournament->is_generated)
+            <form action="/participants/{{$asParticipantId}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" name="remove-participant" class="button-styled" value="Opt out of the tournament">
             </form>
-        
         @endif
-    
-    
+
     @endauth
 
 </section>

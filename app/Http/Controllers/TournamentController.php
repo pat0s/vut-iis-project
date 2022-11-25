@@ -63,14 +63,14 @@ class TournamentController extends Controller
         $pricepool = round($tournament->pricepool);
 
         $person = Auth::user();
-        $isParticipant = false;
+        $asParticipantId = null;
 
         if($person){
             $participants = $tournament->participants;
 
             foreach ($participants as $participant) {
                 if ($participant->person_id == $person->person_id) {
-                    $isParticipant = true;
+                    $asParticipantId = $participant->participant_id;
                 }
             }
         }
@@ -84,7 +84,7 @@ class TournamentController extends Controller
             'participants' => $tournament->participants,
             'matches' => $matches,
             'isAdmin' => $this->_isAdmin(),
-            'isParticipant' => $isParticipant,
+            'asParticipantId' => $asParticipantId,
         );
 
         return view('tournaments.show')->with($viewData);
@@ -158,17 +158,6 @@ class TournamentController extends Controller
             return redirect()->back()->with('message', 'You approved tournament successfully');
         }
     }
-
-
-    public function removeParticipant(Request $request)
-    {
-        $participant = Participant::findOrFail($request->participant_id);
-        $participant->delete();
-
-        return back()->with('message', 'Participant was deleted.');
-    }
-
-
 
     // Join tournament for person
     public function joinTournamentPerson(Request $request): \Illuminate\Http\RedirectResponse
