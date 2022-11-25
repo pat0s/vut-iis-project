@@ -333,6 +333,11 @@ class TournamentController extends Controller
      */
     private function _isAdmin(): bool
     {
+        if(!(auth()->user()))
+        {
+            return false;
+        }
+        
         if (in_array(auth()->user()->role_id, [2,3])) {
             return true;
         }

@@ -1,7 +1,7 @@
 <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/edit" id="tournament-form">
     @csrf
     
-    <input type="submit" placeholder="Submit button" id="submit-button" name="submit-button" class="button-styled hidden-element" onclick="window.buttonPressedTournament()">
+    <input type="submit" placeholder="Submit button" id="submit-button" name="submit-button" class="button-styled hidden-element" >
     <button id="cancel-button" class="button-styled hidden-element" type="button" onclick="window.buttonPressedTournament()">Cancel</button>
     
     @if(auth()->user() && auth()->user()->person_id == $tournament->manager_id)
@@ -16,8 +16,9 @@
             <input type="submit" {{$tournament->participants->count() != $tournament->number_of_participants ? "disabled" : ""}} value="Generate tournament schedule" placeholder="Generate tournament schedule" id="generate-button" class="button-styled" name="generate-button">
         
         @endif
-    
+
         <button id="edit-button" {{$tournament->is_generated == 0 ? "disabled" : "" }} class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
+
     @endif
 
     <div id="tournament-schedule">

@@ -49,7 +49,6 @@
         </table>
 
         @if($profileOwner)
-            <a href=""> </a>
             <button class="button-styled" type="button" id="edit-button" onclick="window.buttonPressedProfile()">
                 Edit profile
             </button>
