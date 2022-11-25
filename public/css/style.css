@@ -2020,8 +2020,8 @@ section#participants ul li a:nth-child(2) {
   width: 35px;
   height: 30px;
 }
-section#participants ul li img {
-  transform: scale(0.7);
+section#participants ul li form {
+  width: 40px;
 }
 section#participants form {
   width: 100%;

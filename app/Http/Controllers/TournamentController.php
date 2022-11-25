@@ -62,6 +62,19 @@ class TournamentController extends Controller
         $endDate = date('d-m-Y', strtotime($tournament->end_date));
         $pricepool = round($tournament->pricepool);
 
+        $person = Auth::user();
+        $isParticipant = false;
+        
+        if($person){
+            $participants = $tournament->participants;
+            
+            foreach ($participants as $participant) {
+                if ($participant->person_id == $person->person_id) {
+                    $isParticipant = true;
+                }
+            }
+        }
+
         $viewData = array(
             'tournament' => $tournament,
             'startDate' => $startDate,
@@ -71,6 +84,7 @@ class TournamentController extends Controller
             'participants' => $tournament->participants,
             'matches' => $matches,
             'isAdmin' => $this->_isAdmin(),
+            'isParticipant' => $isParticipant,
         );
 
         return view('tournaments.show')->with($viewData);
@@ -337,7 +351,7 @@ class TournamentController extends Controller
         {
             return false;
         }
-        
+
         if (in_array(auth()->user()->role_id, [2,3])) {
             return true;
         }

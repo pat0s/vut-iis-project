@@ -8,7 +8,7 @@
             @method('DELETE')
             <input type="image" src="{{asset('/img/Trash.svg')}}" alt="Trash">
         </form>
-        @endif
+    @endif
 
 
     @if($member->person_id == $team->manager_id)

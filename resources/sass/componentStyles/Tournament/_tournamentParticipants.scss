@@ -54,20 +54,25 @@ section#participants{
             background-color: $mainLightBrown;
             border-radius: 30px;
 
+            
             a{
                 color: $mainBlue;
                 text-decoration: none;
-            
+                
                 &:nth-child(2){
                     width: 35px;
                     height: 30px;
                 }
             }
+            
+            form{
+                width: 40px;
 
-
-            img{
-                transform: scale(0.7);
             }
+
+            // img{
+            //     transform: scale(0.7);
+            // }
 
         }
         

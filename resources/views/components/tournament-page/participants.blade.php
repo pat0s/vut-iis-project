@@ -5,6 +5,7 @@
             <x-tournament-page.participants-item
                 :userID="$participant->participant_id"
                 :userName="$participant->participant_name"
+                :tournament="$tournament"
             />
         @endforeach
     </ul>
@@ -12,7 +13,7 @@
     @auth
         {{-- Only if tournament is for induvidual participants --}}
         @if($tournament->isIndividual())
-            <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament-person">
+            <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament-person" >
                 @csrf
 
                 <button type='submit' class="button-styled" {{($tournament->is_approved) ? '' : 'disabled'}}>
@@ -42,9 +43,17 @@
             </form>
 
         @endif
+
+        @if($isParticipant && !$tournament->is_generated)
+            <form action="" method="POST">
+                <input type="submit" name="remove-participant" id="remove-participant" class="button-styled" value="Opt out of the tournament"></input>
+            </form>
+        
+        @endif
+    
+    
     @endauth
 
-    {{-- <a href="" class="button-styled">Opt out of the tournament</a> --}}
 </section>
 
 

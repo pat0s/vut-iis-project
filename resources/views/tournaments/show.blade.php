@@ -28,7 +28,7 @@
             <x-tournament-page.participants
                 :tournament="$tournament"
                 :participants="$participants"
-                {{-- :teams="$teams" --}}
+                :isParticipant="$isParticipant"
             />
 
             <x-tournament-page.more-info
