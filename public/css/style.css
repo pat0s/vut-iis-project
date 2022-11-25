@@ -1852,6 +1852,12 @@ main#tournament-page > section h2 {
   font-size: 3em;
   color: #FFDFD0;
 }
+main#tournament-page > section form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 main#tournament-page > section a#approved-button {
   width: 20%;
   margin-left: 40%;

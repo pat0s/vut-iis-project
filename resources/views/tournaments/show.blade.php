@@ -13,7 +13,7 @@
                 @if(!$tournament->is_approved and $isAdmin)
                     <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/edit">
                         @csrf
-                        <input type="submit" name="approve-button" class="button-styled" value="Approve tournament"/>
+                        <input type="submit" name="approve-button" id="approved-button" class="button-styled" value="Approve tournament"/>
                     </form>
                 @endif
             @endauth
