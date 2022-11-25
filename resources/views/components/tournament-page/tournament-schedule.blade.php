@@ -1,20 +1,23 @@
-{{-- @props([
-    'tournament',
-    'matches',
-]) --}}
-
 <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/edit" id="tournament-form">
     @csrf
     
     <input type="submit" placeholder="Submit button" id="submit-button" name="submit-button" class="button-styled hidden-element" onclick="window.buttonPressedTournament()">
     <button id="cancel-button" class="button-styled hidden-element" type="button" onclick="window.buttonPressedTournament()">Cancel</button>
+    
     @if(auth()->user() && auth()->user()->person_id == $tournament->manager_id)
-
         @if($tournament->is_generated == 0)
-            <input type="submit" value="Generate tournament schedule" placeholder="Generate tournament schedule" id="generate-button" class="button-styled" name="generate-button">
+
+            @if($tournament->is_approved == 0)
+                <p id="generate-button-message">The tournament need to be approved and have all {{$tournament->number_of_participants}} participants</p>
+            @elseif($tournament->participants->count() != $tournament->number_of_participants)
+                <p id="generate-button-message">The tournament require all {{$tournament->number_of_participants}} participants</p>
+            @endif
+        
+            <input type="submit" {{$tournament->participants->count() != $tournament->number_of_participants ? "disabled" : ""}} value="Generate tournament schedule" placeholder="Generate tournament schedule" id="generate-button" class="button-styled" name="generate-button">
+        
         @endif
     
-        <button id="edit-button" class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
+        <button id="edit-button" {{$tournament->is_generated == 0 ? "disabled" : "" }} class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
     @endif
 
     <div id="tournament-schedule">

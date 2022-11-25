@@ -10,6 +10,14 @@
     flex-wrap: wrap;
     column-gap: 50px;
 
+    p#generate-button-message{
+        color: $mainLightBrown;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     
     button{
         margin-right: 10%;

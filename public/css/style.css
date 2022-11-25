@@ -1657,6 +1657,12 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
   -moz-column-gap: 50px;
        column-gap: 50px;
 }
+#tournament-form p#generate-button-message {
+  color: #FFDFD0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #tournament-form button {
   margin-right: 10%;
 }
