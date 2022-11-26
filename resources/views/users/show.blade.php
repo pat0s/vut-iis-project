@@ -9,7 +9,7 @@
         <section>
             <h2>{{$user->username}}</h2>
             <div id="profile-picture">
-                <img src="{{asset('img/DuckBlue.svg')}}" alt="">
+                <img src="{{$user->profile_image}}" alt="user-logo">
             </div>
 
             <x-user-page.profile-info
@@ -23,7 +23,8 @@
             />
 
             <x-statistics
-                :ID="1"
+                :data="$statistics"
+                :individual="1"
             />
 
             @auth

@@ -1,37 +1,59 @@
 <section id="participants">
     <h3>Participants</h3>
     <ul>
-        
-        {{-- @foreach ($collection as $item)
-            
-        @endforeach --}}
-
-        @for ($i = 0; $i < 10; $i++)
-            <x-tournament-page.participants-item 
-                :userID="1"
-                :userName="'Mista MrDalo'"
+        @foreach ($participants as $participant)
+            <x-tournament-page.participants-item
+                :userID="$participant->participant_id"
+                :userName="$participant->participant_name"
+                :tournament="$tournament"
             />
-        @endfor
-
+        @endforeach
     </ul>
 
-    {{-- Only if tournaments is for teamns --}}
+    @auth
+        {{-- Only if tournament is for induvidual participants --}}
+        @if($tournament->isIndividual())
+            <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament-person" >
+                @csrf
 
-    <form method="POST" action="">
-        <select name="team-selection" id="team-selection">
-            
-            <option value="Mistas">Mistas</option>
-            <option value="Yteckari">Yteckari</option>
-        
-        </select>
-        <button type='submit' class="button-styled">Join tournament</button>
-    </form>
+                <button type='submit' class="button-styled" {{($tournament->is_approved) ? '' : 'disabled'}}>
+                    Join tournament
+                </button>
+                @error('person_id')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
+            </form>
+        @else
+        {{-- Only if tournaments is for teamns --}}
+            <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/join-tournament-team">
+                @csrf
 
-    {{-- Only if tournament is for induvidual particiapants --}}
-    {{-- <a href="" class="button-styled">Join tournament</a> --}}
+                <select name="team_id" id="team-selection" {{($tournament->is_approved) ? '' : 'disabled'}}>
+                    @foreach(auth()->user()->teams as $team)
+                        <option value="{{$team->team_id}}">{{$team->team_name}} ({{$team->number_of_players}} {{$team->number_of_players > 1 ? 'players' : 'player'}})</option>
+                    @endforeach
+                </select>
+                @error('team_id')
+                    <p style="color:red;">{{$message}}</p>
+                @enderror
 
-    
-    {{-- <a href="" class="button-styled">Opt out of the tournament</a> --}}
+                <button type='submit' class="button-styled" {{($tournament->is_approved) ? '' : 'disabled'}}>
+                    Join tournament
+                </button>
+            </form>
+
+        @endif
+
+        @if($asParticipantId && !$tournament->is_generated)
+            <form action="/participants/{{$asParticipantId}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" name="remove-participant" class="button-styled" value="Opt out of the tournament">
+            </form>
+        @endif
+
+    @endauth
+
 </section>
 
 

@@ -19,4 +19,11 @@ class Sport extends Model
         'number_of_players',
     ];
 
+    /**
+     * The tournament that has specific sport
+    */
+    public function tournaments() {
+        return $this->belongsToMany(Tournament::class, 'sport_id', 'sport_id');
+    }
+
 }

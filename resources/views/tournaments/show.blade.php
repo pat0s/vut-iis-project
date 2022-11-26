@@ -1,9 +1,22 @@
 <x-layout>
+    @if(Session::has('message'))
+        <x-flash-message message="{{Session::get('message')}}" successOrerror="success"/>
+    @elseif(Session::has('error'))
+        <x-flash-message message="{{Session::get('error')}}" successOrerror="error"/>
+    @endif
+
     <main id="tournament-page">
         <section>
             <h2>{{$tournament->tournament_name}}</h2>
 
-            <a href="/tournaments/1/approved" class="button-styled" id="approved-button">Approve tournament</a>
+            @auth
+                @if(!$tournament->is_approved and $isAdmin)
+                    <form method="POST" action="/tournaments/{{$tournament->tournament_id}}/edit">
+                        @csrf
+                        <input type="submit" name="approve-button" id="approved-button" class="button-styled" value="Approve tournament"/>
+                    </form>
+                @endif
+            @endauth
 
             <section id="tournament-description">
                 <h3>Description</h3>
@@ -12,28 +25,28 @@
 
             </section>
 
-            <x-tournament-page.participants />
+            <x-tournament-page.participants
+                :tournament="$tournament"
+                :participants="$participants"
+                :asParticipantId="$asParticipantId"
+            />
 
             <x-tournament-page.more-info
-
-                :dateOfStart="'23.10.2022'"
-                :dateOfEnd="'25.10.2022'"
-                :pricePool="'5000EUR and trophies'"
+                :dateOfStart="$startDate"
+                :dateOfEnd="$endDate"
+                :pricePool="$pricepool"
                 :capacity="$tournament->number_of_participants"
-                :sport="'Cycling'"
-                :approved="'True'"
-
-                {{-- :dateOfStart="$tournament->dateOfStart"
-                :pricePool="$tournament->pricePool"
-                :capacity="$tournament->capacity" --}}
-
+                :sport="$tournament->sport->name.' ('.$tournament->sport->number_of_players.' vs '.$tournament->sport->number_of_players.')'"
+                :approved="$approved"
+                :managerID="$tournament->manager_id"
             />
 
         </section>
 
         <x-tournament-page.tournament-schedule
-            :tournamentID="1"
-            :tournamentCapacity="32"
+            :tournament="$tournament"
+            :matches="$matches"
+            :participants="$participants"
         />
 
 

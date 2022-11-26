@@ -14,7 +14,6 @@
 
     {{$slot}}
 
-    <x-flash-message message="User logged succesfully" successOrerror="success"/>
     <x-footer/>
     
 </body>

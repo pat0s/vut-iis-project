@@ -24,8 +24,10 @@ class Person extends Authenticatable
         'surname',
         'username',
         'email',
+        'profile_image',
         'password',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -36,11 +38,37 @@ class Person extends Authenticatable
         'password',
     ];
 
+
+    /**
+     * Get profile image name
+     *
+     * @param string|null $value
+     * @return string
+     */
+    public function getProfileImageAttribute($value): string
+    {
+        if ($value) {
+            return asset('storage/users/img/'. $value);
+        } else {
+            return asset('img/profilePlaceholder.svg');
+        }
+    }
+
+
     /**
      * The teams that belong to the user.
      */
     public function teams()
     {
         return $this->belongsToMany(Team::class, 'MEMBER_OF_TEAM', 'person_id', 'team_id');
+    }
+
+
+    /**
+     * Get participants for the person.
+     */
+    public function asParticipant()
+    {
+        return $this->hasMany(Participant::class, 'person_id', 'person_id');
     }
 }

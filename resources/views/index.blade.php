@@ -1,5 +1,6 @@
 <x-layout>
     <main id="main-page">
+
         @if(Session::has('message'))
             <x-flash-message message="{{Session::get('message')}}" successOrerror="success"/>
         @elseif(Session::has('error'))
@@ -13,7 +14,7 @@
             <a href="#tournaments">></a>
         </section>
 
-        <x-main-page.tournament-list />
+        <x-main-page.tournament-list :tournaments="$tournaments"/>
     </main>
 
 </x-layout>

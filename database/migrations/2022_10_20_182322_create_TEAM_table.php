@@ -16,7 +16,7 @@ class CreateTEAMTable extends Migration
         Schema::create('TEAM', function (Blueprint $table) {
             $table->integer('team_id', true);
             $table->string('team_name', 50);
-            $table->string('logo_url', 1000)->nullable();
+            $table->string('image')->nullable();
             $table->integer('number_of_players')->default(0);
             $table->integer('manager_id')->index('fk_team_manager_id');
         });

@@ -1,6 +1,12 @@
 <x-layout>
 
     <main id="teams-page">
+        @if(Session::has('message'))
+            <x-flash-message message="{{Session::get('message')}}" successOrerror="success"/>
+        @elseif(Session::has('error'))
+            <x-flash-message message="{{Session::get('error')}}" successOrerror="error"/>
+        @endif
+
         <section>
             <h2>Teams</h2>
 

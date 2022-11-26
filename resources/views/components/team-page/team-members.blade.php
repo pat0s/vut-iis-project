@@ -4,13 +4,13 @@
         @foreach($members as $member)
             <x-team-page.team-members-item
                 :member="$member"
-                :teamManager="$teamManager"
-                :teamManagerId="$team->manager_id"
+                :isTeamManager="$isTeamManager"
+                :team="$team"
             />
         @endforeach
     </ul>
 
-    @if($teamManager)
+    @if($isTeamManager)
         <button type="button" onclick="window.addMemberToTeambuttonHandler()"><p>+</p></button>
 
         <div class="hidden-element" id="add-new-member-to-team-fieldset">

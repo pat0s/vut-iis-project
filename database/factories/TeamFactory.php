@@ -13,12 +13,10 @@ class TeamFactory extends Factory
      */
     public function definition()
     {
-
         return [
             'team_name' => 'Team_'.$this->faker->unique()->randomNumber(3),
-            'logo_url' => $this->faker->imageUrl(),
-            'number_of_players' => $this->faker->randomNumber(2),
-            'manager_id' => $this->faker->randomDigitNotZero(),
+            'number_of_players' => $this->faker->randomDigitNotZero(),
+            'manager_id' => rand(1,100),
         ];
     }
 }

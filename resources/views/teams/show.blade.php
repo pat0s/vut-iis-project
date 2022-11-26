@@ -10,12 +10,12 @@
         <section>
             <h2>{{$team->team_name}}</h2>
             <div id="profile-picture">
-                <img src="{{asset('/img/DuckBlue.svg')}}" alt="">
+                <img src="{{$team->image}}" alt="team-logo">
             </div>
 
             <x-team-page.team-members
                 :members="$members"
-                :teamManager="$teamManager"
+                :isTeamManager="$isTeamManager"
                 :users="$users"
                 :team="$team"
             />
@@ -25,7 +25,8 @@
             />
 
             <x-statistics
-                :ID="1"
+                :data="$statistics"
+                :individual="0"
             />
         </section>
     </main>

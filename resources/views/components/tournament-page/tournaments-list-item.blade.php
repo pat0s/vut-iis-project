@@ -7,7 +7,7 @@
 ])
 
 <li>
-    <a href="tournaments/{{$tournamentID}}">
+    <a href="/tournaments/{{$tournamentID}}">
         <div>
             <p>ID: &nbsp;&nbsp;{{$tournamentID}}</p>
             <p>{{$tournamentName}}</p>

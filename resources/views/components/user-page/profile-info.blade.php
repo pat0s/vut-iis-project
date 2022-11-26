@@ -3,7 +3,7 @@
         <p style="color:red;">{{$message}}</p>
     @enderror
 
-    <form method="POST" action="{{'/users/'. $user->person_id .'/edit'}}" id="profile-edit-form">
+    <form method="POST" action="{{'/users/'. $user->person_id .'/edit'}}" enctype="multipart/form-data" id="profile-edit-form">
         @csrf
 
         <table>
@@ -40,17 +40,15 @@
             @enderror
 
             <tr>
-                <td>Image URL</td>
-                <td><p class="form-p-tag">{{$user->image_url}}</p><input type="text" name="image_url" value="{{$user->image_url}}" class="form-input-tag hidden-element"> </td>
+                <td>Profile Image</td>
+                <td><p class="form-p-tag">{{$user->image_url}}</p><input type="file" name="profile_image" id="profile_image" class="form-input-tag hidden-element"></td>
             </tr>
-            @error('image_url')
+            @error('profile_image')
                 <p style="color:red;">{{$message}}</p>
             @enderror
-
         </table>
 
         @if($profileOwner)
-            <a href=""> </a>
             <button class="button-styled" type="button" id="edit-button" onclick="window.buttonPressedProfile()">
                 Edit profile
             </button>

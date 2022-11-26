@@ -329,6 +329,46 @@ div#flash-message.error {
   color: #23273E;
 }
 
+body#errorBody {
+  background-color: #23273E;
+}
+body#errorBody header {
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 10px;
+  background-color: #23273E;
+}
+body#errorBody header div, body#errorBody header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+body#errorBody main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFDFD0;
+  font-size: 2.5em;
+}
+body#errorBody main #mainPage-link {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  transform: scale(0.8);
+}
+
 main#main-page {
   margin-bottom: 40vh;
 }
@@ -756,6 +796,11 @@ main#profile-page > section #profile-picture {
   background-color: #FFDFD0;
 }
 main#profile-page > section #profile-picture img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main#profile-page > section #profile-picture #duck-image {
   transform: scale(1.5);
 }
 main#profile-page > section #profile-info {
@@ -1051,6 +1096,11 @@ main#team-page > section #profile-picture {
   background-color: #FFDFD0;
 }
 main#team-page > section #profile-picture img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main#team-page > section #profile-picture #duck-image {
   transform: scale(1.5);
 }
 
@@ -1607,6 +1657,12 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
   -moz-column-gap: 50px;
        column-gap: 50px;
 }
+#tournament-form p#generate-button-message {
+  color: #FFDFD0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #tournament-form button {
   margin-right: 10%;
 }
@@ -1625,9 +1681,9 @@ div#teams-list-parent #teams-list::-webkit-scrollbar-track {
   width: 90%;
   margin-left: 10%;
   padding-right: 10%;
+  padding-bottom: 50px;
   margin-top: 50px;
   overflow-x: auto;
-  overflow-y: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1802,6 +1858,12 @@ main#tournament-page > section h2 {
   font-size: 3em;
   color: #FFDFD0;
 }
+main#tournament-page > section form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 main#tournament-page > section a#approved-button {
   width: 20%;
   margin-left: 40%;
@@ -1839,23 +1901,27 @@ main#tournaments-page > section {
   padding-right: 15%;
   -moz-column-gap: 150px;
        column-gap: 150px;
-  row-gap: 80px;
+  row-gap: 30px;
 }
 main#tournaments-page > section h2 {
   width: 100%;
+  margin-bottom: 50px;
   text-align: center;
   font-size: 3em;
   color: #FFDFD0;
 }
 main#tournaments-page > section form#search-from {
-  width: 60%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
 }
 main#tournaments-page > section form#search-from input[type=text] {
-  width: 100%;
+  width: 60%;
   padding: 4px 20px;
   border-radius: 30px;
   background-color: #fff;
@@ -1864,7 +1930,7 @@ main#tournaments-page > section form#search-from button[type=submit] {
   width: 32px;
   height: 32px;
   position: relative;
-  left: -34px;
+  left: -7%;
   top: 2px;
   z-index: 4;
   display: flex;
@@ -1880,9 +1946,24 @@ main#tournaments-page > section form#search-from button[type=submit]:hover {
 main#tournaments-page > section form#search-from button[type=submit] img {
   transform: scale(0.8);
 }
-main#tournaments-page > section a.button-styled {
+main#tournaments-page > section form#search-from a.button-styled {
   padding: 4px 20px;
   text-decoration: none;
+}
+main#tournaments-page > section form#search-from div#radio-filter {
+  width: 70%;
+  height: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  color: #FFDFD0;
+}
+main#tournaments-page > section form#search-from div#radio-filter label {
+  font-size: 1.2em;
 }
 
 section#participants {
@@ -1939,8 +2020,8 @@ section#participants ul li a:nth-child(2) {
   width: 35px;
   height: 30px;
 }
-section#participants ul li img {
-  transform: scale(0.7);
+section#participants ul li form {
+  width: 40px;
 }
 section#participants form {
   width: 100%;
@@ -2005,21 +2086,6 @@ section#more-info div#more-info-box p {
   align-items: center;
   flex-wrap: wrap;
   row-gap: 30px;
-}
-#tournament-tournaments-list form {
-  width: 70%;
-  height: 30px;
-  margin-left: 15%;
-  margin-right: 15%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  color: #FFDFD0;
-}
-#tournament-tournaments-list form label {
-  font-size: 1.2em;
 }
 #tournament-tournaments-list ul {
   width: 100%;
@@ -2118,11 +2184,21 @@ main#create-tournament-page > section form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 60px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
   justify-items: center;
   align-items: center;
 }
-main#create-tournament-page > section form .item:nth-child(odd) {
-  justify-self: left;
+main#create-tournament-page > section form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 20px;
+}
+main#create-tournament-page > section form label {
   font-weight: 800;
   color: #FFDFD0;
   font-size: 1.5em;
@@ -2149,6 +2225,22 @@ main#create-tournament-page > section form textarea {
   border: solid 2px #FFDFD0;
   color: #FFDFD0;
 }
+main#create-tournament-page > section form textarea::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  margin-right: 5px;
+  opacity: 0;
+}
+main#create-tournament-page > section form textarea::-webkit-scrollbar-thumb {
+  background: #FFDFD0;
+  border-radius: 20px;
+  opacity: 0;
+}
+main#create-tournament-page > section form textarea::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 20px;
+  opacity: 0;
+}
 main#create-tournament-page > section form textarea:focus {
   outline: 1px solid #FFDFD0;
 }
@@ -2164,8 +2256,9 @@ main#create-tournament-page > section form input[type=submit] {
   cursor: pointer;
 }
 main#create-tournament-page > section form select {
-  width: 20%;
+  width: 40%;
   text-align: center;
+  align-self: center;
 }
 
 main#sport-page {
@@ -2345,6 +2438,10 @@ div#sports-list-parent #sports-list::-webkit-scrollbar-track {
   font-family: "Reem Kufi", sans-serif;
   font-size: 16px;
   scroll-behavior: smooth;
+}
+
+button:disabled, input:disabled, select:disabled {
+  cursor: not-allowed !important;
 }
 
 body {

@@ -21,7 +21,7 @@ class CreateTrigger extends Migration
             DECLARE indx INTEGER(10);
             DECLARE r INTEGER(10);
             SET indx = 1;
-            SET r = NEW.number_of_participants;
+            SET r = NEW.number_of_participants/2;
 
             WHILE r > 1 DO
 

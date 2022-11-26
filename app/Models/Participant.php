@@ -13,6 +13,20 @@ class Participant extends Model
     protected $table = 'PARTICIPANT';
     protected $primaryKey = 'participant_id';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'participant_name',
+        'is_approved',
+        'participant_type',
+        'team_id',
+        'person_id',
+        'tournament_id'
+    ];
+
 
     /**
      * Get the tournament that owns the participant.
@@ -22,6 +36,7 @@ class Participant extends Model
         return $this->belongsTo(Tournament::class, 'tournament_id', 'tournament_id');
     }
 
+
     /**
      * Get the team that is the participant.
      */
@@ -29,6 +44,7 @@ class Participant extends Model
     {
         return $this->belongsTo(Team::class, 'team_id', 'team_id');
     }
+
 
     /**
      * Get the user that is the participant.

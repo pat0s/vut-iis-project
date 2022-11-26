@@ -4,7 +4,7 @@
         <section>
             <h2>Create Team</h2>
 
-            <form method="POST" action="/teams">
+            <form method="POST" action="/teams" enctype="multipart/form-data">
                 @csrf
 
                 <div id="left-box">
@@ -12,8 +12,8 @@
                         <img src="{{asset('/img/DuckBlue.svg')}}" alt="">
                     </div>
 
-                    <h3>Image URL</h3>
-                    <input type="text" name="logo_url">
+                    <h3>Team Image</h3>
+                    <input type="file" name="image" name="image">
 
                 </div>
 
