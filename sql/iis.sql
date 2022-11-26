@@ -9,20 +9,20 @@ DROP TABLE SPORT;
 
 CREATE TABLE ROLE(
     role_id INTEGER NOT NULL AUTO_INCREMENT,
-    role_name VARCHAR(30) NOT NULL,
+    role_name VARCHAR(50) NOT NULL,
 
     CONSTRAINT PK_ROLE_ID PRIMARY KEY (role_id)
 );
 
 CREATE TABLE PERSON(
     person_id INTEGER NOT NULL AUTO_INCREMENT,
-    first_name VARCHAR(30),
-    surname VARCHAR(30),
-    email VARCHAR(50) CHECK(email LIKE '%___@___%'),
-    address VARCHAR(50),
-    username VARCHAR(30) UNIQUE,
-    password VARCHAR(255),
-    image_url VARCHAR(255),
+    first_name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    email VARCHAR(255) CHECK(email LIKE '%___@___%') NOT NULL,
+    address VARCHAR(255),
+    username VARCHAR(30) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    profile_image VARCHAR(255),
 
     role_id INTEGER DEFAULT NULL,
 
@@ -40,11 +40,13 @@ CREATE TABLE SPORT(
 
 CREATE TABLE TOURNAMENT(
     tournament_id INTEGER NOT NULL AUTO_INCREMENT,
-    tournament_name VARCHAR(30) NOT NULL,
+    tournament_name VARCHAR(50) NOT NULL,
     description VARCHAR(1000),
     start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL,
     pricepool DECIMAL(20,2),
     is_approved INTEGER(1) DEFAULT 0 CHECK (is_approved IN (0,1)),
+    is_generated INTEGER(1) DEFAULT 0 CHECK (is_generated IN (0,1)),
     number_of_participants INTEGER CHECK (number_of_participants IN (4, 8, 16, 32, 64)),
     manager_id INTEGER NOT NULL,
     sport_id INTEGER NOT NULL,
@@ -57,8 +59,8 @@ CREATE TABLE TOURNAMENT(
 
 CREATE TABLE TEAM(
     team_id INTEGER NOT NULL AUTO_INCREMENT,
-    team_name VARCHAR(30) NOT NULL,
-    logo_url VARCHAR(255),
+    team_name VARCHAR(50) NOT NULL,
+    image VARCHAR(255),
     number_of_players INTEGER DEFAULT 0,
     manager_id INTEGER NOT NULL,
 
@@ -77,7 +79,7 @@ CREATE TABLE MEMBER_OF_TEAM(
 
 CREATE TABLE PARTICIPANT(
     participant_id INTEGER NOT NULL AUTO_INCREMENT,
-    participant_name VARCHAR(30),
+    participant_name VARCHAR(50),
     is_approved INTEGER(1) DEFAULT 0 CHECK (is_approved in (0,1)),
     participant_type VARCHAR(6) NOT NULL CHECK(participant_type IN ('team', 'person')),
     team_id INTEGER NULL,
@@ -92,7 +94,8 @@ CREATE TABLE PARTICIPANT(
 
 CREATE TABLE TOURNAMENT_MATCH(
     match_id INTEGER NOT NULL AUTO_INCREMENT,
-    result VARCHAR(30),
+    participant1_result INTEGER,
+    participant2_result INTEGER,
     index_of_match INTEGER NOT NULL,
     round INTEGER NOT NULL,
     is_finished INTEGER(1) DEFAULT 0 CHECK (is_finished in (0,1)),
