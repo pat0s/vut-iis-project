@@ -18,29 +18,31 @@
                     <a href="/tournaments/create" class="button-styled">Create tournament</a>
                 @endauth
 
+                {{-- {{dd($requestFilterValue)}} --}}
+            
                 <div id="radio-filter">
                     <div>
-                        <input type="radio" id="all" name="filter-value" value="all" checked="checked">
+                        <input type="radio" id="all" name="filter-value" value="all" {{$requestFilterValue == "all" || $requestFilterValue == null ? "checked" : ""}}>
                         <label for="all">all</label>
                     </div>
                     <div>
-                        <input type="radio" id="finished" name="filter-value" value="finished">
+                        <input type="radio" id="finished" name="filter-value" value="finished" {{$requestFilterValue == "finished" ? "checked" : ""}}>
                         <label for="finished">finished</label>
                     </div>
                     <div>
-                        <input type="radio" id="ongoing" name="filter-value" value="ongoing">
+                        <input type="radio" id="ongoing" name="filter-value" value="ongoing" {{$requestFilterValue == "ongoing" ? "checked" : ""}}>
                         <label for="ongoing">ongoing</label>
                     </div>
                     <div>
-                        <input type="radio" id="unstarted" name="filter-value" value="unstarted">
+                        <input type="radio" id="unstarted" name="filter-value" value="unstarted" {{$requestFilterValue == "unstarted" ? "checked" : ""}}>
                         <label for="unstarted">unstarted</label>
                     </div>
                     <div>
-                        <input type="radio" id="unstarted" name="filter-value" value="approved">
+                        <input type="radio" id="unstarted" name="filter-value" value="approved" {{$requestFilterValue == "approved" ? "checked" : ""}}>
                         <label for="unstarted">approved</label>
                     </div>
                     <div>
-                        <input type="radio" id="unstarted" name="filter-value" value="unapproved">
+                        <input type="radio" id="unstarted" name="filter-value" value="unapproved" {{$requestFilterValue == "unapproved" ? "checked" : ""}}>
                         <label for="unstarted">unapproved</label>
                     </div>
                 </div>

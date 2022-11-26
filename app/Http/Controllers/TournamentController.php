@@ -46,8 +46,10 @@ class TournamentController extends Controller
             $tournaments = $tournaments1;
         }
 
+
         return view('tournaments.index', [
             'tournaments' => $tournaments,
+            'requestFilterValue' => $requestFilterValue,
         ]);
     }
 
