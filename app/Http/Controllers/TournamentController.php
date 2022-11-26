@@ -28,10 +28,10 @@ class TournamentController extends Controller
         $date = date('Y-m-d');;
         $requestFilterValue = $request['filter-value'];
         if ($requestFilterValue == "finished") {
-            $tournaments2 = Tournament::where('end_date', '<=', $date)->get();
+            $tournaments2 = Tournament::where('end_date', '<=', $date)->where('is_approved', 1)->get();
         } elseif ($requestFilterValue == 'ongoing') {
             $tournaments2 = Tournament::where('end_date', '>=', $date)
-                ->where('start_date', '<=', $date)->get();
+                ->where('start_date', '<=', $date)->where('is_approved', 1)->get();
         } elseif ($requestFilterValue == 'unstarted') {
             $tournaments2 = Tournament::where('start_date', '<=', $date)->get();
         } elseif ($requestFilterValue == 'approved') {
