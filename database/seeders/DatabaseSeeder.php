@@ -20,21 +20,29 @@ class DatabaseSeeder extends Seeder
     {
         Role::create(['role_name' => 'user']);  // ID=1
         Role::create(['role_name' => 'admin']);  // ID=2
-        Role::create(['role_name' => 'super admin']);  // ID=3
+        Role::create(['role_name' => 'system admin']);  // ID=3
 
         Person::factory(500)->create();
         Person::create(array(
             'first_name' => 'admin',
-            'surname' => 'super',
-            'email' => 'super@admin',
+            'surname' => 'admin',
+            'email' => 'admin@admin',
             'username' => 'admin',
+            'password' => '$2y$10$lV6gl3I9bu6cgRsFI.QlTOBg5SvDUtk9Y2L5k/g.RNwV0zaXSwS6e',
+            'role_id' => 2,
+        ));
+        Person::create(array(
+            'first_name' => 'system',
+            'surname' => 'admin',
+            'email' => 'system@admin',
+            'username' => 'system-admin',
             'password' => '$2y$10$lV6gl3I9bu6cgRsFI.QlTOBg5SvDUtk9Y2L5k/g.RNwV0zaXSwS6e',
             'role_id' => 3,
         ));
 
         Sport::factory(15)->create();
 
-        Tournament::factory(25)->create();
+        Tournament::factory(15)->create();
 
         Team::factory(50)->create()->each( function($team) {
             $noMembersWithoutManager = $team->number_of_players-1;
