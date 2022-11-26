@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
+    <meta charset="UTF-8">
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-2"/>
 <title>Projekt IIS</title>
 <style type="text/css">
@@ -47,7 +48,9 @@
 <tr><td>-</td><td>-</td><td>Neregistrovaný užívateľ</td></tr>
 </table>
 
-<p>(Diagram případů užití není nutné vkládat, pokud IS implementuje role a případy užití definované zadáním.)</p> 
+<h4>Use case diagram</h4> 
+<img src="./Use-case.png">
+
 
 <h3>Video</h3>
 
@@ -56,9 +59,26 @@
 <h2>Implementace</h2>
 <p>Stručná dokumentace k implementaci, která popisuje, které části projektu (např. PHP skripty) implementují jednotlivé případy použití.</p>
 
+<section>
+    <h4>Pri tvorbe aplikácie sme použili architektonický vzor MVC - model, view, controller</h4>
+    <p><i>Model</i> vrstvu tvorili modely jednotlivých entít ERD v súboroch <i>[name].php</i>. Tieto súbory slúžili na tvorbu relácií medzi entitami, obsahovali metody na interakciu s DB a poskytovali rozhranie pre controlers.</p>
+    <p><i>Controller</i> vrstvu tvorili controllers jednotlivých modelov v súboroch <i>[name].php</i>. Controllers slúžili na prijatie požiadavku pomocou prevolania metod rountingom. Controllers interagovali s modelmi a tvorili views, <br>ktoré následne poslali na klientskú stranu aplikácie. Tvorili tzv. business logiku aplikácie.</p>
+    <p><i>View</i> vrstvu tvorili views jednotlivých podstránok aplikácie + komponenty aplikácie v súboroch <i>[name].blade.php</i>. Každé view interaguje s užívateľom pomocou GUI a následne prevoláva controllers, ktoré reagujú na jeho <br>požiadavky a vracajú odpoveď v podobe zmeny view alebo dát aplikácie.</p>
+    <p>Pri stylovaní front-endu sme použili <i>SASS</i>. Je to programovací jazyk, ktorý je vpodstate preprocessingom <i>CSS</i>, teda musí byť pre použitim skompilovaný kompilátorom, ktorý zo <i>SASS</i> vytvorí výsledný <i>CSS</i> súbor. <br><i>SASS</i> nám dovoluje používať premenne, funkcie, konštanty, znovupoužitelný kód a hlavne modularitu zdrojového kódu.</p>
+</section>
+
 <h3>Databáze</h3>
 
 Zde vložte grafické schéma relační databáze (tabulek v databázi).
+<br>
+<br>
+<h4>ERD</h4> 
+<img src="./ERDiagram.png">
+
+<br>
+<br>
+<h4>Schema relačnej databáze</h4> 
+<img src="./DBSchema.png">
 
 <h2>Instalace</h2>
 
@@ -79,22 +99,28 @@ Použité technológie:
 </ul>
 
 <p>Inštalácia</p>
-Projekt je možné spustiť, iba ak je dostupná celá štruktúra priečinkov. Projekt bude dostupný ako verejný repozitár na <a href="https://github.com/pat0s/vut-iis-project">githube</a>. 
 
-composer install
-cp .env.test .env
-php artisan key:generate
-npm install
+<p>
+    Projekt je možné spustiť, iba ak je dostupná celá štruktúra priečinkov. Projekt bude dostupný ako verejný repozitár na <a href="https://github.com/pat0s/vut-iis-project">githube</a>. 
+</p>
 
-Vytvorenie lokálnej databázy
-Úprava súboru env - connection string na databázu
-Úprava súboru config/database.php - connection string na databázu
-Nastavenie hodnoty APP_KEY v .env súbore - php artisan key:generate
-Spustenie migrácii a seedovania dát - php artisan migrate:refresh --seed
-Spustenie servera - php artisan serve
+<h4>Prikazy na spustenie projektu na localhoste</h4>
+<code>composer install</code><br>
+<code>cp .env.test .env</code><br>
+<code>php artisan key:generate</code><br>
+<code>npm install </code><br>
+<code>php artisan serve </code><br><br>
 
-Pre editáciu css a js je potrebné nainštalovať npm.
-npm install
+
+<p>Vytvorenie lokálnej databázy</p>
+<p>Úprava súboru env - connection string na databázu</p>
+<p>Úprava súboru config/database.php - connection string na databázu</p>
+<p>Nastavenie hodnoty APP_KEY v .env súbore - <code>php artisan key:generate</code></p>
+<p>Spustenie migrácii a seedovania dát - <code>php artisan migrate:refresh --seed</code></p>
+<p>Spustenie servera - <code>php artisan serve</code></p>
+
+<p>Pre editáciu css a js je potrebné nainštalovať npm.</p>
+<code>npm install</code>
 
 <h2>Známé problémy</h2>
 <p>V projekte sú implementované všetky požiadky, ktoré boli zakomponované v zadaní</p>
