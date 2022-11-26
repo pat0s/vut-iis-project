@@ -5,26 +5,30 @@
     <button id="cancel-button" class="button-styled hidden-element" type="button" onclick="window.buttonPressedTournament()">Cancel</button>
     
     @if(auth()->user() && auth()->user()->person_id == $tournament->manager_id)
+            {{-- Controlling current date to disable EDIT button more than 1 day after tournament END DATE --}}
+        @php
+            $currentTime = Carbon\Carbon::now();
+            $currentTimeMinusDay = $currentTime;
+            $currentTimeMinusDay->subDay();
+        @endphp
+
         @if($tournament->is_generated == 0)
 
             @if($tournament->is_approved == 0)
                 <p id="generate-button-message">The tournament need to be approved and have all {{$tournament->number_of_participants}} participants</p>
+            @elseif($currentTime->gt($tournament->end_date))
+                    <p id="generate-button-message">The tournament end date has already been. You are unable to generate tournamnet schedule.</p>
             @elseif($tournament->participants->count() != $tournament->number_of_participants)
                 <p id="generate-button-message">The tournament require all {{$tournament->number_of_participants}} participants</p>
             @endif
         
-            <input type="submit" {{$tournament->participants->count() != $tournament->number_of_participants ? "disabled" : ""}} value="Generate tournament schedule" placeholder="Generate tournament schedule" id="generate-button" class="button-styled" name="generate-button">
+            <input type="submit" {{$tournament->participants->count() != $tournament->number_of_participants || $currentTime->gt($tournament->end_date) ? "disabled" : ""}} value="Generate tournament schedule" placeholder="Generate tournament schedule" id="generate-button" class="button-styled" name="generate-button">
         
         @endif
 
 
-            {{-- Controlling current date to disable EDIT button more than 1 day after tournament END DATE --}}
-        @php
-            $currentTimePlusDay = Carbon\Carbon::now()->addDay();
-            // dd($currentTimePlusDay->toDateTimeString(), $tournament->end_date);
-        @endphp
 
-        <button id="edit-button" {{($tournament->is_generated == 0 || $currentTimePlusDay->gt($tournament->end_date)) ? "disabled" : "" }} class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
+        <button id="edit-button" {{($tournament->is_generated == 0 || $currentTimeMinusDay->gt($tournament->end_date)) ? "disabled" : "" }} class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
 
     @endif
 

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Participant;
-use App\Models\Person;
 use App\Models\Team;
-use App\Models\Tournament;
 use App\Models\Sport;
-use App\Models\TournamentMatch;
+use App\Models\Person;
+use App\Models\Tournament;
+use App\Models\Participant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Models\TournamentMatch;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,13 +26,13 @@ class TournamentController extends Controller
         $tournaments1 = Tournament::where('tournament_name', 'like', '%'. $tournamentName .'%')
             ->get();
 
-        $date = date('Y-m-d');;
+        $date = Carbon::now()->toDateTimeString();
         $requestFilterValue = $request['filter-value'];
         if ($requestFilterValue == "finished") {
-            $tournaments2 = Tournament::where('end_date', '<=', $date)->where('is_approved', 1)->get();
+            $tournaments2 = Tournament::where('end_date', '<=', $date)->where('is_generated', 1)->get();
         } elseif ($requestFilterValue == 'ongoing') {
             $tournaments2 = Tournament::where('end_date', '>=', $date)
-                ->where('start_date', '<=', $date)->where('is_approved', 1)->get();
+                ->where('start_date', '<=', $date)->where('is_generated', 1)->get();
         } elseif ($requestFilterValue == 'unstarted') {
             $tournaments2 = Tournament::where('start_date', '<=', $date)->get();
         } elseif ($requestFilterValue == 'approved') {
