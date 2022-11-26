@@ -18,8 +18,6 @@
                     <a href="/tournaments/create" class="button-styled">Create tournament</a>
                 @endauth
 
-                {{-- {{dd($requestFilterValue)}} --}}
-            
                 <div id="radio-filter">
                     <div>
                         <input type="radio" id="all" name="filter-value" value="all" {{$requestFilterValue == "all" || $requestFilterValue == null ? "checked" : ""}}>
@@ -46,14 +44,11 @@
                         <label for="unstarted">unapproved</label>
                     </div>
                 </div>
-
             </form>
-
 
             <x-tournament-page.tournaments-list :tournaments="$tournaments" />
 
         </section>
-
     </main>
 
 </x-layout>

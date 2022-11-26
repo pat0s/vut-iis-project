@@ -4,25 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use App\Models\Sport;
-use App\Models\Person;
 use App\Models\Tournament;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\TournamentMatch;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 class TournamentController extends Controller
 {
-    // Show all tournaments
+    /**
+     * Show all tournaments
+     *
+     * @param Request $request
+     */
     public function index(Request $request) {
 
         $tournamentName = '';
         if (isset($request['search'])) {
             $tournamentName = $request['search'];
-
         }
+
         $tournaments1 = Tournament::where('tournament_name', 'like', '%'. $tournamentName .'%')
             ->get();
 
@@ -40,13 +42,12 @@ class TournamentController extends Controller
         } elseif ($requestFilterValue == 'unapproved') {
             $tournaments2 = Tournament::where('is_approved', 0)->get();
         }
-        if (isset($tournaments2)) {
 
+        if (isset($tournaments2)) {
             $tournaments = $tournaments1->intersect($tournaments2);
         } else {
             $tournaments = $tournaments1;
         }
-
 
         return view('tournaments.index', [
             'tournaments' => $tournaments,
@@ -54,7 +55,11 @@ class TournamentController extends Controller
         ]);
     }
 
-    // Show single tournament
+    /**
+     * Show tournament detail
+     *
+     * @param Request $request
+     */
     public function show(Request $request) {
 
         $tournament = Tournament::findOrFail($request->tournament_id);
@@ -93,13 +98,22 @@ class TournamentController extends Controller
         return view('tournaments.show')->with($viewData);
     }
 
-    // Show create form
+
+    /**
+     * Show create form
+     */
     public function create() {
         $sports = Sport::all();
         return view('tournaments.create', ['sports' => $sports]);
     }
 
 
+    /**
+     * Generate first tournament round, edit results or approve tournament
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
     public function edit(Request $request){
 
         if($request['generate-button']){
@@ -162,7 +176,13 @@ class TournamentController extends Controller
         }
     }
 
-    // Join tournament for person
+
+    /**
+     * Join tournament as person (individual)
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function joinTournamentPerson(Request $request): \Illuminate\Http\RedirectResponse
     {
         $person = Auth::user();
@@ -187,18 +207,20 @@ class TournamentController extends Controller
         $params['tournament_id'] = $tournament->tournament_id;
 
         $partipipant = Participant::create($params);
-//        $tournament->participants()->attach($tournament->tournament_id);
         $partipipant->save();
-//        $tournament->save();
+
         return redirect()->back()->with('message', 'You joined to tournament');
     }
 
 
-
-    // Join tournament for team
+    /**
+     * Join tournament as a team
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function joinTournamentTeam(Request $request): \Illuminate\Http\RedirectResponse
     {
-//        $numberOfPlayersInTeam = $team->number_of_players;
         $person = Auth::user();
         $team = Team::findOrFail($request->get('team_id'));
         $teamManageId = $team->manager_id;
@@ -206,6 +228,7 @@ class TournamentController extends Controller
         $maxParticipantsCount = $tournament->number_of_participants;
         $actualParticipantsCount = $tournament->participants->count();
         $participants = $tournament->participants;
+
         if ($maxParticipantsCount == $actualParticipantsCount) {
             return back()->withErrors(['team_id' => 'Capacity of tournament is max'])->onlyInput('team_id');
         }
@@ -215,6 +238,7 @@ class TournamentController extends Controller
         if ($team->number_of_players != $tournament->sport->number_of_players) {
             return back()->withErrors(['team_id' => 'Your team need to have number of players which sport require'])->onlyInput('team_id');
         }
+
         foreach ($participants as $participant) {
             $team_id = $participant->team_id;
             $teamOnTournament = Team::findOrFail($team_id);
@@ -223,22 +247,6 @@ class TournamentController extends Controller
                 return back()->withErrors(['team_id' => 'You cant join two teams'])->onlyInput('team_id');
             }
         }
-
-//        $request->validate([
-//            'team_id' => [
-//                function($attribute, $value, $fail) {
-//                    $person = Auth::user();
-//                    $team = Team::findOrFail($value);
-////                    dd($person, $team);
-//                    if ($team->manager_id != $person->person_id) {
-//                        $fail('You are kokot');
-//                    }
-//                },
-//                function($attribute, $value, $fail) {
-//                    $tournament = Tournament::findOrFail($request->tournament_id);
-//                }
-//            ],
-//        ]);
 
         $params['participant_name'] = $team->team_name;
         $params['is_approved'] = 1;
@@ -252,7 +260,12 @@ class TournamentController extends Controller
         return redirect()->back()->with('message', 'Your team joined to tournament');
     }
 
-    // Store tournament data
+
+    /**
+     * Create new tournament
+     *
+     * @param Request $request
+     */
     public function store(Request $request) {
         $formFields = $request->validate([
             'tournament_name' => ['required', 'min:3', 'max:50'],
@@ -274,6 +287,7 @@ class TournamentController extends Controller
         return redirect('/tournaments')->with('message', 'Tournament was successfully created.');
     }
 
+
     /**
      * Approve tournament -> participants will be able to join tournament
      *
@@ -287,6 +301,7 @@ class TournamentController extends Controller
         $tournament->is_approved = 1;
         $tournament->save();
     }
+
 
     /**
      * Assign participants to the first round of tournament matches.
@@ -316,6 +331,13 @@ class TournamentController extends Controller
         $tournament->save();
     }
 
+
+    /**
+     * Check if is the tournament approved.
+     *
+     * @param Tournament $tournament
+     * @return string Text for tournament info
+     */
     private function _isApproved(Tournament $tournament) {
         $approved = "False";
         if ($tournament->is_approved){
@@ -324,13 +346,6 @@ class TournamentController extends Controller
         return $approved;
     }
 
-    private function _isTournamentManager(Tournament $tournament) {
-        $tournamentManager = false;
-        if (auth()->user() and auth()->user()->person_id == $tournament->manager_id) {
-            $tournamentManager = true;
-        }
-        return $tournamentManager;
-    }
 
     /**
      * Check if auth user is admin or super-admin.
