@@ -17,7 +17,14 @@
         
         @endif
 
-        <button id="edit-button" {{$tournament->is_generated == 0 ? "disabled" : "" }} class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
+
+            {{-- Controlling current date to disable EDIT button more than 1 day after tournament END DATE --}}
+        @php
+            $currentTimePlusDay = Carbon\Carbon::now()->addDay();
+            // dd($currentTimePlusDay->toDateTimeString(), $tournament->end_date);
+        @endphp
+
+        <button id="edit-button" {{($tournament->is_generated == 0 || $currentTimePlusDay->gt($tournament->end_date)) ? "disabled" : "" }} class="button-styled" type="button" onclick="window.buttonPressedTournament()">Edit tournament results</button>
 
     @endif
 
