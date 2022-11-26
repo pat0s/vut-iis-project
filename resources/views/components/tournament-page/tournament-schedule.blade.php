@@ -34,16 +34,18 @@
                 @for ($i = 0; $i < intdiv($tournament->number_of_participants, 2); $i++)
 
                         @php
-                            if($tournament->is_generated){
-                                $participant1Index = array_search($matches[$indexOfMatch]->participant1_id , array_column( $participants->toArray(), $participants[0]->participant_type == 'team' ? 'team_id' : 'person_id'));
-                                $participant2Index = array_search($matches[$indexOfMatch]->participant2_id , array_column( $participants->toArray(), $participants[0]->participant_type == 'team' ? 'team_id' : 'person_id'));
+                            if($tournament->is_generated)
+                            {
+                                $participant1Index = array_search($matches[$indexOfMatch]->participant1_id , array_column( $participants->toArray(), 'participant_id'));
+                                $participant2Index = array_search($matches[$indexOfMatch]->participant2_id , array_column( $participants->toArray(), 'participant_id'));
+                                // dd($matches[$indexOfMatch]->participant1_id, $participants->toArray(),  array_column( $participants->toArray(), $participants[0]->participant_type == 'team' ? 'team_id' : 'person_id'), $matches[$indexOfMatch]->participant2_id, array_column( $participants->toArray(), $participants[0]->participant_type == 'team' ? 'team_id' : 'person_id'));
                             }
                         @endphp
 
                         <fieldset>
-                            <span><a href="/user/1">{{$tournament->is_generated ? $participants[$participant1Index]->participant_name : ""}}</a> <input type="radio" name="{{$tournament->number_of_participants/2}}i{{$i}}" value="{{$matches[$indexOfMatch]->participant1_id}}" class="participant-name-input hidden-element" {{$matches[$indexOfMatch]->participant1_id != null && $matches[$indexOfMatch]->participant1_id == $matches[$indexOfMatch]->winner_id ? "checked" : ""}}></span>
+                            <span><a href="/user/1">{{$tournament->is_generated && $participant1Index !== false ? $participants[$participant1Index]->participant_name : ""}}</a> <input type="radio" name="{{$tournament->number_of_participants/2}}i{{$i}}" value="{{$matches[$indexOfMatch]->participant1_id}}" class="participant-name-input hidden-element" {{$matches[$indexOfMatch]->participant1_id != null && $matches[$indexOfMatch]->participant1_id == $matches[$indexOfMatch]->winner_id ? "checked" : ""}}></span>
                                 <p class="match-result">{{$matches[$indexOfMatch]->participant1_result}}</p><input type="number" min="0" max="100" step="1" value="{{$matches[$indexOfMatch]->participant1_result}}" class="match-result-input hidden-element" name="r{{$tournament->number_of_participants/2}}i{{$i}}p1">
-                            <span><a href="/user/1">{{$tournament->is_generated ? $participants[$participant2Index]->participant_name : ""}}</a> <input type="radio" name="{{$tournament->number_of_participants/2}}i{{$i}}" value="{{$matches[$indexOfMatch]->participant2_id}}" class="participant-name-input hidden-element" {{$matches[$indexOfMatch]->participant2_id != null && $matches[$indexOfMatch]->participant2_id == $matches[$indexOfMatch]->winner_id ? "checked" : ""}}></span>
+                            <span><a href="/user/1">{{$tournament->is_generated && $participant2Index !== false ? $participants[$participant2Index]->participant_name : ""}}</a> <input type="radio" name="{{$tournament->number_of_participants/2}}i{{$i}}" value="{{$matches[$indexOfMatch]->participant2_id}}" class="participant-name-input hidden-element" {{$matches[$indexOfMatch]->participant2_id != null && $matches[$indexOfMatch]->participant2_id == $matches[$indexOfMatch]->winner_id ? "checked" : ""}}></span>
                                 <p class="match-result">{{$matches[$indexOfMatch]->participant2_result}}</p><input type="number" min="0" max="100" step="1" value="{{$matches[$indexOfMatch]->participant2_result}}" class="match-result-input hidden-element" name="r{{$tournament->number_of_participants/2}}i{{$i}}p2">
                         </fieldset>
                         
@@ -63,13 +65,13 @@
 
         @php
             if($tournament->is_generated){
-                $participantWinnerIndex = array_search($matches[$indexOfMatch-1]->winner_id , array_column( $participants->toArray(), $participants[0]->participant_type == 'team' ? 'team_id' : 'person_id'));
+                $participantWinnerIndex = array_search($matches[$indexOfMatch-1]->winner_id , array_column( $participants->toArray(), 'participant_id'));
             }
         @endphp
 
         <!-- final -->
         <div id="ul-final">
-            <span><a class="participant-name" href="/user/1">{{$tournament->is_generated ? $participants[$participantWinnerIndex]->participant_name : ""}}</a></span>
+            <span><a class="participant-name" href="/user/1">{{$tournament->is_generated && $participantWinnerIndex !== false ? $participants[$participantWinnerIndex]->participant_name : ""}}</a></span>
         </div>
 
     
