@@ -1,6 +1,6 @@
 <li class="team-list-item">
     @auth
-        <a href="/teams/{{$teamID}}" class={{(array_search($teamID , array_column( auth()->user()->teams->toArray(), 'team_id')) !== false) ? "highlighted-team" : ""}}></a>
+        <a href="/teams/{{$teamID}}" class={{(array_search($teamID , array_column( auth()->user()->teams->toArray(), 'team_id')) !== false) ? "highlighted-team" : ""}}>
     @endauth
     @guest
         <a href="/teams/{{$teamID}}" >
