@@ -149,18 +149,20 @@ class PersonController extends Controller
             'profile_image' => 'image',
         ]);
 
-        $destinationPath = 'public/users/img';
-        $profileImage = $request->file('profile_image');
-        $name = $profileImage->hashName();
-        $profileImage->storeAs($destinationPath, $name);
-
         $user = Person::find($userId);
         $user->first_name = $formFields['first_name'];
         $user->surname = $formFields['surname'];
         $user->username = $formFields['username'];
         $user->email = $formFields['email'];
-        $user->profile_image = $name;
         $user->role_id = 1;
+
+        if (array_key_exists('profile_image', $formFields)) {
+            $destinationPath = 'public/users/img';
+            $profileImage = $request->file('profile_image');
+            $name = $profileImage->hashName();
+            $profileImage->storeAs($destinationPath, $name);
+            $user->profile_image = $name;
+        }
 
         try {
             $user->update();
