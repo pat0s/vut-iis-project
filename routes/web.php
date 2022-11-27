@@ -67,9 +67,13 @@ Route::post('/users/{user_id}/admin', [PersonController::class, 'admin'])
     ->where('user_id', '[0-9]+')
     ->middleware('auth');
 
-// -----------------------------------------------------
+// --------------------- ParticipantController ---------------------
+// Remove participant
+Route::delete('/participants/{participant_id}', [ParticipantController::class, 'destroy'])
+    ->where('participant_id', '[0-9]+')
+    ->middleware('auth');
 
-// --------------------- TeamController ---------------------------
+// --------------------- TeamController ---------------------
 // List of teams
 Route::get('/teams', [TeamController::class, 'index']);
 
@@ -95,7 +99,6 @@ Route::delete('/teams/{team_id}/remove-member/{user_id}', [TeamController::class
     ->where('user_id', '[0-9]+')
     ->middleware('auth');
 
-// -----------------------------------------------------
 // ----------------------- TournamentController ------------------------------
 
 // Show list of tournaments
@@ -126,12 +129,6 @@ Route::post('/tournaments/{tournament_id}/join-tournament-team', [TournamentCont
 Route::post('/tournaments/{tournament_id}/edit', [TournamentController::class, 'edit'])
     ->where('tournament_id', '[0-9]+')
     ->middleware('auth');
-
-// Remove participant
-Route::delete('/participants/{participant_id}', [ParticipantController::class, 'destroy'])
-    ->where('participant_id', '[0-9]+')
-    ->middleware('auth');
-// -----------------------------------------------------
 
 //--------------------- Sport ---------------------
 Route::get('/sport', [SportController::class, 'index']);

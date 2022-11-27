@@ -154,6 +154,7 @@ class PersonController extends Controller
         $user->surname = $formFields['surname'];
         $user->username = $formFields['username'];
         $user->email = $formFields['email'];
+        $user->role_id = 1;
 
         if (array_key_exists('profile_image', $formFields)) {
             $destinationPath = 'public/users/img';

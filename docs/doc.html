@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
+    <meta charset="UTF-8">
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-2"/>
 <title>Projekt IIS</title>
 <style type="text/css">
@@ -47,7 +48,9 @@
 <tr><td>-</td><td>-</td><td>Neregistrovaný užívateľ</td></tr>
 </table>
 
-<p>(Diagram případů užití není nutné vkládat, pokud IS implementuje role a případy užití definované zadáním.)</p> 
+<h4>Use case diagram</h4> 
+<img src="./Use-case.png">
+
 
 <h3>Video</h3>
 
@@ -56,48 +59,97 @@
 <h2>Implementace</h2>
 <p>Stručná dokumentace k implementaci, která popisuje, které části projektu (např. PHP skripty) implementují jednotlivé případy použití.</p>
 
+<section>
+    <h4>Pri tvorbe aplikácie sme použili architektonický vzor MVC - model, view, controller</h4>
+    <p><i>Model</i> vrstvu tvorili modely jednotlivých entít ERD v súboroch <i>[name].php</i>. Tieto súbory slúžili na tvorbu relácií medzi entitami, obsahovali metody na interakciu s DB a poskytovali rozhranie pre controlers.</p>
+    <p><i>Controller</i> vrstvu tvorili controllers jednotlivých modelov v súboroch <i>[name].php</i>. Controllers slúžili na prijatie požiadavku pomocou prevolania metod rountingom. Controllers interagovali s modelmi a tvorili views, <br>ktoré následne poslali na klientskú stranu aplikácie. Tvorili tzv. business logiku aplikácie.</p>
+    <p><i>View</i> vrstvu tvorili views jednotlivých podstránok aplikácie + komponenty aplikácie v súboroch <i>[name].blade.php</i>. Každé view interaguje s užívateľom pomocou GUI a následne prevoláva controllers, ktoré reagujú na jeho <br>požiadavky a vracajú odpoveď v podobe zmeny view alebo dát aplikácie.</p>
+    <p>Pri stylovaní front-endu sme použili <i>SASS</i>. Je to programovací jazyk, ktorý je vpodstate preprocessingom <i>CSS</i>, teda musí byť pre použitim skompilovaný kompilátorom, ktorý zo <i>SASS</i> vytvorí výsledný <i>CSS</i> súbor. <br><i>SASS</i> nám dovoluje používať premenne, funkcie, konštanty, znovupoužitelný kód a hlavne modularitu zdrojového kódu.</p>
+</section>
+
 <h3>Databáze</h3>
 
 Zde vložte grafické schéma relační databáze (tabulek v databázi).
+<br>
+<br>
+<h4>ERD</h4> 
+<img src="./ERDiagram.png">
 
-<h2>Instalace</h2>
+<br>
+<br>
+<h4>Schema relačnej databáze</h4> 
+<img src="./DBSchema.png" width="1400">
 
-Stručně popište: 
-<ul>
-<li>postup instalace na server,</li>
-<li>softwarové požadavky (verze PHP apod.),</li>
-<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
-</ul>
+<h2>Instalace</h2> 
 
 Použité technológie:
 <ul>
     <li>PHP 8.1.3</li>
     <li>Laravel Framework 8.83.25</li>
     <li>HTML</li>
-    <li>SCASS</li>
+    <li>SASS</li>
     <li>JS</li>
+    <li>MariaDB</li>
 </ul>
 
 <p>Inštalácia</p>
-Projekt je možné spustiť, iba ak je dostupná celá štruktúra priečinkov. Projekt bude dostupný ako verejný repozitár na <a href="https://github.com/pat0s/vut-iis-project">githube</a>. 
 
-composer install
-cp .env.test .env
-php artisan key:generate
-npm install
+<p>
+    Projekt je možné spustiť, iba ak je dostupná celá štruktúra priečinkov. Projekt bude dostupný ako verejný repozitár na <a href="https://github.com/pat0s/vut-iis-project">githube</a>. 
+</p>
 
-Vytvorenie lokálnej databázy
-Úprava súboru env - connection string na databázu
-Úprava súboru config/database.php - connection string na databázu
-Nastavenie hodnoty APP_KEY v .env súbore - php artisan key:generate
-Spustenie migrácii a seedovania dát - php artisan migrate:refresh --seed
-Spustenie servera - php artisan serve
+<h4>Inicializácia projektu na localhoste</h4>
+<ul>
+    <li><code>composer install</code></li>
+    <li><code>cp .env.test .env</code></li>
+    <li><code>php artisan key:generate</code></li>
+    <li><code>php artisan storage:link</code></li>
+</ul>
 
-Pre editáciu css a js je potrebné nainštalovať npm.
-npm install
+<h4>Vytvorenie lokálnej databázy</h4>
+<ul>
+    <li>Úprava súboru env - connection string na databázu</li>
+    <li>Úprava súboru config/database.php - connection string na databázu</li>
+    <li>Spustenie migrácii a seedovania dát - <code>php artisan migrate:refresh --seed</code></li>
+    <li>Spustenie servera - <code>php artisan serve</code></li>
+</ul>
+
+<h4>Spustenie projektu</h4>
+<ul>
+    <li><code>php artisan serve</code><br></li>
+</ul>
+
+
+<h4>Pre editáciu CSS a JS je potrebné nainštalovať npm.</h4>
+<ul>
+    <li>
+        <code>npm install</code> - inštalácia balíčkov
+
+    </li>
+    <li>
+        <code>npm run dev</code> - spustenie kompilácie
+
+    </li>
+</ul>
 
 <h2>Známé problémy</h2>
 <p>V projekte sú implementované všetky požiadky, ktoré boli zakomponované v zadaní</p>
 
+<h2>Implementačné detaily</h2>
+<b>Systémový administrátor</b> - východzí administrátor systému, ktorý môže prideliť a odobrať rolu administrátora ostatným registrovaným užívateľom. Ostatní administrátori mu nemôžu odobrať rolu.
+<br><br>
+
+<b>Schvaľovanie účastníkov turnaja</b> - účastnik turnaja sa považuje za schváleného pokiaľ ho manažér turnaja neodstráni zo zoznamu účastníkov na turnaji.
+<br><br> 
+
+<b>Schvaľovanie turnaja</b> - schvaľovanie turnaja prebieha pred dátumom jeho začatia. Schváliť ho môže hociktorí administrátor.
+<br><br>
+
+<b>Generovanie turnaja</b> - generovanie samostatných zápasov turnaja bez účastníkov prebieha po vytvorení turnaja pomocou triggeru. Rozdelenie účastníkov do prvého kola turnajového pavúka má na starosti manažér turnaja. Podmienkou je schválenie turnaja a naplnenie kapacity turnaja.
+<br><br>
+
+<b>Ukončenie turnaja</b> - Turnaj sa ukončí dátumom jeho konca. Avšak manažer turnaja má potom ešte 24 hodin na to, aby dokázal editovať pavúk turnaja z dôvodu posunutia turnaja alebo znemožnenia dohratia turnaja v deň ukončenia. Po uplynuti doby 24 hodin sa tlačitko EDIT uzamkne a manažer turnaja nebude schopný editovať pavúk turnaja.
+<br><br>
+<b>Podmienky vstupu do turnaja</b> - turnaj musí byť schválený administrátorom. Pokiaľ je turnaj určený pre jednotlivcov, tak sa turnaja môže účastniť hociktorý registrovaný úžívateľ. Tímového turnaja sa môže účastniť tím, ktorého počet členov sa rovná počtu členov stanoveného na základe športu daného turnaja.
 </body>
 </html>

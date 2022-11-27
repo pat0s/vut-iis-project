@@ -24,11 +24,11 @@ section#participants{
         overflow-y: auto;
 
         &::-webkit-scrollbar {
-            width: 7px; 
-            height: 10px; 
+            width: 7px;
+            height: 10px;
         }
 
-        &::-webkit-scrollbar-thumb { 
+        &::-webkit-scrollbar-thumb {
             background: $mainLightBrown;
             border-radius: 20px;
         }
@@ -37,11 +37,10 @@ section#participants{
             background: $mainBlue;
             border-radius: 20px;
         }
-    
+
         li{
             width: 98%;
             margin-bottom: 12px;
-            // padding: 3px 15px;
             padding: 10px 15px;
 
             display: flex;
@@ -54,28 +53,24 @@ section#participants{
             background-color: $mainLightBrown;
             border-radius: 30px;
 
-            
+
             a{
                 color: $mainBlue;
                 text-decoration: none;
-                
+
                 &:nth-child(2){
                     width: 35px;
                     height: 30px;
                 }
             }
-            
+
             form{
                 width: 40px;
 
             }
 
-            // img{
-            //     transform: scale(0.7);
-            // }
-
         }
-        
+
     }
 
     form{
