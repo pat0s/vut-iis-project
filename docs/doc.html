@@ -78,16 +78,9 @@ Zde vložte grafické schéma relační databáze (tabulek v databázi).
 <br>
 <br>
 <h4>Schema relačnej databáze</h4> 
-<img src="./DBSchema.png">
+<img src="./DBSchema.png" width="1400">
 
-<h2>Instalace</h2>
-
-Stručně popište: 
-<ul>
-<li>postup instalace na server,</li>
-<li>softwarové požadavky (verze PHP apod.),</li>
-<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
-</ul>
+<h2>Instalace</h2> 
 
 Použité technológie:
 <ul>
@@ -105,13 +98,13 @@ Použité technológie:
     Projekt je možné spustiť, iba ak je dostupná celá štruktúra priečinkov. Projekt bude dostupný ako verejný repozitár na <a href="https://github.com/pat0s/vut-iis-project">githube</a>. 
 </p>
 
-<h4>Prikazy na spustenie projektu na localhoste</h4>
-<code>composer install</code><br>
-<code>cp .env.test .env</code><br>
-<code>php artisan key:generate</code><br>
-<code>npm install </code><br>
-<code>php artisan serve </code><br><br>
-
+<h4>Inicializácia projektu na localhoste</h4>
+<ul>
+    <li><code>composer install</code></li>
+    <li><code>cp .env.test .env</code></li>
+    <li><code>php artisan key:generate</code></li>
+    <li><code>php artisan storage:link</code></li>
+</ul>
 
 <h4>Vytvorenie lokálnej databázy</h4>
 <ul>
@@ -119,8 +112,13 @@ Použité technológie:
     <li>Úprava súboru config/database.php - connection string na databázu</li>
     <li>Spustenie migrácii a seedovania dát - <code>php artisan migrate:refresh --seed</code></li>
     <li>Spustenie servera - <code>php artisan serve</code></li>
-
 </ul>
+
+<h4>Spustenie projektu</h4>
+<ul>
+    <li><code>php artisan serve</code><br></li>
+</ul>
+
 
 <h4>Pre editáciu CSS a JS je potrebné nainštalovať npm.</h4>
 <ul>
@@ -138,7 +136,20 @@ Použité technológie:
 <p>V projekte sú implementované všetky požiadky, ktoré boli zakomponované v zadaní</p>
 
 <h2>Implementačné detaily</h2>
-<!-- Systemovy administrator, schvalovanie participantov turnaja, Approve turnaja, generovanie turnaja, ukoncenie turnaja, podmienky joinu turnaja -->
+<b>Systémový administrátor</b> - východzí administrátor systému, ktorý môže prideliť a odobrať rolu administrátora ostatným registrovaným užívateľom. Ostatní administrátori mu nemôžu odobrať rolu.
+<br><br>
 
+<b>Schvaľovanie účastníkov turnaja</b> - účastnik turnaja sa považuje za schváleného pokiaľ ho manažér turnaja neodstráni zo zoznamu účastníkov na turnaji.
+<br><br> 
+
+<b>Schvaľovanie turnaja</b> - schvaľovanie turnaja prebieha pred dátumom jeho začatia. Schváliť ho môže hociktorí administrátor.
+<br><br>
+
+<b>Generovanie turnaja</b> - generovanie samostatných zápasov turnaja bez účastníkov prebieha po vytvorení turnaja pomocou triggeru. Rozdelenie účastníkov do prvého kola turnajového pavúka má na starosti manažér turnaja. Podmienkou je schválenie turnaja a naplnenie kapacity turnaja.
+<br><br>
+
+<b>Ukončenie turnaja</b> - 
+<br><br>
+<b>Podmienky vstupu do turnaja</b> - turnaj musí byť schválený administrátorom. Pokiaľ je turnaj určený pre jednotlivcov, tak sa turnaja môže účastniť hociktorý registrovaný úžívateľ. Tímového turnaja sa môže účastniť tím, ktorého počet členov sa rovná počtu členov stanoveného na základe športu daného turnaja.
 </body>
 </html>
