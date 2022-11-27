@@ -26,6 +26,7 @@ class Person extends Authenticatable
         'email',
         'profile_image',
         'password',
+        'role_id',
     ];
 
 

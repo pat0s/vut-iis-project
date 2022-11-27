@@ -80,8 +80,12 @@ class PersonController extends Controller
         // hash password
         $formFields['password'] = bcrypt($formFields['password']);
 
+        // add user role
+        $formFields['role_id'] = 1;
+        
         // create user
         $user = Person::create($formFields);
+
 
         // login user
         auth()->login($user);
@@ -154,7 +158,7 @@ class PersonController extends Controller
         $user->surname = $formFields['surname'];
         $user->username = $formFields['username'];
         $user->email = $formFields['email'];
-        $user->role_id = 1;
+        
 
         if (array_key_exists('profile_image', $formFields)) {
             $destinationPath = 'public/users/img';
