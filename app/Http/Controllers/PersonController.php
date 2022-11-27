@@ -160,6 +160,7 @@ class PersonController extends Controller
         $user->username = $formFields['username'];
         $user->email = $formFields['email'];
         $user->profile_image = $name;
+        $user->role_id = 1;
 
         try {
             $user->update();
