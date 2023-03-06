@@ -4,6 +4,7 @@
 * Laravel Framework
 * Eloquent ORM
 * HTML + SCASS + JS
+* Github Workflows
 
 ### Authors
 **Patrik Sehnoutek** (<a href="https://github.com/pat0s">Github</a>)
