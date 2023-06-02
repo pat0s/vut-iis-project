@@ -3,7 +3,7 @@
 ### Tools
 * Laravel Framework
 * Eloquent ORM
-* HTML + SCASS + JS
+* HTML + SASS + JS
 * Github Workflows
 
 ### Authors
